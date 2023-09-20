@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/09/20 16:03:22 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:05:23 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,9 @@ void	ft_create_threads(int i, t_main *t_m)
 	pthread_t	tid;
 
 	pthread_create(&tid, NULL, thread_routine, &t_m);
-	pthread_mutex_lock(&t_m->print_mutex);
 	t_m->nb_threads = t_m->nb_threads + 1;
 	printf("\n - Philosopher Number %i has been created\n count == %i\n", i,
 		t_m->counter);
-	pthread_mutex_unlock(&t_m->print_mutex);
 }
 
 void	ft_start(t_arg t_arg, t_main *t_m)
