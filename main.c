@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/09/20 17:53:05 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:04:17 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void	ft_create_threads(int i, t_main *t_m)
 	// pthread_t	tid2;
 
 	ft_printf("\n-> Je suis dans ft_create_threads.");
-	pthread_create(&tid, NULL, thread_routine, &t_m);
+	if (pthread_create(&tid, NULL, thread_routine, &t_m) == -1)
+		ft_printf("\n\n         Phthread_Create FAIL");
 	// pthread_create(&tid2, NULL, thread_routine, &t_m);
 	t_m->nb_threads = t_m->nb_threads + 1;
 	i = i + 1;
