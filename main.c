@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/09/19 18:13:57 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:49:10 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,11 @@ void	*thread_routine(void *data)
 	pthread_t	tid;
 	t_main		*t_m;
 
-	tid = pthread_self();
+	tid = pthread_self();//non authorized
 	t_m = (t_main *)data;
-	if (t_m->counter == 0)
-	{
-		pthread_mutex_lock(&t_m->count_mutex);
-		t_m->counter = 1;
-		printf("\nThread [%d]: Le plus grand ennui c'est d'exister sans vivre.\n count == %i\n",
-			(int)tid, t_m->counter);
-		pthread_mutex_unlock(&t_m->count_mutex);
-		t_m->counter = 0;
-	}
+	printf("\nThread [%d]: Le plus grand ennui c'est d'exister sans vivre.\n ",
+		(int)tid);
+	t_m->counter = t_m->counter + 1;
 	return (NULL);
 }
 
@@ -70,14 +64,10 @@ void	ft_create_threads(int i, t_main *t_m)
 
 	pthread_create(&tid, NULL, thread_routine, &t_m);
 	t_m->nb_threads = t_m->nb_threads + 1;
-	if (t_m->counter == 0)
-	{
-		pthread_mutex_lock(&t_m->count_mutex);
-		t_m->counter = 1;
-		printf("\n - Philosopher Number %i has been created\n", i);
-		pthread_mutex_unlock(&t_m->count_mutex);
-		t_m->counter = 0;
-	}
+	pthread_mutex_lock(&t_m->count_mutex);
+	printf("\n - Philosopher Number %i has been created\n count == %i\n", i,
+		t_m->counter);
+	pthread_mutex_unlock(&t_m->count_mutex);
 }
 
 void	ft_start(t_arg t_arg, t_main *t_m)
