@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/09/20 18:10:04 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:22:29 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,9 @@ void	*thread_routine(void *data)
 	tid = pthread_self();
 
 	pthread_mutex_lock(&t_m->print_mutex);
-	ft_printf("\n-> Je suis dans thread_routine.");
+	t_m->counter = t_m->counter + 1;
 	printf("\nThread[%ld] [Count == %i]: Le plus grand ennui c'est d'exister sans vivre.\n ",
 		tid, t_m->counter);
-	t_m->counter = t_m->counter + 1;
 	g_test = 2000;
 	pthread_mutex_unlock(&t_m->print_mutex);
 	return (NULL);
@@ -70,7 +69,6 @@ void	ft_create_threads(int i, t_main *t_m)
 	pthread_t	tid;
 	// pthread_t	tid2;
 
-	ft_printf("\n-> Je suis dans ft_create_threads.");
 	if (pthread_create(&tid, NULL, thread_routine, &t_m) == -1)
 		ft_printf("\n\n         Phthread_Create FAIL");
 	// pthread_create(&tid2, NULL, thread_routine, &t_m);
@@ -86,7 +84,6 @@ void	ft_start(t_arg t_arg, t_main *t_m)
 	int	i;
 
 	i = 0;
-	ft_printf("\n-> Je suis dans ft_start.");
 	while (i < t_arg.number_of_philosophers)
 	{
 		ft_create_threads(i, t_m);
