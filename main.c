@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/09/20 18:04:17 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:10:04 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ void	*thread_routine(void *data)
 	t_m = (t_main *)data;
 	tid = pthread_self();
 
-	// pthread_mutex_lock(&t_m->print_mutex);
+	pthread_mutex_lock(&t_m->print_mutex);
 	ft_printf("\n-> Je suis dans thread_routine.");
 	printf("\nThread[%ld] [Count == %i]: Le plus grand ennui c'est d'exister sans vivre.\n ",
 		tid, t_m->counter);
 	t_m->counter = t_m->counter + 1;
 	g_test = 2000;
-	// pthread_mutex_unlock(&t_m->print_mutex);
+	pthread_mutex_unlock(&t_m->print_mutex);
 	return (NULL);
 }
 
@@ -76,8 +76,9 @@ void	ft_create_threads(int i, t_main *t_m)
 	// pthread_create(&tid2, NULL, thread_routine, &t_m);
 	t_m->nb_threads = t_m->nb_threads + 1;
 	i = i + 1;
-	// printf("\n - Philosopher Number %i has been created\n count == %i\n", i,
-	// 	t_m->counter);
+	pthread_join(tid, NULL);
+	printf("\n - Philosopher Number %i has been created\n count == %i\n", i,
+		t_m->counter);
 }
 
 void	ft_start(t_arg t_arg, t_main *t_m)
@@ -86,12 +87,11 @@ void	ft_start(t_arg t_arg, t_main *t_m)
 
 	i = 0;
 	ft_printf("\n-> Je suis dans ft_start.");
-	// while (i < t_arg.number_of_philosophers)
-	// {
-	ft_create_threads(i, t_m);
-	i++;
-	t_arg.time_to_eat = t_arg.time_to_eat + 1;
-	// }
+	while (i < t_arg.number_of_philosophers)
+	{
+		ft_create_threads(i, t_m);
+		i++;
+	}
 }
 
 int	main(int argc, char *argv[])
@@ -107,7 +107,7 @@ int	main(int argc, char *argv[])
 	}
 	t_m.counter = 0;
 	g_test = 5;
-	// pthread_mutex_init(&t_m.print_mutex, NULL);
+	pthread_mutex_init(&t_m.print_mutex, NULL);
 	// pthread_mutex_init(&t_m.counter_mutex, NULL);
 	arguments = ft_parsing_arguments(argv, argc);
 	ft_printf("\nnumber_of_philosophers == %d philosophers\n", arguments[0]);
@@ -126,7 +126,7 @@ int	main(int argc, char *argv[])
 	printf(" \n------------------\n\n|||| Counter avant ft_start : %i\n\n Entering Ft_Start : \n", t_m.counter);
 	ft_start(t_arg, &t_m);
 	printf("\n\n Leaving ft_start .\n\n|||| Counter apres ft_start : %i\n", t_m.counter);
-	// pthread_mutex_destroy(&t_m.print_mutex);
+	pthread_mutex_destroy(&t_m.print_mutex);
 	// pthread_mutex_destroy(&t_m.counter_mutex);
 	printf(" \n\nG_TEST == %i\n", g_test);
 	return (0);
