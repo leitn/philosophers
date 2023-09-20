@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/09/20 14:49:10 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:03:22 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ int	*ft_parsing_arguments(char **argv, int argc)
 
 void	*thread_routine(void *data)
 {
-	pthread_t	tid;
 	t_main		*t_m;
 
-	tid = pthread_self();//non authorized
 	t_m = (t_main *)data;
-	printf("\nThread [%d]: Le plus grand ennui c'est d'exister sans vivre.\n ",
-		(int)tid);
+	pthread_mutex_lock(&t_m->print_mutex);
+	printf("\nThread [Count == %i]: Le plus grand ennui c'est d'exister sans vivre.\n ",
+		t_m->counter);
 	t_m->counter = t_m->counter + 1;
+	pthread_mutex_unlock(&t_m->print_mutex);
 	return (NULL);
 }
 
@@ -63,11 +63,11 @@ void	ft_create_threads(int i, t_main *t_m)
 	pthread_t	tid;
 
 	pthread_create(&tid, NULL, thread_routine, &t_m);
+	pthread_mutex_lock(&t_m->print_mutex);
 	t_m->nb_threads = t_m->nb_threads + 1;
-	pthread_mutex_lock(&t_m->count_mutex);
 	printf("\n - Philosopher Number %i has been created\n count == %i\n", i,
 		t_m->counter);
-	pthread_mutex_unlock(&t_m->count_mutex);
+	pthread_mutex_unlock(&t_m->print_mutex);
 }
 
 void	ft_start(t_arg t_arg, t_main *t_m)
@@ -94,7 +94,8 @@ int	main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	t_m.counter = 0;
-	pthread_mutex_init(&t_m.count_mutex, NULL);
+	pthread_mutex_init(&t_m.print_mutex, NULL);
+	pthread_mutex_init(&t_m.counter_mutex, NULL);
 	arguments = ft_parsing_arguments(argv, argc);
 	ft_printf("\nnumber_of_philosophers == %d philosophers\n", arguments[0]);
 	t_arg.number_of_philosophers = arguments[0];
@@ -110,7 +111,8 @@ int	main(int argc, char *argv[])
 		t_arg.nb_times_philos_must_eat = arguments[4];
 	}
 	ft_start(t_arg, &t_m);
-	pthread_mutex_destroy(&t_m.count_mutex);
+	pthread_mutex_destroy(&t_m.print_mutex);
+	pthread_mutex_destroy(&t_m.counter_mutex);
 	return (0);
 }
 
