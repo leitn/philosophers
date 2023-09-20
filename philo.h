@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/09/20 16:00:19 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:26:56 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_main{
 	int				nb_threads;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	counter_mutex;
-	unsigned int	counter;
+	int				counter;
 }	t_main;
 
 //main.c

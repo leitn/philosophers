@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/09/20 16:23:02 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:29:53 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,9 @@ int	main(int argc, char *argv[])
 			arguments[4]);
 		t_arg.nb_times_philos_must_eat = arguments[4];
 	}
+	printf(" \n------------------\n\n|||| Counter avant ft_start : %i\nEntering Ft_Start : \n", t_m.counter);
 	ft_start(t_arg, &t_m);
+	printf("\n Leaving ft_start\n\n|||| Counter apres ft_start : %i\n", t_m.counter);
 	pthread_mutex_destroy(&t_m.print_mutex);
 	pthread_mutex_destroy(&t_m.counter_mutex);
 	printf(" \n\nG_TEST == %i\n", g_test);
