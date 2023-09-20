@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/09/20 17:29:53 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:48:57 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	*thread_routine(void *data)
 	tid = pthread_self();
 
 	// pthread_mutex_lock(&t_m->print_mutex);
+	ft_printf("\n-> Je suis dans thread_routine.");
 	printf("\nThread[%ld] [Count == %i]: Le plus grand ennui c'est d'exister sans vivre.\n ",
 		tid, t_m->counter);
 	t_m->counter = t_m->counter + 1;
@@ -69,6 +70,7 @@ void	ft_create_threads(int i, t_main *t_m)
 	pthread_t	tid;
 	// pthread_t	tid2;
 
+	ft_printf("\n-> Je suis dans ft_create_threads.");
 	pthread_create(&tid, NULL, thread_routine, &t_m);
 	// pthread_create(&tid2, NULL, thread_routine, &t_m);
 	t_m->nb_threads = t_m->nb_threads + 1;
@@ -82,11 +84,13 @@ void	ft_start(t_arg t_arg, t_main *t_m)
 	int	i;
 
 	i = 0;
-	while (i < t_arg.number_of_philosophers)
-	{
-		ft_create_threads(i, t_m);
-		i++;
-	}
+	ft_printf("\n-> Je suis dans ft_start.");
+	// while (i < t_arg.number_of_philosophers)
+	// {
+	ft_create_threads(i, t_m);
+	i++;
+	t_arg.time_to_eat = t_arg.time_to_eat + 1;
+	// }
 }
 
 int	main(int argc, char *argv[])
@@ -102,8 +106,8 @@ int	main(int argc, char *argv[])
 	}
 	t_m.counter = 0;
 	g_test = 5;
-	pthread_mutex_init(&t_m.print_mutex, NULL);
-	pthread_mutex_init(&t_m.counter_mutex, NULL);
+	// pthread_mutex_init(&t_m.print_mutex, NULL);
+	// pthread_mutex_init(&t_m.counter_mutex, NULL);
 	arguments = ft_parsing_arguments(argv, argc);
 	ft_printf("\nnumber_of_philosophers == %d philosophers\n", arguments[0]);
 	t_arg.number_of_philosophers = arguments[0];
@@ -118,11 +122,11 @@ int	main(int argc, char *argv[])
 			arguments[4]);
 		t_arg.nb_times_philos_must_eat = arguments[4];
 	}
-	printf(" \n------------------\n\n|||| Counter avant ft_start : %i\nEntering Ft_Start : \n", t_m.counter);
+	printf(" \n------------------\n\n|||| Counter avant ft_start : %i\n\n Entering Ft_Start : \n", t_m.counter);
 	ft_start(t_arg, &t_m);
-	printf("\n Leaving ft_start\n\n|||| Counter apres ft_start : %i\n", t_m.counter);
-	pthread_mutex_destroy(&t_m.print_mutex);
-	pthread_mutex_destroy(&t_m.counter_mutex);
+	printf("\n Leaving ft_start .\n\n|||| Counter apres ft_start : %i\n", t_m.counter);
+	// pthread_mutex_destroy(&t_m.print_mutex);
+	// pthread_mutex_destroy(&t_m.counter_mutex);
 	printf(" \n\nG_TEST == %i\n", g_test);
 	return (0);
 }
