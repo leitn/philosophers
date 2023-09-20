@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/09/20 17:48:57 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:49:46 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int	main(int argc, char *argv[])
 	}
 	printf(" \n------------------\n\n|||| Counter avant ft_start : %i\n\n Entering Ft_Start : \n", t_m.counter);
 	ft_start(t_arg, &t_m);
-	printf("\n Leaving ft_start .\n\n|||| Counter apres ft_start : %i\n", t_m.counter);
+	printf("\n\n Leaving ft_start .\n\n|||| Counter apres ft_start : %i\n", t_m.counter);
 	// pthread_mutex_destroy(&t_m.print_mutex);
 	// pthread_mutex_destroy(&t_m.counter_mutex);
 	printf(" \n\nG_TEST == %i\n", g_test);
