@@ -6,11 +6,13 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/09/20 16:06:26 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:23:02 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int g_test;
 
 int	*ft_parsing_arguments(char **argv, int argc)
 {
@@ -48,21 +50,27 @@ int	*ft_parsing_arguments(char **argv, int argc)
 void	*thread_routine(void *data)
 {
 	t_main		*t_m;
+	pthread_t	tid;
 
 	t_m = (t_main *)data;
-	pthread_mutex_lock(&t_m->print_mutex);
-	printf("\nThread [Count == %i]: Le plus grand ennui c'est d'exister sans vivre.\n ",
-		t_m->counter);
+	tid = pthread_self();
+
+	// pthread_mutex_lock(&t_m->print_mutex);
+	printf("\nThread[%ld] [Count == %i]: Le plus grand ennui c'est d'exister sans vivre.\n ",
+		tid, t_m->counter);
 	t_m->counter = t_m->counter + 1;
-	pthread_mutex_unlock(&t_m->print_mutex);
+	g_test = 2000;
+	// pthread_mutex_unlock(&t_m->print_mutex);
 	return (NULL);
 }
 
 void	ft_create_threads(int i, t_main *t_m)
 {
 	pthread_t	tid;
+	// pthread_t	tid2;
 
 	pthread_create(&tid, NULL, thread_routine, &t_m);
+	// pthread_create(&tid2, NULL, thread_routine, &t_m);
 	t_m->nb_threads = t_m->nb_threads + 1;
 	i = i + 1;
 	// printf("\n - Philosopher Number %i has been created\n count == %i\n", i,
@@ -93,6 +101,7 @@ int	main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	t_m.counter = 0;
+	g_test = 5;
 	pthread_mutex_init(&t_m.print_mutex, NULL);
 	pthread_mutex_init(&t_m.counter_mutex, NULL);
 	arguments = ft_parsing_arguments(argv, argc);
@@ -112,6 +121,7 @@ int	main(int argc, char *argv[])
 	ft_start(t_arg, &t_m);
 	pthread_mutex_destroy(&t_m.print_mutex);
 	pthread_mutex_destroy(&t_m.counter_mutex);
+	printf(" \n\nG_TEST == %i\n", g_test);
 	return (0);
 }
 
