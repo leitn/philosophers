@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/09/20 17:26:56 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/09/25 14:54:20 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,12 @@
 # include <unistd.h>
 # include <pthread.h>
 
-
-typedef struct s_arguments{
-	int	number_of_philosophers;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	nb_times_philos_must_eat;
-}	t_arg;
-
 typedef struct s_main{
+	int				nb_of_philo;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				nb_must_eat;
 	int				nb_threads;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	counter_mutex;
@@ -42,6 +38,6 @@ typedef struct s_main{
 int		*ft_parsing_arguments(char **argv, int argc);
 void	*thread_routine(void *data);
 void	ft_create_threads(int i, t_main *t_m);
-void	ft_start(t_arg t_arg, t_main *t_m);
+void	ft_start(t_main *t_m);
 
 #endif

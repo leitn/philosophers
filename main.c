@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/09/20 18:22:29 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/09/25 14:54:27 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,12 @@ void	ft_create_threads(int i, t_main *t_m)
 		t_m->counter);
 }
 
-void	ft_start(t_arg t_arg, t_main *t_m)
+void	ft_start(t_main *t_m)
 {
 	int	i;
 
 	i = 0;
-	while (i < t_arg.number_of_philosophers)
+	while (i < t_m->nb_of_philo)
 	{
 		ft_create_threads(i, t_m);
 		i++;
@@ -94,7 +94,6 @@ void	ft_start(t_arg t_arg, t_main *t_m)
 int	main(int argc, char *argv[])
 {
 	int		*arguments;
-	t_arg	t_arg;
 	t_main	t_m;
 
 	if (argc <= 4 || argc > 6)
@@ -108,20 +107,21 @@ int	main(int argc, char *argv[])
 	// pthread_mutex_init(&t_m.counter_mutex, NULL);
 	arguments = ft_parsing_arguments(argv, argc);
 	ft_printf("\nnumber_of_philosophers == %d philosophers\n", arguments[0]);
-	t_arg.number_of_philosophers = arguments[0];
+	t_m.nb_of_philo = arguments[0];
 	ft_printf("\ntime_to_die == %dms\n", arguments[1]);
-	t_arg.time_to_die = arguments[1];
+	t_m.time_to_die = arguments[1];
 	ft_printf("\ntime_to_eat == %dms\n", arguments[2]);
-	t_arg.time_to_eat = arguments[2];
+	t_m.time_to_eat = arguments[2];
 	ft_printf("\ntime_to_sleep == %dms\n", arguments[3]);
+	t_m.time_to_sleep = arguments[3];
 	if (argc == 6)
 	{
 		ft_printf("\nnumber_of_times_each_philosopher_must_eat == %d times\n",
 			arguments[4]);
-		t_arg.nb_times_philos_must_eat = arguments[4];
+		t_m.nb_must_eat = arguments[4];
 	}
 	printf(" \n------------------\n\n|||| Counter avant ft_start : %i\n\n Entering Ft_Start : \n", t_m.counter);
-	ft_start(t_arg, &t_m);
+	ft_start(&t_m);
 	printf("\n\n Leaving ft_start .\n\n|||| Counter apres ft_start : %i\n", t_m.counter);
 	pthread_mutex_destroy(&t_m.print_mutex);
 	// pthread_mutex_destroy(&t_m.counter_mutex);
