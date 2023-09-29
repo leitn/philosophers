@@ -6,14 +6,16 @@
 #    By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 14:04:24 by letnitan          #+#    #+#              #
-#    Updated: 2023/09/19 14:09:44 by letnitan         ###   ########.fr        #
+#    Updated: 2023/09/29 16:10:16 by letnitan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 PRINTF = libftprintf.a
 LIBFT = libft.a
-SRC_FILES =	main.c
+SRC_FILES =	main.c \
+			args.c \
+			time.c \
 
 SRCS = $(SRC_FILES)
 OBJS = ${SRCS:.c=.o}

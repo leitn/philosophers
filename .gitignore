@@ -2,3 +2,5 @@
 *.o
 # Ignorer tous les fichiers .vscode
 *.vscode
+# Ignore .gitignore
+*.gitignore
