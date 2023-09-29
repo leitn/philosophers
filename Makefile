@@ -6,7 +6,7 @@
 #    By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 14:04:24 by letnitan          #+#    #+#              #
-#    Updated: 2023/09/29 16:10:16 by letnitan         ###   ########.fr        #
+#    Updated: 2023/09/29 16:41:37 by letnitan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,10 @@ NAME = philo
 PRINTF = libftprintf.a
 LIBFT = libft.a
 SRC_FILES =	main.c \
-			args.c \
+			init_args.c \
 			time.c \
+			init_data.c \
+			free_data.c \
 
 SRCS = $(SRC_FILES)
 OBJS = ${SRCS:.c=.o}
@@ -46,6 +48,7 @@ fclean : clean
 		${RM} $(NAME)
 		${RM} $(PRINTF)
 		${RM} $(LIBFT)
+		rm -rf *.o
 
 re : fclean all
 

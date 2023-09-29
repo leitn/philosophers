@@ -6,13 +6,13 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/09/29 16:00:22 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:36:56 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-
+// To make while having incomplete functions
 void	do_nothing_but_make(t_data *data)
 {
 	int	memento_mori;
@@ -20,28 +20,32 @@ void	do_nothing_but_make(t_data *data)
 	memento_mori = data->time_to_die;
 }
 
-
+//WIP (obviously)
 int	ft_to_eat(t_data *data)
 {
 	do_nothing_but_make(data);
 	return (0);
 }
 
-
-void	*thread_routine(void *data)
+//WIP (obviously)
+void	ft_routine(t_data *data)
 {
-	do_nothing_but_make(data);
-	return (0);
-}
-
-void	ft_create_threads(int i, t_data *data)
-{
-	int	a;
-
-	a = i;
 	do_nothing_but_make(data);
 }
 
+
+/*
+ft_routine brouillon
+
+while (++i < nb_of_philos)
+	{
+		if (pthread_create(&data->philo_ths[i], NULL,
+				&routine, &data->philos[i]))
+			return (1);
+	}
+
+
+*/
 
 int	main(int argc, char *argv[])
 {
@@ -52,9 +56,22 @@ int	main(int argc, char *argv[])
 		ft_printf("invalid arguments\n");
 		exit(EXIT_FAILURE);
 	}
-	data.forks = malloc(data.nb_of_philo * sizeof(pthread_mutex_t));
 	ft_init_args(argc, argv, &data);
-	free(data.forks);
+	ft_init_data(&data);
+	ft_routine(&data);
+	ft_free_data(&data);
+
 	return (0);
 }
 
+
+
+/*-----------BROUILLON--------------*/
+
+/*
+
+/!\ FAIRE UN TRUC PROPRE POUR LES EXIT FAILURES
+(fonction pour free, pour imprimer message d'erreur, etc)
+
+
+*/
