@@ -7,12 +7,6 @@ Lancer routine
 
 ROUTINE :
 - gettime
-while (++i < nb_of_philos)
-	{
-		if (pthread_create(&data->philo_ths[i], NULL,
-				&routine, &data->philos[i]))
-			return (1);
-	}
 
 - Une fonction qui estime si le philo est mort
 

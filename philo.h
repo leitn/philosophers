@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 18:10:31 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:30:46 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int			ft_start_routine(t_data	*data);
 
 //eat.c
 int			ft_to_eat(t_data *data);
+void		ft_right_handed(t_philo *philo);
+void		ft_left_handed(t_philo *philo);
 
 /*-----------------------STRUCTURES-MANAGEMENT-----------------------*/
 

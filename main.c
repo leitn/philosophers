@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 18:11:45 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:27:58 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ void	*ft_routine(void *ph_philo)
 	t_philo	*philo;
 
 	philo = (t_philo *) ph_philo;
-	pthread_mutex_lock(&philo->data->mut_print);
-	printf("\nThis is a test\n");
-	pthread_mutex_unlock(&philo->data->mut_print);
+	if (philo->philo_id % 2 == 0)
+		ft_right_handed(philo);
+	if (philo->philo_id % 2 != 0)
+		ft_left_handed(philo);
+
 	return (NULL);
 }
 
@@ -75,14 +77,3 @@ int	main(int argc, char *argv[])
 	return (0);
 }
 
-
-
-/*-----------BROUILLON--------------*/
-
-/*
-
-/!\ FAIRE UN TRUC PROPRE POUR LES EXIT FAILURES
-(fonction pour free, pour imprimer message d'erreur, etc)
-
-
-*/
