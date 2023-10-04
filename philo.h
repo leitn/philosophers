@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 16:35:51 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:58:54 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int			ft_to_eat(t_data *data);
 int			ft_check_args(int argc, char *argv[]);
 int			*ft_argc_malloc(int argc);
 int			*ft_parsing_arguments(char **argv, int argc);
-void		ft_init_args(int argc, char *argv[], t_data *data);
+int			ft_init_args(int argc, char *argv[], t_data *data);
 
 //init_data.c
 int			ft_init_philos_threads(t_data *data);

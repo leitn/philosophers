@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:57:09 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 16:10:59 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:15:13 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ int	ft_check_args(int argc, char *argv[])
 	{
 		while (argv[i][j] != '\0')
 		{
-			if (argv[i][j] >= '0' && argv[i][j] <= '9')
-				j++;
-			else
+			while (argv[i][j] == '\r' || argv[i][j] == '\t' || argv[i][j] == ' '
+			|| argv[i][j] == '\f' || argv[i][j] == '\v' || argv[i][j] == '\n')
 				return (1);
+			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
+				return (1);
+			while (argv[i][j] >= '0' && argv[i][j] <= '9')
+				j++;
 		}
 		i++;
 		j = 0;
@@ -69,22 +72,23 @@ int	*ft_parsing_arguments(char **argv, int argc)
 	while (i < 4)
 	{
 		intarg[i] = ft_atoi(argv[i + 1]);
+		if (intarg[i] == 0)
+			return (NULL);
 		i++;
 	}
-	intarg[4] = 0;
 	if (argc == 6)
 		intarg[4] = ft_atoi(argv[5]);
 	return (intarg);
 }
 
 
-void	ft_init_args(int argc, char *argv[], t_data *data)
+int	ft_init_args(int argc, char *argv[], t_data *data)
 {
 	int		*arguments;
 
 	arguments = ft_parsing_arguments(argv, argc);
 	if (arguments == NULL)
-		ft_error(data);
+		return (1);
 	printf("\nnumber_of_philosophers == %d philosophers\n", arguments[0]);
 	data->nb_philo = arguments[0];
 	printf("\ntime_to_die == %dms\n", arguments[1]);
@@ -100,4 +104,5 @@ void	ft_init_args(int argc, char *argv[], t_data *data)
 		data->nb_must_eat = arguments[4];
 	}
 	free(arguments);
+	return (0);
 }
