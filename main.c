@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/09/29 16:36:56 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:43:00 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,7 @@ void	do_nothing_but_make(t_data *data)
 	memento_mori = data->time_to_die;
 }
 
-//WIP (obviously)
-int	ft_to_eat(t_data *data)
-{
-	do_nothing_but_make(data);
-	return (0);
-}
+
 
 //WIP (obviously)
 void	ft_routine(t_data *data)
@@ -44,6 +39,7 @@ while (++i < nb_of_philos)
 			return (1);
 	}
 
+Join threads ici ? ou main ?
 
 */
 
@@ -57,7 +53,8 @@ int	main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	ft_init_args(argc, argv, &data);
-	ft_init_data(&data);
+	if (ft_init_data(&data) != 0)
+		ft_error(data);
 	ft_routine(&data);
 	ft_free_data(&data);
 

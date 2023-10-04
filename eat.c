@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   eat.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 13:40:53 by letnitan          #+#    #+#             */
-/*   Updated: 2022/11/22 12:22:54 by letnitan         ###   ########.fr       */
+/*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
+/*   Updated: 2023/10/04 14:18:55 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "philo.h"
+
+
+//WIP (obviously)
+int	ft_to_eat(t_data *data)
 {
-	if (c <= '9' && c >= '0')
-		return (1);
+	do_nothing_but_make(data);
 	return (0);
 }
