@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:57:09 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 15:54:50 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:04:42 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	*ft_parsing_arguments(char **argv, int argc)
 	if (ft_check_args(argc, argv) == 1)
 	{
 		free(intarg);
-		return (1);
+		return (NULL);
 	}
 	i = 0;
 	while (i < 4)
@@ -83,6 +83,8 @@ void	ft_init_args(int argc, char *argv[], t_data *data)
 	int		*arguments;
 
 	arguments = ft_parsing_arguments(argv, argc);
+	if (arguments == NULL)
+		ft_error(data);
 	printf("\nnumber_of_philosophers == %d philosophers\n", arguments[0]);
 	data->nb_philo = arguments[0];
 	printf("\ntime_to_die == %dms\n", arguments[1]);

@@ -6,13 +6,13 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:15:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 15:48:47 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:05:55 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-//WIP (obviously)
+//malloc data.philo_threads
 int	ft_init_philos_threads(t_data *data)
 {
 	data->philo_threads = malloc(data->nb_philo * sizeof(pthread_t));
@@ -21,7 +21,7 @@ int	ft_init_philos_threads(t_data *data)
 	return (0);
 }
 
-//WIP (obviously)
+//malloc data.philos && fills it
 int	ft_init_philos(t_data *data)
 {
 	int		i;
@@ -31,6 +31,7 @@ int	ft_init_philos(t_data *data)
 	data->philos = malloc(data->nb_philo * sizeof(t_philo));
 	if (data->philos == NULL)
 		return (1);
+	philo = data->philos;
 	while (i < data->nb_philo)
 	{
 		philo[i].data = data;
@@ -45,7 +46,7 @@ int	ft_init_philos(t_data *data)
 	return (0);
 }
 
-//WIP (obviously)
+//malloc data.forks && init its mutexes
 int	ft_init_forks(t_data *data)
 {
 	int	i;
@@ -63,7 +64,7 @@ int	ft_init_forks(t_data *data)
 }
 
 
-//WIP (obviously)
+//init structures
 int	ft_init_data(t_data *data)
 {
 	if (ft_init_forks(data) != 0)

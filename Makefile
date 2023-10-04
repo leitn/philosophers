@@ -6,7 +6,7 @@
 #    By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 14:04:24 by letnitan          #+#    #+#              #
-#    Updated: 2023/10/04 14:21:18 by letnitan         ###   ########.fr        #
+#    Updated: 2023/10/04 16:06:17 by letnitan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,6 @@ all:	$(NAME)
 
 
 $(NAME) : $(OBJS)
-		@make -C ft_printf
-		@make -C libft
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 

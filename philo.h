@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 15:54:43 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:01:53 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/time.h>
 
 /*----------------------------STRUCTURES----------------------------*/
+struct	s_data;
 
 typedef struct s_philo{
 	int				philo_id;
@@ -29,7 +30,7 @@ typedef struct s_philo{
 	pthread_mutex_t	*left_fork;
 	long long		time_of_eating;
 	int				dead;
-	t_data			*data;
+	struct s_data	*data;
 }	t_philo;
 
 typedef struct s_data{

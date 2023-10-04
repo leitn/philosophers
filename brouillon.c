@@ -21,7 +21,6 @@ while (++i < nb_of_philos)
 			return (1);
 	}
 
-
 - Une fonction qui estime si le philo est mort
 
 - Une fonction eat
