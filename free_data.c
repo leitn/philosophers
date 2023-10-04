@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:18:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 16:28:26 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:28:56 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_destroy_mutex(t_data *data)
 	pthread_mutex_destroy(&data->mut_print);
 	pthread_mutex_destroy(&data->mut_start_t);
 }
-
 
 // WIP
 void	ft_free_data(t_data *data)

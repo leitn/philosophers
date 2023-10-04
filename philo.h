@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 16:01:53 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:35:51 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void		ft_free_data(t_data *data);
 // utils.c
 int			ft_atoi(char *str);
 void		ft_error(t_data	*data);
+int			ft_pthread_join(t_data *data);
 
 //time.c
 long long	ft_get_time(void);

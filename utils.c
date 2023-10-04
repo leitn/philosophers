@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:21:03 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 16:00:25 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:37:29 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,18 @@ void	ft_error(t_data	*data)
 {
 	printf("ERROR");
 	ft_free_data(data);
+}
+
+int	ft_pthread_join(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->nb_philo)
+	{
+		if (pthread_join(data->philo_threads[i], NULL))
+			return (1);
+		i++;
+	}
+	return (0);
 }
