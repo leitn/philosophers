@@ -6,7 +6,7 @@
 #    By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 14:04:24 by letnitan          #+#    #+#              #
-#    Updated: 2023/10/04 16:06:17 by letnitan         ###   ########.fr        #
+#    Updated: 2023/10/04 16:13:04 by letnitan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRCS = $(SRC_FILES)
 OBJS = ${SRCS:.c=.o}
 
 CC			= cc
-CFLAGS		= -Wall -Werror -Wextra -pthread
+CFLAGS		= -Wall -Werror -Wextra -pthread -g3
+
 RM = rm -rf
 
 all:	$(NAME)
