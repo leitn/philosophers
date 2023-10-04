@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 16:58:54 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:10:31 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ typedef struct s_data{
 
 //main.c
 void		do_nothing_but_make(t_data *data);
-void		ft_routine(t_data *data);
+void		*ft_routine(void *ph_philo);
+int			ft_start_routine(t_data	*data);
 
 //eat.c
 int			ft_to_eat(t_data *data);

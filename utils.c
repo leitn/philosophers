@@ -6,12 +6,13 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:21:03 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 17:09:28 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:05:26 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+//refuses all non numericals
 int	ft_atoi(char *str)
 {
 	int		count;
@@ -43,7 +44,7 @@ void	ft_error(t_data	*data)
 	printf("ERROR");
 	ft_free_data(data);
 }
-
+//join threads, returns 1 if error
 int	ft_pthread_join(t_data *data)
 {
 	int	i;

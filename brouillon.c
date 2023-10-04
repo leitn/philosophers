@@ -2,15 +2,8 @@
 
 MAIN.c :
 Check args
-Init data :
-- Args
-- Philosophers
-- Forks
-- Other mutexes
-- Lancer routine
-- Join threads
-- Free data
-
+Init data
+Lancer routine
 
 ROUTINE :
 - gettime
