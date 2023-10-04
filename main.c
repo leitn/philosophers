@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 16:36:22 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:38:42 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ int	main(int argc, char *argv[])
 		return (1);
 	}
 	ft_routine(&data);
-	if (ft_pthread_join(&data) != 0)
-	{
-		ft_error(&data);
-		return (1);
-	}
+	// if (ft_pthread_join(&data) != 0)
+	// {
+	// 	ft_error(&data);
+	// 	return (1);
+	// }
 	ft_free_data(&data);
 	return (0);
 }
