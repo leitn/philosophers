@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:15:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 19:32:52 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 19:35:20 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	ft_init_philos(t_data *data)
 		philo[i].right_fork = &data->forks[0];
 		philo[i].time_of_eating = 0;
 		philo[i].dead = 0;
-		i++;
 	}
 	philo = data->philos;
 	return (0);

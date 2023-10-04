@@ -1,5 +1,11 @@
 /*
 
+PRIORITE :
+Implementer le temps
+Implementer la mort
+mettre un while dans pthread join
+
+
 MAIN.c :
 Check args
 Init data

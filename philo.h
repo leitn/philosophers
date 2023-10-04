@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 18:52:13 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 19:39:45 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_philo{
 typedef struct s_data{
 	int				nb_philo;
 	int				nb_meals;
-	long			start_time;
+	long long		start_time;
 	long			time_to_die;
 	long			time_to_eat;
 	long			time_to_sleep;

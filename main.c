@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 19:20:24 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 19:48:14 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,19 @@ void	do_nothing_but_make(t_data *data)
 //WIP (obviously)
 void	*ft_routine(void *ph_philo)
 {
-	t_philo	*philo;
+	t_philo		*philo;
 
 	philo = (t_philo *) ph_philo;
+	philo->time_of_eating = ft_get_time() - philo->data->start_time;
+	if (pthread_mutex_lock(&philo->data->mut_print) == 0)
+		printf("\n PHILO %i EATS AT %lldms", philo->philo_id,
+			philo->time_of_eating);
+	pthread_mutex_unlock(&philo->data->mut_print);
 	if (philo->philo_id % 2 == 0)
+	{
+
 		ft_right_handed(philo);
+	}
 	if (philo->philo_id % 2 != 0)
 		ft_left_handed(philo);
 	return (NULL);
@@ -36,9 +44,10 @@ void	*ft_routine(void *ph_philo)
 //pthread create and send to routine
 int	ft_start_routine(t_data	*data)
 {
-	int	i;
+	int			i;
 
 	i = 0;
+	data->start_time = ft_get_time();
 	while (i < data->nb_philo)
 	{
 		if (pthread_create(&data->philo_threads[i], NULL,
