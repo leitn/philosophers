@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 18:27:58 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 19:20:24 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	*ft_routine(void *ph_philo)
 		ft_right_handed(philo);
 	if (philo->philo_id % 2 != 0)
 		ft_left_handed(philo);
-
 	return (NULL);
 }
 
