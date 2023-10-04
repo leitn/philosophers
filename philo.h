@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 15:39:29 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:54:43 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 typedef struct s_philo{
 	int				philo_id;
-	int				*right_fork;
-	int				*left_fork;
+	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	*left_fork;
 	long long		time_of_eating;
 	int				dead;
 	t_data			*data;
@@ -56,9 +56,10 @@ typedef struct s_data{
 
 //main.c
 void		do_nothing_but_make(t_data *data);
-int			ft_to_eat(t_data *data);
 void		ft_routine(t_data *data);
 
+//eat.c
+int			ft_to_eat(t_data *data);
 
 /*-----------------------STRUCTURES-MANAGEMENT-----------------------*/
 
@@ -69,6 +70,9 @@ int			*ft_parsing_arguments(char **argv, int argc);
 void		ft_init_args(int argc, char *argv[], t_data *data);
 
 //init_data.c
+int			ft_init_philos_threads(t_data *data);
+int			ft_init_philos(t_data *data);
+int			ft_init_forks(t_data *data);
 int			ft_init_data(t_data *data);
 
 
@@ -80,6 +84,7 @@ void		ft_free_data(t_data *data);
 
 // utils.c
 int			ft_atoi(char *str);
+void		ft_error(t_data	*data);
 
 //time.c
 long long	ft_get_time(void);

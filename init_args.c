@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:57:09 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 14:44:47 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:54:50 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	*ft_parsing_arguments(char **argv, int argc)
 	if (ft_check_args(argc, argv) == 1)
 	{
 		free(intarg);
-		return (1); // ??
+		return (1);
 	}
 	i = 0;
 	while (i < 4)

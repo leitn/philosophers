@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 14:43:00 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:51:35 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,13 @@ int	main(int argc, char *argv[])
 	if (argc <= 4 || argc > 6)
 	{
 		ft_printf("invalid arguments\n");
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 	ft_init_args(argc, argv, &data);
 	if (ft_init_data(&data) != 0)
-		ft_error(data);
+		ft_error(&data);
 	ft_routine(&data);
 	ft_free_data(&data);
-
 	return (0);
 }
 
