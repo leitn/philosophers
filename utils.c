@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:21:03 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 14:43:22 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:50:20 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	ft_atoi(char *str)
 	return (result * sign);
 }
 
-void	ft_error(t_data	data)
+void	ft_error(t_data	*data)
 {
-	
+	printf("ERROR");
+	free(data);
 }
