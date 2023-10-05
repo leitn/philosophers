@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 17:36:25 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 18:00:52 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ int			ft_eat(t_philo	*philo);
 int			ft_sleep(t_philo *philo);
 
 //die.c
-t_status	get_status(t_philo *philo);
 int			is_someone_dead(t_data *data);
 int			death_status(t_philo *philo);
 
@@ -115,7 +114,11 @@ int			ft_pthread_join(t_data *data);
 void		print_with_mutex(char *str, t_data *data);
 
 //time.c
-long long	ft_get_time(t_data *data);
+long long	ft_get_time(void);
+
+//get_info.c
+t_status	get_status(t_philo *philo);
+long long	ft_get_last_meal_time(t_philo *philo);
 
 
 

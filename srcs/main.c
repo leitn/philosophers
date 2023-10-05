@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 17:41:45 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 18:03:10 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*ft_routine(void *ph_philo)
 	t_philo		*philo;
 
 	philo = (t_philo *) ph_philo;
-	philo->time_of_eating = ft_get_time(philo->data);
+	philo->time_of_eating = ft_get_time() - philo->data->start_time;
 	printf("\n Time of EATING = %lli", philo->time_of_eating);
 	if (pthread_mutex_lock(&philo->data->mut_print) == 0)
 	{

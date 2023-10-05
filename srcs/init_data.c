@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:15:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 17:41:39 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:55:24 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_init_philos(t_data *data)
 		philo[i].philo_id = i;
 		philo[i].left_fork = &data->forks[i];
 		philo[i].right_fork = &data->forks[i + 1];
-		philo[i].time_of_eating = 0;
+		philo[i].time_of_eating = philo->data->start_time;
 		philo[i].nb_meals = 0;
 		philo[i].status = NOTHING;
 		pthread_mutex_init(&philo[i].mut_status, NULL);
@@ -51,7 +51,7 @@ int	ft_init_philos(t_data *data)
 		philo[i].philo_id = i;
 		philo[i].left_fork = &data->forks[i];
 		philo[i].right_fork = &data->forks[0];
-		philo[i].time_of_eating = 0;
+		philo[i].time_of_eating = philo->data->start_time;
 		philo[i].nb_meals = 0;
 		pthread_mutex_init(&philo[i].mut_status, NULL);
 		pthread_mutex_init(&philo[i].mut_t_eating, NULL);
@@ -82,9 +82,11 @@ int	ft_init_forks(t_data *data)
 //init structures
 int	ft_init_data(t_data *data)
 {
-	struct timeval tv;
+	struct timeval	tv;
+
 	gettimeofday(&tv, NULL);
-	data->start_time = (long long)(tv.tv_sec) * 1000 + (long long)(tv.tv_usec) / 1000;
+	data->start_time = (long long)(tv.tv_sec)*1000
+		+ (long long)(tv.tv_usec) / 1000;
 	if (ft_init_forks(data) != 0)
 		return (1);
 	if (ft_init_philos(data) != 0)
