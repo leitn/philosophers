@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 15:57:23 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:07:57 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int			ft_pthread_join(t_data *data);
 void		print_with_mutex(char *str, t_data *data);
 
 //time.c
-long long	ft_get_time(void);
+long long	ft_get_time(t_data *data);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 15:56:21 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:11:53 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,17 @@ void	do_nothing_but_make(t_data *data)
 	memento_mori = data->time_to_die;
 }
 
-//WIP (obviously)
+//WIP (obviously), Too long
 void	*ft_routine(void *ph_philo)
 {
 	t_philo		*philo;
 
 	philo = (t_philo *) ph_philo;
-	philo->time_of_eating = ft_get_time() - philo->data->start_time;
+	philo->time_of_eating = ft_get_time(philo->data);
 	if (pthread_mutex_lock(&philo->data->mut_print) == 0)
 	{
 		printf("\n PHILO %i EATS AT %lldms", philo->philo_id,
 			philo->time_of_eating);
-		printf("\nMy death status is %i", death_status(philo));
 	}
 	pthread_mutex_unlock(&philo->data->mut_print);
 	usleep(10000);
@@ -60,7 +59,7 @@ int	ft_start_routine(t_data	*data)
 	int			i;
 
 	i = 0;
-	data->start_time = ft_get_time();
+	data->start_time = 0;
 	while (i < data->nb_philo)
 	{
 		if (pthread_create(&data->philo_threads[i], NULL,
