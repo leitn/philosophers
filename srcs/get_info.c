@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   think.c                                            :+:      :+:    :+:   */
+/*   get_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 14:05:28 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 16:42:58 by letnitan         ###   ########.fr       */
+/*   Created: 2023/10/05 17:34:21 by letnitan          #+#    #+#             */
+/*   Updated: 2023/10/05 17:41:24 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
-//impro totale
-int	ft_think(t_philo *philo)
+t_status	get_status(t_philo *philo)
 {
-	if (philo->status != THINKING && death_status(philo) != DIED)
-	{
+	t_status	ph_status;
 
-		if (pthread_mutex_lock(&philo->mut_status) == 0)
-		{
-			philo->status = THINKING;
-			pthread_mutex_unlock(&philo->mut_status);
-		}
-		usleep(100); // why did I even write that
-		return (1);
+	if (pthread_mutex_lock(&philo->mut_status) == 0)
+	{
+		ph_status = philo->status;
+		pthread_mutex_unlock(&philo->mut_status);
+		return (ph_status);
 	}
-	return (0);
+	else
+		ph_status = NOTHING;
+	return (ph_status);
+}
+
+long long	ft_get_last_meal_time(t_philo *philo)
+{
+
 }

@@ -6,26 +6,11 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:04:55 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 16:37:54 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:40:46 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
-
-t_status	get_status(t_philo *philo)
-{
-	t_status	ph_status;
-
-	if (pthread_mutex_lock(&philo->mut_status) == 0)
-	{
-		ph_status = philo->status;
-		pthread_mutex_unlock(&philo->mut_status);
-		return (ph_status);
-	}
-	else
-		ph_status = NOTHING;
-	return (ph_status);
-}
+#include "../include/philo.h"
 
 int	is_someone_dead(t_data *data)
 {
@@ -36,7 +21,7 @@ int	is_someone_dead(t_data *data)
 	{
 		if (death_status(&data->philos[i]) == 3)
 		{
-			printf("\nis someone dead returned 1");
+			printf("\nis someone dead returned 1\n");
 			return (1);
 		}
 		i++;
@@ -50,7 +35,9 @@ int	death_status(t_philo *philo)
 {
 	long long	death_time;
 
-	death_time = ft_get_time(philo->data) - philo->time_of_eating;
+	death_time = ft_get_time(philo->data) - ft_get_last_meal_time(philo);
+
+
 	if (death_time >= philo->data->time_to_die)
 	{
 		if (pthread_mutex_lock(&philo->mut_status) == 0)
@@ -59,8 +46,9 @@ int	death_status(t_philo *philo)
 			pthread_mutex_unlock(&philo->mut_status);
 		}
 		printf("\nI'm dead\n");
-		return (3);
+		return (0);
 	}
 	printf("\nI'm alive\n");
-	return (0);
+	printf("\n in death_status, DEATH TIME = %lli\n", death_time);
+	return (3);
 }

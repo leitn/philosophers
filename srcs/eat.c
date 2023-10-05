@@ -6,11 +6,11 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 16:44:41 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:41:14 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
 int	take_right_fork(t_philo *philo)
 {

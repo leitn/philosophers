@@ -6,21 +6,21 @@
 #    By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 14:04:24 by letnitan          #+#    #+#              #
-#    Updated: 2023/10/04 16:13:04 by letnitan         ###   ########.fr        #
+#    Updated: 2023/10/05 17:39:39 by letnitan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
-SRC_FILES =	main.c \
-			init_args.c \
-			time.c \
-			init_data.c \
-			free_data.c \
-			eat.c \
-			sleep.c \
-			die.c \
-			think.c \
-			utils.c \
+SRC_FILES =	srcs/main.c \
+			srcs/init_args.c \
+			srcs/time.c \
+			srcs/init_data.c \
+			srcs/free_data.c \
+			srcs/eat.c \
+			srcs/sleep.c \
+			srcs/die.c \
+			srcs/think.c \
+			srcs/utils.c \
 
 SRCS = $(SRC_FILES)
 OBJS = ${SRCS:.c=.o}
@@ -42,8 +42,6 @@ clean :
 
 fclean : clean
 		${RM} $(NAME)
-		${RM} $(PRINTF)
-		${RM} $(LIBFT)
 		rm -rf *.o
 
 re : fclean all

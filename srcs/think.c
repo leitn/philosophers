@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   think.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 15:53:06 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 16:12:15 by letnitan         ###   ########.fr       */
+/*   Created: 2023/10/04 14:05:28 by letnitan          #+#    #+#             */
+/*   Updated: 2023/10/05 17:41:52 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
-//Current time in ms !
-long long	ft_get_time(t_data *data)
+//impro totale
+int	ft_think(t_philo *philo)
 {
-	struct timeval	time;
-	long long		timestamp_in_ms;
+	if (philo->status != THINKING && death_status(philo) != DIED)
+	{
 
-	gettimeofday(&time, NULL);
-	timestamp_in_ms = (long long)(time.tv_sec)*1000
-		+ (long long)(time.tv_usec) / 1000;
-	return (timestamp_in_ms - data->start_time);
+		if (pthread_mutex_lock(&philo->mut_status) == 0)
+		{
+			philo->status = THINKING;
+			pthread_mutex_unlock(&philo->mut_status);
+		}
+		usleep(100); // why did I even write that
+		return (1);
+	}
+	return (0);
 }

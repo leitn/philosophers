@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 16:31:21 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:36:25 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_philo{
 	long long		time_of_eating;
 	t_status		status;
 	pthread_mutex_t	mut_status;
+	pthread_mutex_t	mut_t_eating;
 	int				nb_meals;
 	struct s_data	*data;
 }	t_philo;
@@ -65,7 +66,7 @@ typedef struct s_data{
 /*-------------------------------MAIN-------------------------------*/
 //main.c
 void		do_nothing_but_make(t_data *data);
-void		*ft_routine(void *ph_philo);
+void			*ft_routine(void *ph_philo);
 int			ft_start_routine(t_data	*data);
 
 //eat.c

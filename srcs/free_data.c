@@ -6,11 +6,11 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:18:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 12:38:28 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:41:19 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
 // incomplet !
 void	ft_destroy_mutex(t_data *data)

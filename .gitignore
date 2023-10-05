@@ -6,3 +6,6 @@
 *.json
 # Ignore .gitignore
 *.gitignore
+
+# Ignore .txt
+*.txt

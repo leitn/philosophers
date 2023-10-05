@@ -6,11 +6,11 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:57:09 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 17:15:13 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:41:30 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
 int	ft_check_args(int argc, char *argv[])
 {

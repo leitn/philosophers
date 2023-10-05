@@ -6,11 +6,11 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:04:42 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 16:42:39 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:41:49 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
 //impro totale
 int	ft_sleep(t_philo *philo)

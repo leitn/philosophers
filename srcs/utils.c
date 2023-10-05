@@ -6,11 +6,11 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:21:03 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 13:33:53 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:42:00 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
 //TO REVISE ! Currently refuses all non numericals
 int	ft_atoi(char *str)

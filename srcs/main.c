@@ -6,11 +6,11 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 16:47:15 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:41:45 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
 // To make while having incomplete functions
 void	do_nothing_but_make(t_data *data)
@@ -27,6 +27,7 @@ void	*ft_routine(void *ph_philo)
 
 	philo = (t_philo *) ph_philo;
 	philo->time_of_eating = ft_get_time(philo->data);
+	printf("\n Time of EATING = %lli", philo->time_of_eating);
 	if (pthread_mutex_lock(&philo->data->mut_print) == 0)
 	{
 		printf("\n PHILO %i EATS AT %lldms", philo->philo_id,
@@ -58,22 +59,19 @@ int	ft_start_routine(t_data	*data)
 	int			i;
 
 	i = 0;
-	data->start_time = 0;
-	data->start_time = ft_get_time(data);
-	printf("\n\nSTARTTIME = %lli", data->start_time); //SEGFAULT ARGH
-	// while (i < data->nb_philo)
-	// {
-	// 	if (pthread_create(&data->philo_threads[i], NULL,
-	// 			&ft_routine, &data->philos[i]))
-	// 		return (1);
-	// 	if (is_someone_dead(data) == 1)
-	// 	{
-	// 		printf("Someone died. RIP");
-	// 		ft_error(data);
-	// 		return (1);
-	// 	}
-	// 	i++;
-	// }
+	while (i < data->nb_philo)
+	{
+		if (pthread_create(&data->philo_threads[i], NULL,
+				&ft_routine, &data->philos[i]))
+			return (1);
+		if (is_someone_dead(data) == 1)
+		{
+			printf("Someone died. RIP\n");
+			ft_error(data);
+			return (1);
+		}
+		i++;
+	}
 	return (0);
 }
 
