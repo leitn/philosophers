@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:15:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 13:43:01 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:32:12 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	ft_init_philos(t_data *data)
 		philo[i].time_of_eating = 0;
 		philo[i].nb_meals = 0;
 		philo[i].status = NOTHING;
+		pthread_mutex_init(&philo[i].mut_status, NULL);
 		i++;
 	}
 	if (i == (data->nb_philo - 1))

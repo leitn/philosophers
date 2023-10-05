@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 16:11:32 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:44:41 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,17 +84,21 @@ int	ft_left_handed(t_philo *philo)
 //WIP (too long) !
 int	ft_eat(t_philo *philo)
 {
-	if (death_status(philo) != DIED && philo->status != EATING)
+	if (death_status(philo) != DIED && get_status(philo) != EATING)
 	{
 		if (philo->philo_id % 2 == 0)
 		{
 			if (ft_right_handed(philo) == 0)
 			{
-				philo->status = EATING;
+				if (pthread_mutex_lock(&philo->mut_status) == 0)
+				{
+					philo->status = EATING;
+					pthread_mutex_unlock(&philo->mut_status);
+				}
 				philo->time_of_eating = ft_get_time(philo->data);
 				usleep(philo->data->time_to_eat);
 				philo->nb_meals++;
-				printf("Yummy");
+				print_with_mutex("Yummy", philo->data);
 				return (0);
 			}
 		}
@@ -102,11 +106,15 @@ int	ft_eat(t_philo *philo)
 		{
 			if (ft_left_handed(philo) == 0)
 			{
-				philo->status = EATING;
+				if (pthread_mutex_lock(&philo->mut_status) == 0)
+				{
+					philo->status = EATING;
+					pthread_mutex_unlock(&philo->mut_status);
+				}
 				philo->time_of_eating = ft_get_time(philo->data);
 				usleep(philo->data->time_to_eat);
 				philo->nb_meals++;
-				printf("Yummy");
+				print_with_mutex("Yummy", philo->data);
 				return (0);
 			}
 		}

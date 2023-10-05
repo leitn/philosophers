@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 16:07:57 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:31:21 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_philo{
 	pthread_mutex_t	*left_fork;
 	long long		time_of_eating;
 	t_status		status;
+	pthread_mutex_t	mut_status;
 	int				nb_meals;
 	struct s_data	*data;
 }	t_philo;

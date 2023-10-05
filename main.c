@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 16:15:13 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:47:15 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	*ft_routine(void *ph_philo)
 			philo->time_of_eating);
 	}
 	pthread_mutex_unlock(&philo->data->mut_print);
-	while (death_status(philo) != DIED)
+	while (death_status(philo) != DIED) // Probleme ici
 	{
 		if (ft_eat(philo) != 0)
 		{
@@ -43,7 +43,7 @@ void	*ft_routine(void *ph_philo)
 					printf("\n PHILO %i THINKS", philo->philo_id);
 				pthread_mutex_unlock(&philo->data->mut_print);
 			}
-			else if (philo->status == THINKING)
+			else if (get_status(philo) == THINKING)
 				usleep(100);
 		}
 		else
@@ -59,19 +59,21 @@ int	ft_start_routine(t_data	*data)
 
 	i = 0;
 	data->start_time = 0;
-	while (i < data->nb_philo)
-	{
-		if (pthread_create(&data->philo_threads[i], NULL,
-				&ft_routine, &data->philos[i]))
-			return (1);
-		if (is_someone_dead(data) == 1)
-		{
-			printf("Someone died. RIP");
-			ft_error(data);
-			return (1);
-		}
-		i++;
-	}
+	data->start_time = ft_get_time(data);
+	printf("\n\nSTARTTIME = %lli", data->start_time); //SEGFAULT ARGH
+	// while (i < data->nb_philo)
+	// {
+	// 	if (pthread_create(&data->philo_threads[i], NULL,
+	// 			&ft_routine, &data->philos[i]))
+	// 		return (1);
+	// 	if (is_someone_dead(data) == 1)
+	// 	{
+	// 		printf("Someone died. RIP");
+	// 		ft_error(data);
+	// 		return (1);
+	// 	}
+	// 	i++;
+	// }
 	return (0);
 }
 
