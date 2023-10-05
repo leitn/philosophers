@@ -6,13 +6,13 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:21:03 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 19:36:19 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:39:12 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-//refuses all non numericals
+//TO REVISE ! Currently refuses all non numericals
 int	ft_atoi(char *str)
 {
 	int		count;

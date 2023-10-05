@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 12:22:54 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:39:45 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ typedef struct s_data{
 	t_philo			*philos;
 }	t_data;
 
-
 /*-------------------------------MAIN-------------------------------*/
-
 //main.c
 void		do_nothing_but_make(t_data *data);
 void		*ft_routine(void *ph_philo);
@@ -67,6 +65,12 @@ int			take_right_fork(t_philo *philo);
 int			ft_right_handed(t_philo *philo);
 int			ft_left_handed(t_philo *philo);
 int			ft_eat(t_philo	*philo);
+
+//sleep.c
+int			ft_sleep(t_philo *philo);
+
+//die.c
+int			death_status(t_philo *philo);
 
 /*-----------------------STRUCTURES-MANAGEMENT-----------------------*/
 

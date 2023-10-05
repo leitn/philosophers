@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:15:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 12:25:48 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:35:09 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_init_philos_threads(t_data *data)
 	return (0);
 }
 
-//malloc data.philos && fills it
+//malloc data.philos && fills it. Too long.
 int	ft_init_philos(t_data *data)
 {
 	int		i;

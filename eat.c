@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 12:24:25 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:39:38 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	ft_left_handed(t_philo *philo)
 	return (1);
 }
 
-//WIP (obviously)
+//WIP (obviously) !
 int	ft_eat(t_philo *philo)
 {
 	if (philo->philo_id % 2 == 0)
@@ -104,3 +104,5 @@ int	ft_eat(t_philo *philo)
 	}
 	return (1);
 }
+
+/* Need a Drop Fork function ? */

@@ -6,13 +6,13 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:18:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 16:28:56 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:38:28 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// incomplet
+// incomplet !
 void	ft_destroy_mutex(t_data *data)
 {
 	int	i;
@@ -31,7 +31,7 @@ void	ft_destroy_mutex(t_data *data)
 	pthread_mutex_destroy(&data->mut_start_t);
 }
 
-// WIP
+// WIP !
 void	ft_free_data(t_data *data)
 {
 	ft_destroy_mutex(data);

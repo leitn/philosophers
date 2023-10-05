@@ -6,13 +6,13 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:53:06 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 15:58:28 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:32:57 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-//Current time in ms
+//Current time in ms !
 long long	ft_get_time(void)
 {
 	struct timeval	time;
