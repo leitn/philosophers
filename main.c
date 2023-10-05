@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 12:22:15 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:30:31 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	do_nothing_but_make(t_data *data)
 {
 	int	memento_mori;
 
+	memento_mori = 0;
 	memento_mori = data->time_to_die;
 }
 
