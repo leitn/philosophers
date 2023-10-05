@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 12:39:38 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:58:14 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,25 +81,34 @@ int	ft_left_handed(t_philo *philo)
 	return (1);
 }
 
-//WIP (obviously) !
+//WIP (too long) !
 int	ft_eat(t_philo *philo)
 {
-	if (philo->philo_id % 2 == 0)
+	if (death_status(philo) != DIED && philo->status != EATING)
 	{
-		if (ft_right_handed(philo) == 0)
+		if (philo->philo_id % 2 == 0)
 		{
-			philo->nb_meals++;
-			philo->time_of_eating = ft_get_time() - philo->data->start_time;
-			return (0);
+			if (ft_right_handed(philo) == 0)
+			{
+				philo->status = EATING;
+				philo->time_of_eating = ft_get_time() - philo->data->start_time;
+				usleep(philo->data->time_to_eat);
+				philo->nb_meals++;
+				printf("Yummy");
+				return (0);
+			}
 		}
-	}
-	else
-	{
-		if (ft_left_handed(philo) == 0)
+		else
 		{
-			philo->nb_meals++;
-			philo->time_of_eating = ft_get_time() - philo->data->start_time;
-			return (0);
+			if (ft_left_handed(philo) == 0)
+			{
+				philo->status = EATING;
+				philo->time_of_eating = ft_get_time() - philo->data->start_time;
+				usleep(philo->data->time_to_eat);
+				philo->nb_meals++;
+				printf("Yummy");
+				return (0);
+			}
 		}
 	}
 	return (1);

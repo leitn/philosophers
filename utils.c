@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:21:03 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 12:39:12 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 13:33:53 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,11 @@ int	ft_pthread_join(t_data *data)
 		i++;
 	}
 	return (0);
+}
+
+void	print_with_mutex(char *str, t_data *data)
+{
+	if (pthread_mutex_lock(&data->mut_print) == 0)
+		printf("\n%s\n", str);
+	pthread_mutex_unlock(&data->mut_print);
 }

@@ -6,13 +6,13 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:15:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 12:35:09 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 13:43:01 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-//malloc data.philo_threads
+//malloc data.philo_threads.
 int	ft_init_philos_threads(t_data *data)
 {
 	data->philo_threads = malloc(data->nb_philo * sizeof(pthread_t));
@@ -39,9 +39,8 @@ int	ft_init_philos(t_data *data)
 		philo[i].left_fork = &data->forks[i];
 		philo[i].right_fork = &data->forks[i + 1];
 		philo[i].time_of_eating = 0;
-		philo[i].dead = 0;
 		philo[i].nb_meals = 0;
-		philo[i].status = 0;
+		philo[i].status = NOTHING;
 		i++;
 	}
 	if (i == (data->nb_philo - 1))
@@ -51,9 +50,8 @@ int	ft_init_philos(t_data *data)
 		philo[i].left_fork = &data->forks[i];
 		philo[i].right_fork = &data->forks[0];
 		philo[i].time_of_eating = 0;
-		philo[i].dead = 0;
 		philo[i].nb_meals = 0;
-		philo[i].status = 0;
+		philo[i].status = NOTHING;
 	}
 	philo = data->philos;
 	return (0);

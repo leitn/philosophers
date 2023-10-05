@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 12:39:45 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:57:23 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@
 # include <sys/time.h>
 
 /*----------------------------STRUCTURES----------------------------*/
+
+typedef enum e_status{
+	THINKING = 0,
+	EATING = 1,
+	SLEEPING = 2,
+	DIED = 3,
+	NOTHING = 4,
+}	t_status;
+
 struct	s_data;
 
 typedef struct s_philo{
@@ -29,8 +38,7 @@ typedef struct s_philo{
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*left_fork;
 	long long		time_of_eating;
-	int				dead;
-	int				status;
+	t_status		status;
 	int				nb_meals;
 	struct s_data	*data;
 }	t_philo;
@@ -70,7 +78,12 @@ int			ft_eat(t_philo	*philo);
 int			ft_sleep(t_philo *philo);
 
 //die.c
+t_status	get_status(t_philo *philo);
+int			is_someone_dead(t_data *data);
 int			death_status(t_philo *philo);
+
+//think.c
+int			ft_think(t_philo *philo);
 
 /*-----------------------STRUCTURES-MANAGEMENT-----------------------*/
 
@@ -97,6 +110,7 @@ void		ft_free_data(t_data *data);
 int			ft_atoi(char *str);
 void		ft_error(t_data	*data);
 int			ft_pthread_join(t_data *data);
+void		print_with_mutex(char *str, t_data *data);
 
 //time.c
 long long	ft_get_time(void);
