@@ -3,5 +3,6 @@
 # Ignorer tous les fichiers .vscode
 *.vscode
 .vscode
+*.json
 # Ignore .gitignore
 *.gitignore
