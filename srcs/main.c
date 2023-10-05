@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ltn <ltn@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 18:03:10 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 21:39:04 by ltn              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ int	ft_start_routine(t_data	*data)
 	{
 		if (pthread_create(&data->philo_threads[i], NULL,
 				&ft_routine, &data->philos[i]))
-			return (1);
+			{
+				ft_pthread_join(&data);
+				return (1);
+			}
 		if (is_someone_dead(data) == 1)
 		{
 			printf("Someone died. RIP\n");
