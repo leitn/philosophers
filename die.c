@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:04:55 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 16:09:43 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:15:40 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	is_someone_dead(t_data *data)
 	i = 0;
 	while (i < data->nb_philo)
 	{
-		printf("Death Status returns %i", death_status(&data->philos[i]));
 		if (death_status(&data->philos[i]) == 3)
 		{
 			printf("\nis someone dead returned 1");

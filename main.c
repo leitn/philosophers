@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 16:11:53 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:15:13 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	*ft_routine(void *ph_philo)
 			philo->time_of_eating);
 	}
 	pthread_mutex_unlock(&philo->data->mut_print);
-	usleep(10000);
 	while (death_status(philo) != DIED)
 	{
 		if (ft_eat(philo) != 0)
