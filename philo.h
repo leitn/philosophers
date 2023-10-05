@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 19:39:45 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:22:54 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,13 @@ typedef struct s_philo{
 	pthread_mutex_t	*left_fork;
 	long long		time_of_eating;
 	int				dead;
+	int				status;
+	int				nb_meals;
 	struct s_data	*data;
 }	t_philo;
 
 typedef struct s_data{
 	int				nb_philo;
-	int				nb_meals;
 	long long		start_time;
 	long			time_to_die;
 	long			time_to_eat;
@@ -61,9 +62,11 @@ void		*ft_routine(void *ph_philo);
 int			ft_start_routine(t_data	*data);
 
 //eat.c
-int			ft_to_eat(t_data *data);
+int			take_left_fork(t_philo *philo);
+int			take_right_fork(t_philo *philo);
 int			ft_right_handed(t_philo *philo);
 int			ft_left_handed(t_philo *philo);
+int			ft_eat(t_philo	*philo);
 
 /*-----------------------STRUCTURES-MANAGEMENT-----------------------*/
 

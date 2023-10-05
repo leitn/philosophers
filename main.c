@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/04 19:48:14 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:22:15 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,7 @@ void	*ft_routine(void *ph_philo)
 		printf("\n PHILO %i EATS AT %lldms", philo->philo_id,
 			philo->time_of_eating);
 	pthread_mutex_unlock(&philo->data->mut_print);
-	if (philo->philo_id % 2 == 0)
-	{
-
-		ft_right_handed(philo);
-	}
-	if (philo->philo_id % 2 != 0)
-		ft_left_handed(philo);
+	ft_eat(philo);
 	return (NULL);
 }
 
