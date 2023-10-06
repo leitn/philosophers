@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 16:07:07 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:17:09 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,3 @@ int	main(int argc, char *argv[])
 // in the main : instead of init args,
 // have a ft_parsing and then init in init_data with
 // a simple atoi
-// write a a getter for nb_philos ?

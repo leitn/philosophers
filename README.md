@@ -9,8 +9,9 @@ Le sujet :
 ### Current Issues
 
 - Parfois le programme ne s'interrompt pas quand un philo est mort (mais il ne print plus)
+- Parfois, un philosophe meurt immediatement.
 - Parfois, le programme laisse un philosophe prendre une fourchette apres la mort d'un autre. ( lock stdout ?)
-  
+
 ![Screenshot from 2023-10-06 16-18-48](https://github.com/leitn/philosophers/assets/104629160/d55728a5-2a44-4cf1-a0d4-6a44227c8aa0)
 
 - Aucune routine implementee dans le cas ou il n'y a qu'un philosophe
