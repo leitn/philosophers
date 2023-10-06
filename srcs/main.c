@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 14:47:14 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:48:34 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_start_routine(t_data	*data)
 	int			ph_nb_philo;
 
 	i = 0;
-	ph_nb_philo = data->nb_philo; // write a mutexed getter ?
+	ph_nb_philo = ft_get_nb_philos(data); // write a mutexed getter ?
 	data->start_time = ft_get_time();
 	while (i < ph_nb_philo)
 	{
