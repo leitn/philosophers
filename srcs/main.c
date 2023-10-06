@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 15:05:50 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:44:24 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ void	*ft_routine(void *ph_philo)
 	{
 		if (ft_eat(philo) != 0)
 			break ;
-		if (death_status(philo) == 3)
+		if (get_status(philo) == DIED)
 			break ;
 		if (ft_sleep(philo) != 0)
 			break ;
-		if (death_status(philo) == 3)
+		if (get_status(philo) == DIED)
 			break ;
 		if (ft_think(philo) != 0)
 			break ;
@@ -67,16 +67,20 @@ int	ft_start_routine(t_data	*data)
 		if (pthread_create(&data->philo_threads[i], NULL,
 				&ft_routine, &data->philos[i]))
 			return (1);
-		if (/* is_someone_dead(data) == 1 || */ get_status(&data->philos[i]) == DIED)
+		i++;
+	}
+	if (pthread_create(&data->monitor, NULL,
+			&ft_monitor_routine, data))
+		return (1);
+	return (0);
+}
+
+/* death_status(&data->philos[i]) == 3)
 		{
 			set_status(&data->philos[i], DIED);
 			print_with_mutex("Someone died. RIP\n", data);
 			return (1);
-		}
-		i++;
-	}
-	return (0);
-}
+		} */
 
 int	philosophers_problem(t_data *data)
 {

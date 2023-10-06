@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 15:01:05 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:50:42 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,14 @@ int	ready_steady_forks(t_philo *philo)
 	if (philo->philo_id % 2 == 0)
 	{
 		if (ft_right_handed(philo) != 0
-			|| get_status(philo) == DIED || death_status(philo) == 3)
+			|| get_status(philo) == DIED)
 			return (1);
 		return (0);
 	}
 	else
 	{
 		if (ft_left_handed(philo) != 0
-			|| get_status(philo) == DIED || death_status(philo) == 3)
+			|| get_status(philo) == DIED)
 			return (1);
 		return (0);
 	}

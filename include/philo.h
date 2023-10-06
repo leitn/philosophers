@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 15:01:36 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:54:02 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_data{
 	pthread_mutex_t	mut_start_t;
 	pthread_mutex_t	*forks;
 	pthread_t		*philo_threads;
+	pthread_t		monitor;
 	t_philo			*philos;
 }	t_data;
 
@@ -89,6 +90,10 @@ int			death_status(t_philo *philo);
 
 //think.c
 int			ft_think(t_philo *philo);
+
+//monitor.c
+void		attention_everyone(t_data *data);
+void		*ft_monitor_routine(void *t_data);
 
 /*-----------------------STRUCTURES-MANAGEMENT-----------------------*/
 
