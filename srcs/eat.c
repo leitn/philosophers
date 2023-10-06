@@ -6,23 +6,26 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 12:08:10 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:34:00 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
+//unlock mutex both forks.
 void	unlock_forks(t_philo *philo)
 {
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->right_fork);
 }
 
+//Lock right fork mutex
 int	take_right_fork(t_philo *philo)
 {
 	if (pthread_mutex_lock(philo->right_fork) != 0)
 	{
-		print_with_mutex("Slight issue with my right fork sorry\n", philo->data);
+		print_mandatory_format(philo->data, philo->philo_id,
+			"Slight issue with my left fork sorry\n");
 		pthread_mutex_unlock(philo->right_fork);
 		return (1);
 	}
@@ -31,11 +34,14 @@ int	take_right_fork(t_philo *philo)
 	return (0);
 }
 
+//locks left fork mutex
 int	take_left_fork(t_philo *philo)
 {
 	if (pthread_mutex_lock(philo->left_fork) != 0)
 	{
-		print_with_mutex("Slight issue with my left fork sorry\n", philo->data);
+		print_mandatory_format(philo->data, philo->philo_id,
+			"Slight issue with my left fork sorry\n");
+		pthread_mutex_unlock(philo->left_fork);
 		return (1);
 	}
 	print_mandatory_format(philo->data, philo->philo_id,
@@ -49,7 +55,7 @@ int	ft_right_handed(t_philo *philo)
 		return (1);
 	if (take_left_fork(philo) != 0)
 	{
-		pthread_mutex_unlock(philo->right_fork);
+		unlock_forks(philo);
 		return (1);
 	}
 	return (0);
@@ -57,23 +63,19 @@ int	ft_right_handed(t_philo *philo)
 
 int	ft_left_handed(t_philo *philo)
 {
-	if (take_left_fork(philo) == 0)
+	if (take_left_fork(philo) != 0)
 		return (1);
 	if (take_right_fork(philo) != 0)
 	{
-		pthread_mutex_unlock(philo->left_fork);
+		unlock_forks(philo);
 		return (1);
 	}
 	return (0);
 }
 
+//needs a function for only one philo case
 int	ready_steady_forks(t_philo *philo)
 {
-	if (philo->philo_id == 1)
-	{
-		print_with_mutex("Only one philo not handled yet\n", philo->data);
-		return (1);
-	}
 	if (philo->philo_id % 2 == 0)
 	{
 		if (ft_right_handed(philo) != 0
@@ -100,7 +102,8 @@ int	ft_eat(t_philo *philo)
 	print_mandatory_format(philo->data, philo->philo_id, " is eating.\n");
 	ft_get_last_meal_time(philo);
 	eat_usleep(ft_get_time_to_eat(philo));
-	philo->nb_meals++; //write a setter with mutex ?
+	set_nb_meals(philo);
+	// philo->nb_meals++; //write a setter with mutex ?
 	unlock_forks(philo);
 	return (0);
 }

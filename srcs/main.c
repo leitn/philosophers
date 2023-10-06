@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 12:37:14 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:30:59 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_pthread_join(t_data *data)
 	int	nb;
 
 	i = 0;
-	nb = data->nb_philo; //write a getter ?
+	nb = ft_get_nb_philos(data);
 	while (i < nb)
 	{
 		if (pthread_join(data->philo_threads[i], NULL))
@@ -35,7 +35,7 @@ void	*ft_routine(void *ph_philo)
 	t_philo		*philo;
 
 	philo = (t_philo *) ph_philo;
-	philo->time_of_eating = ft_get_time() - philo->data->start_time;
+	philo->time_of_eating = ft_get_time() - ft_get_start_time(philo->data);
 	ft_get_last_meal_time(philo);
 	while (get_status(philo) != DIED)
 	{
@@ -66,11 +66,8 @@ int	ft_start_routine(t_data	*data)
 	{
 		if (pthread_create(&data->philo_threads[i], NULL,
 				&ft_routine, &data->philos[i]))
-		{
-			ft_pthread_join(data); // ca va creer une erreur je join tous les threads c'est pas sur qu'ils existent tous
 			return (1);
-		}
-		if (is_someone_dead(data) == 1) // TO DO : better monitoring
+		if (is_someone_dead(data) == 1)
 		{
 			print_with_mutex("Someone died. RIP\n", data);
 			return (1);
@@ -82,8 +79,9 @@ int	ft_start_routine(t_data	*data)
 
 int	philosophers_problem(t_data *data)
 {
-	if (ft_start_routine(data))
+	if (ft_init_data(data) != 0)
 		return (1);
+	ft_start_routine(data);
 	ft_pthread_join(data);
 	ft_free_data(data);
 	return (0);
@@ -98,11 +96,6 @@ int	main(int argc, char *argv[])
 		if (ft_init_args(argc, argv, &data) != 0)
 		{
 			printf("invalid arguments\n");
-			return (1);
-		}
-		if (ft_init_data(&data) != 0)
-		{
-			ft_error(&data);
 			return (1);
 		}
 		if (philosophers_problem(&data) != 0)

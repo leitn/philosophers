@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:15:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 10:13:19 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:04:52 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	ft_init_philos(t_data *data)
 		philo[i].status = NOTHING;
 		pthread_mutex_init(&philo[i].mut_status, NULL);
 		pthread_mutex_init(&philo[i].mut_t_eating, NULL);
+		pthread_mutex_init(&philo[i].mut_nb_meals, NULL);
 		i++;
 	}
 	if (i == (data->nb_philo - 1))
@@ -55,6 +56,7 @@ int	ft_init_philos(t_data *data)
 		philo[i].nb_meals = 0;
 		pthread_mutex_init(&philo[i].mut_status, NULL);
 		pthread_mutex_init(&philo[i].mut_t_eating, NULL);
+		pthread_mutex_init(&philo[i].mut_nb_meals, NULL);
 		philo[i].status = NOTHING;
 	}
 	philo = data->philos;

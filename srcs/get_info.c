@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:34:21 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 12:06:24 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:31:44 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,24 @@ long long	ft_get_time_to_sleep(t_philo *philo)
 	ph_time_to_sleep = philo->data->time_to_sleep;
 	pthread_mutex_unlock(&philo->data->mut_sleep_t);
 	return (ph_time_to_sleep);
+}
+
+long	ft_get_nb_philos(t_data *data)
+{
+	long	ph_nb;
+
+	pthread_mutex_lock(&data->mut_nb_philos);
+	ph_nb = data->nb_philo;
+	pthread_mutex_unlock(&data->mut_nb_philos);
+	return (ph_nb);
+}
+
+long long	ft_get_start_time(t_data *data)
+{
+	long long	ph_start_time;
+
+	pthread_mutex_lock(&data->mut_start_t);
+	ph_start_time = data->start_time;
+	pthread_mutex_unlock(&data->mut_start_t);
+	return (ph_start_time);
 }

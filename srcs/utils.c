@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:21:03 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 12:16:06 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 13:38:07 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ void	print_mandatory_format(t_data *data, int id, char *str)
 	ph_start_t = data->start_time;
 	time = ft_get_time() - ph_start_t;
 	pthread_mutex_lock(&data->mut_print);
-	printf("%llu %i %s\n", time, id, str);
+	printf("%llu %i %s", time, id, str);
 	pthread_mutex_unlock(&data->mut_print);
 }
