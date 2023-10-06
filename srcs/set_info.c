@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 10:45:33 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 14:01:55 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:42:31 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 void	set_status(t_philo *philo, t_status status)
 {
 	pthread_mutex_lock(&philo->mut_status);
-	if (philo->status != DIED)
-		philo->status = status;
+	philo->status = status;
 	pthread_mutex_unlock(&philo->mut_status);
 }
 
