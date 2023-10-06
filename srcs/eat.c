@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 11:43:19 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:44:00 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	ready_steady_forks(t_philo *philo)
 	return (0);
 }
 
-//WIP (too long) !
+//WIP !
 int	ft_eat(t_philo *philo)
 {
 	if (ready_steady_forks(philo) != 0)
