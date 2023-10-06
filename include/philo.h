@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 11:08:00 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:35:25 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ long long	ft_get_time_to_die(t_philo *philo);
 long long	ft_get_time_to_sleep(t_philo *philo);
 
 //set_info.c
-void		set_state(t_philo *philo, t_status status);
+void		set_status(t_philo *philo, t_status status);
 
 
 #endif

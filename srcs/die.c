@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:04:55 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 11:05:35 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:37:06 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,13 @@ int	death_status(t_philo *philo)
 {
 	long long	death_time;
 
-	death_time = (ft_get_time() - philo->data->start_time)
-		- ft_get_last_meal_time(philo);
-	if (death_time >= philo->data->time_to_die)
+	death_time = ft_get_time_to_die(philo);
+	if (ft_get_time() - ft_get_last_meal_time(philo) >= death_time)
 	{
-		if (pthread_mutex_lock(&philo->mut_status) == 0)
-		{
-			philo->status = DIED;
-			pthread_mutex_unlock(&philo->mut_status);
-		}
-		printf("\nI'm dead\n");
+		set_status(philo, DIED);
+		print_with_mutex("\nI'm dead\n", philo->data);
 		return (3);
 	}
-	printf("\nI'm alive\n");
+	print_with_mutex("\nI'm alive\n", philo->data);
 	return (0);
 }
