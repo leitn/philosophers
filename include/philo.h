@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 11:39:46 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:54:55 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,11 @@ void		ft_free_data(t_data *data);
 int			ft_atoi(char *str);
 void		ft_error(t_data	*data);
 void		print_with_mutex(char *str, t_data *data);
-void	print_mandatory_format(t_data *data, int id, char *str);
+void		print_mandatory_format(t_data *data, int id, char *str);
 
 //time.c
+void		eat_usleep(long long eat_time);
+void		ft_time_of_eating(t_philo *philo);
 long long	ft_get_time(void);
 
 //get_info.c
