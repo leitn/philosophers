@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 15:50:42 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:01:58 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int	take_left_fork(t_philo *philo)
 
 int	ft_right_handed(t_philo *philo)
 {
-	if (take_right_fork(philo) != 0)
+	if (take_right_fork(philo) != 0 || get_status(philo) == DIED)
 		return (1);
-	if (take_left_fork(philo) != 0)
+	if (take_left_fork(philo) != 0 || get_status(philo) == DIED)
 	{
 		unlock_forks(philo);
 		return (1);
@@ -63,9 +63,9 @@ int	ft_right_handed(t_philo *philo)
 
 int	ft_left_handed(t_philo *philo)
 {
-	if (take_left_fork(philo) != 0)
+	if (take_left_fork(philo) != 0 || get_status(philo) == DIED)
 		return (1);
-	if (take_right_fork(philo) != 0)
+	if (take_right_fork(philo) != 0 || get_status(philo) == DIED)
 	{
 		unlock_forks(philo);
 		return (1);

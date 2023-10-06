@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 15:44:24 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:00:14 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,6 @@ int	ft_start_routine(t_data	*data)
 		return (1);
 	return (0);
 }
-
-/* death_status(&data->philos[i]) == 3)
-		{
-			set_status(&data->philos[i], DIED);
-			print_with_mutex("Someone died. RIP\n", data);
-			return (1);
-		} */
 
 int	philosophers_problem(t_data *data)
 {
