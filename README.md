@@ -10,7 +10,9 @@ Le sujet :
 
 - Parfois le programme ne s'interrompt pas quand un philo est mort (mais il ne print plus)
 - Parfois, le programme laisse un philosophe prendre une fourchette apres la mort d'un autre. ( lock stdout ?)
+- 
 ![Screenshot from 2023-10-06 16-18-48](https://github.com/leitn/philosophers/assets/104629160/d55728a5-2a44-4cf1-a0d4-6a44227c8aa0)
+
 - Aucune routine implementee dans le cas ou il n'y a qu'un philosophe
 - (cinquieme argument) Je n'ai pas encore de fonction pour interrompre le programme une fois nb_of_meals atteint par tous les philos
 - Rien n'est prevu pour gerer la priorite et que les philos affames mangent avant les philosophes rassasies
