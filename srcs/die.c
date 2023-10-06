@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:04:55 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 15:02:43 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:03:20 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	is_someone_dead(t_data *data)
 	return (0);
 }
 
-//impro totale. Calculates and sets status if died
+//Calculates and sets status if died
 int	death_status(t_philo *philo)
 {
 	long long	death_time;

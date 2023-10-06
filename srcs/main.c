@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 15:00:53 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:05:50 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	ft_start_routine(t_data	*data)
 		if (pthread_create(&data->philo_threads[i], NULL,
 				&ft_routine, &data->philos[i]))
 			return (1);
-		if (is_someone_dead(data) == 1 || get_status(&data->philos[i]) == DIED)
+		if (/* is_someone_dead(data) == 1 || */ get_status(&data->philos[i]) == DIED)
 		{
 			set_status(&data->philos[i], DIED);
 			print_with_mutex("Someone died. RIP\n", data);
