@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 10:49:37 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:37:14 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 int	ft_pthread_join(t_data *data)
 {
 	int	i;
+	int	nb;
 
 	i = 0;
-	while (i < data->nb_philo)
+	nb = data->nb_philo; //write a getter ?
+	while (i < nb)
 	{
 		if (pthread_join(data->philo_threads[i], NULL))
 			return (1);
@@ -65,13 +67,12 @@ int	ft_start_routine(t_data	*data)
 		if (pthread_create(&data->philo_threads[i], NULL,
 				&ft_routine, &data->philos[i]))
 		{
-			ft_pthread_join(data);
+			ft_pthread_join(data); // ca va creer une erreur je join tous les threads c'est pas sur qu'ils existent tous
 			return (1);
 		}
 		if (is_someone_dead(data) == 1) // TO DO : better monitoring
 		{
-			printf("Someone died. RIP\n");
-			ft_error(data);
+			print_with_mutex("Someone died. RIP\n", data);
 			return (1);
 		}
 		i++;
@@ -105,7 +106,10 @@ int	main(int argc, char *argv[])
 			return (1);
 		}
 		if (philosophers_problem(&data) != 0)
+		{
+			ft_error(&data);
 			return (1);
+		}
 	}
 	return (0);
 }
@@ -113,3 +117,4 @@ int	main(int argc, char *argv[])
 // in the main : instead of init args,
 // have a ft_parsing and then init in init_data with
 // a simple atoi
+// write a a getter for nb_philos ?

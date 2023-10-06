@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:04:55 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 12:20:35 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:37:30 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 int	is_someone_dead(t_data *data)
 {
 	int	i;
+	int	nb;
 
 	i = 0;
-	while (i < data->nb_philo)
+	nb = data->nb_philo;
+	while (i < nb)
 	{
 		if (death_status(&data->philos[i]) == 3)
 		{
