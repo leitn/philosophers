@@ -6,12 +6,13 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:04:55 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 11:37:06 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:03:29 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
+//calls death_status for i < nb_philo (main thread)
 int	is_someone_dead(t_data *data)
 {
 	int	i;
@@ -21,16 +22,16 @@ int	is_someone_dead(t_data *data)
 	{
 		if (death_status(&data->philos[i]) == 3)
 		{
-			printf("\nis someone dead returned 1\n");
+			print_with_mutex("\nis someone dead returned 1\n"); //delete later
 			return (1);
 		}
 		i++;
 	}
-	printf("\nis_someone_dead returned 0");
+	print_with_mutex("\nis_someone_dead returned 0"); //delete later
 	return (0);
 }
 
-//impro totale, WIP
+//impro totale. Calculates and sets status if died
 int	death_status(t_philo *philo)
 {
 	long long	death_time;

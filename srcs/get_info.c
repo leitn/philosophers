@@ -6,12 +6,13 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:34:21 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 11:53:52 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:06:24 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
+//checks status in structure, doesnt set it, uses mutex
 t_status	get_status(t_philo *philo)
 {
 	t_status	ph_status;
@@ -22,6 +23,7 @@ t_status	get_status(t_philo *philo)
 	return (ph_status);
 }
 
+//checks time of last meal in struct and returns it
 long long	ft_get_last_meal_time(t_philo *philo)
 {
 	long long	ph_time_last_meal;
@@ -31,6 +33,7 @@ long long	ft_get_last_meal_time(t_philo *philo)
 	return (ph_time_last_meal);
 }
 
+//MUTEX. checks and return time_to_eat parameter.
 long long	ft_get_time_to_eat(t_philo *philo)
 {
 	long long	ph_time_to_eat;
@@ -41,6 +44,7 @@ long long	ft_get_time_to_eat(t_philo *philo)
 	return (ph_time_to_eat);
 }
 
+//MUTEX. checks and return time_to_die parameter.
 long long	ft_get_time_to_die(t_philo *philo)
 {
 	long long	ph_time_to_die;
@@ -51,6 +55,7 @@ long long	ft_get_time_to_die(t_philo *philo)
 	return (ph_time_to_die);
 }
 
+//MUTEX. checks and return time_to_sleep parameter.
 long long	ft_get_time_to_sleep(t_philo *philo)
 {
 	long long	ph_time_to_sleep;

@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:53:06 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 11:57:36 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:04:51 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	eat_usleep(long long eat_time)
 		usleep(500);
 }
 
-// updates time of last meal w/ mutex
+// MUTEX. updates time of last meal in structure
 void	ft_time_of_eating(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->mut_t_eating);

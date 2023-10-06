@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 11:59:24 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:08:10 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,15 @@ int	ready_steady_forks(t_philo *philo)
 	}
 	if (philo->philo_id % 2 == 0)
 	{
-		if (ft_right_handed(philo) != 0)
+		if (ft_right_handed(philo) != 0
+			|| get_status(philo) == DIED || death_status(philo) == DIED)
 			return (1);
 		return (0);
 	}
 	else
 	{
-		if (ft_left_handed(philo) != 0)
+		if (ft_left_handed(philo) != 0
+			|| get_status(philo) == DIED || death_status(philo) == DIED)
 			return (1);
 		return (0);
 	}
@@ -98,7 +100,7 @@ int	ft_eat(t_philo *philo)
 	print_mandatory_format(philo->data, philo->philo_id, " is eating.\n");
 	ft_get_last_meal_time(philo);
 	eat_usleep(ft_get_time_to_eat(philo));
-	philo->nb_meals++; //writea setter with mutex ?
+	philo->nb_meals++; //write a setter with mutex ?
 	unlock_forks(philo);
 	return (0);
 }
