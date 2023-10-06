@@ -6,19 +6,20 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:04:42 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 12:21:37 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:24:22 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-//Sets status, checks for death, and sleeps for sleep_time.
+//Sets status, checks for death, prints action and sleeps for sleep_time.
 int	ft_sleep(t_philo *philo)
 {
 	set_status(philo, SLEEPING);
 	if (death_status(philo) == DIED
 		|| get_status(philo) == DIED)
 		return (1);
+	print_mandatory_format(philo->data, philo->philo_id, "is sleeping");
 	sleep_usleep(ft_get_time_to_sleep(philo));
 	return (0);
 }
