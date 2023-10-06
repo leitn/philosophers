@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 10:44:46 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 10:52:22 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	ready_steady_forks(t_philo *philo)
 {
 	if (philo->philo_id == 1)
 	{
-		print_with_mutex("Only one philo not handled yet", data);
+		print_with_mutex("Only one philo not handled yet", philo->data);
 		return (1);
 	}
 	if (philo->philo_id % 2 == 0)
@@ -119,16 +119,15 @@ int	ready_steady_forks(t_philo *philo)
 			print_with_mutex("Yummy", philo->data);
 			return (0);
 		}
-
+	}
+	return (0);
 }
 
 //WIP (too long) !
 int	ft_eat(t_philo *philo)
 {
-	if (ready_steady_forks(philo != 0))
+	if (ready_steady_forks(philo) != 0)
 		return (1);
-
-	}
 	return (0);
 }
 

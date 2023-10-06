@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 10:39:42 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 10:49:37 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ int	ft_start_routine(t_data	*data)
 
 int	philosophers_problem(t_data *data)
 {
-	if (ft_start_routine(&data))
+	if (ft_start_routine(data))
 		return (1);
-	ft_pthread_join(&data);
-	ft_free_data(&data);
+	ft_pthread_join(data);
+	ft_free_data(data);
 	return (0);
 }
 
