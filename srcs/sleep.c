@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:04:42 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 17:41:49 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:19:18 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,12 @@
 //impro totale
 int	ft_sleep(t_philo *philo)
 {
-	if (philo->status == SLEEPING)
-	{
-		if (pthread_mutex_lock(&philo->data->mut_sleep_t) == 0)
-		{
-			usleep(philo->data->time_to_sleep);
-			if (pthread_mutex_lock(&philo->mut_status) == 0)
-			{
-				philo->status = THINKING;
-				pthread_mutex_unlock(&philo->mut_status);
-			}
-		}
-		else if (pthread_mutex_lock(&philo->data->mut_sleep_t) != 0)
-			return (1);
-		pthread_mutex_unlock(&philo->data->mut_sleep_t);
-	}
+	set_status(philo, SLEEPING);
+	if (death_status(philo) == DIED
+		|| get_status(philo) == DIED)
+		return (1);
+	sleep_usleep(ft_get_time_to_sleep(philo));
 	return (0);
 }
+ //thread principal peut changer status donc retester get_status en plus de death status.
+ // verifier que checker les deux ne cree pas un data race ? normalement ils unlock bien tous les mutex qu'ils utilisent mais sait-on jamais

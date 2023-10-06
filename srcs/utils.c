@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:21:03 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 10:39:10 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:16:06 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ int	ft_atoi(char *str)
 
 }
 
-//prints error and frees data
+//prints error and FREES data
 void	ft_error(t_data	*data)
 {
-	printf("ERROR");
+	print_with_mutex("ERROR", data);
 	ft_free_data(data);
 }
 
+//MUTEX. Prints a str.
 void	print_with_mutex(char *str, t_data *data)
 {
 	pthread_mutex_lock(&data->mut_print);
@@ -52,6 +53,7 @@ void	print_with_mutex(char *str, t_data *data)
 	pthread_mutex_unlock(&data->mut_print);
 }
 
+//MUTEX. Prints action monitoring message in "time id str" format.
 void	print_mandatory_format(t_data *data, int id, char *str)
 {
 	long long	time;

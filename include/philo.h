@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 11:54:55 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:12:27 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ void		print_mandatory_format(t_data *data, int id, char *str);
 
 //time.c
 void		eat_usleep(long long eat_time);
+void		sleep_usleep(long long sleep_time);
 void		ft_time_of_eating(t_philo *philo);
 long long	ft_get_time(void);
 

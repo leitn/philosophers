@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:53:06 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 12:04:51 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:12:15 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@ void	eat_usleep(long long eat_time)
 
 	start = ft_get_time();
 	while ((ft_get_time() - start) < eat_time)
+		usleep(500);
+}
+
+// usleep for sleep_time miliseconds
+void	sleep_usleep(long long sleep_time)
+{
+	long long	start;
+
+	start = ft_get_time();
+	while ((ft_get_time() - start) < sleep_time)
 		usleep(500);
 }
 
