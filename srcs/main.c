@@ -6,18 +6,25 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 09:56:12 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 10:39:42 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-// To make while having incomplete functions
-void	do_nothing_but_make(t_data *data)
+//join threads, returns 1 if error
+int	ft_pthread_join(t_data *data)
 {
-	int	memento_mori;
+	int	i;
 
-	memento_mori = data->time_to_die;
+	i = 0;
+	while (i < data->nb_philo)
+	{
+		if (pthread_join(data->philo_threads[i], NULL))
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 //routine
@@ -27,7 +34,8 @@ void	*ft_routine(void *ph_philo)
 
 	philo = (t_philo *) ph_philo;
 	philo->time_of_eating = ft_get_time() - philo->data->start_time;
-	while (death_status(philo) != DIED)
+	ft_get_last_meal_time(philo);
+	while (get_status(philo) != DIED)
 	{
 		if (ft_eat(philo) != 0)
 			break ;
@@ -50,7 +58,8 @@ int	ft_start_routine(t_data	*data)
 	int			ph_nb_philo;
 
 	i = 0;
-	ph_nb_philo = data->nb_philo;
+	ph_nb_philo = data->nb_philo; // write a mutexed getter ?
+	data->start_time = ft_get_time();
 	while (i < ph_nb_philo)
 	{
 		if (pthread_create(&data->philo_threads[i], NULL,
@@ -59,7 +68,7 @@ int	ft_start_routine(t_data	*data)
 			ft_pthread_join(data);
 			return (1);
 		}
-		if (is_someone_dead(data) == 1)
+		if (is_someone_dead(data) == 1) // TO DO : better monitoring
 		{
 			printf("Someone died. RIP\n");
 			ft_error(data);
@@ -67,6 +76,15 @@ int	ft_start_routine(t_data	*data)
 		}
 		i++;
 	}
+	return (0);
+}
+
+int	philosophers_problem(t_data *data)
+{
+	if (ft_start_routine(&data))
+		return (1);
+	ft_pthread_join(&data);
+	ft_free_data(&data);
 	return (0);
 }
 
@@ -86,14 +104,12 @@ int	main(int argc, char *argv[])
 			ft_error(&data);
 			return (1);
 		}
-		ft_start_routine(&data);
-		if (ft_pthread_join(&data) != 0)
-		{
-			ft_error(&data);
+		if (philosophers_problem(&data) != 0)
 			return (1);
-		}
-		ft_free_data(&data);
 	}
 	return (0);
 }
 
+// in the main : instead of init args,
+// have a ft_parsing and then init in init_data with
+// a simple atoi

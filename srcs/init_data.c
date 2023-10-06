@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:15:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 17:55:24 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 10:13:19 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,6 @@ int	ft_init_forks(t_data *data)
 //init structures
 int	ft_init_data(t_data *data)
 {
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	data->start_time = (long long)(tv.tv_sec)*1000
-		+ (long long)(tv.tv_usec) / 1000;
 	if (ft_init_forks(data) != 0)
 		return (1);
 	if (ft_init_philos(data) != 0)

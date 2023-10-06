@@ -6,11 +6,18 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:53:06 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 18:00:57 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 10:23:08 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
+
+void	ft_time_of_eating(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->mut_t_eating);
+	philo->time_of_eating = get_time();
+	pthread_mutex_unlock(&philo->mut_t_eating);
+}
 
 //Current time in ms !
 long long	ft_get_time(void)

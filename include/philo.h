@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 18:00:52 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 10:39:48 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ typedef enum e_status{
 	EATING = 1,
 	SLEEPING = 2,
 	DIED = 3,
-	NOTHING = 4,
+	NOT_HUNGRY = 4,
+	NOTHING = 5,
 }	t_status;
 
 struct	s_data;
@@ -65,8 +66,9 @@ typedef struct s_data{
 
 /*-------------------------------MAIN-------------------------------*/
 //main.c
-void		do_nothing_but_make(t_data *data);
-void			*ft_routine(void *ph_philo);
+int			ft_pthread_join(t_data *data);
+void		*ft_routine(void *ph_philo);
+int			philosophers_problem(t_data *data);
 int			ft_start_routine(t_data	*data);
 
 //eat.c
@@ -110,7 +112,6 @@ void		ft_free_data(t_data *data);
 // utils.c
 int			ft_atoi(char *str);
 void		ft_error(t_data	*data);
-int			ft_pthread_join(t_data *data);
 void		print_with_mutex(char *str, t_data *data);
 
 //time.c
