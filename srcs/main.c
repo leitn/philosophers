@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ltn <ltn@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 21:39:04 by ltn              ###   ########.fr       */
+/*   Updated: 2023/10/06 09:56:12 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,35 +20,25 @@ void	do_nothing_but_make(t_data *data)
 	memento_mori = data->time_to_die;
 }
 
-//WIP (obviously), Too long
+//routine
 void	*ft_routine(void *ph_philo)
 {
 	t_philo		*philo;
 
 	philo = (t_philo *) ph_philo;
 	philo->time_of_eating = ft_get_time() - philo->data->start_time;
-	printf("\n Time of EATING = %lli", philo->time_of_eating);
-	if (pthread_mutex_lock(&philo->data->mut_print) == 0)
-	{
-		printf("\n PHILO %i EATS AT %lldms", philo->philo_id,
-			philo->time_of_eating);
-	}
-	pthread_mutex_unlock(&philo->data->mut_print);
-	while (death_status(philo) != DIED) // Probleme ici
+	while (death_status(philo) != DIED)
 	{
 		if (ft_eat(philo) != 0)
-		{
-			if (ft_think(philo) == 1)
-			{
-				if (pthread_mutex_lock(&philo->data->mut_print) == 0)
-					printf("\n PHILO %i THINKS", philo->philo_id);
-				pthread_mutex_unlock(&philo->data->mut_print);
-			}
-			else if (get_status(philo) == THINKING)
-				usleep(100);
-		}
-		else
-			ft_sleep(philo);
+			break ;
+		if (death_status(philo) == DIED)
+			break ;
+		if (ft_sleep(philo) != 0)
+			break ;
+		if (death_status(philo) == DIED)
+			break ;
+		if (ft_think(philo) != 0)
+			break ;
 	}
 	return (NULL);
 }
@@ -57,16 +47,18 @@ void	*ft_routine(void *ph_philo)
 int	ft_start_routine(t_data	*data)
 {
 	int			i;
+	int			ph_nb_philo;
 
 	i = 0;
-	while (i < data->nb_philo)
+	ph_nb_philo = data->nb_philo;
+	while (i < ph_nb_philo)
 	{
 		if (pthread_create(&data->philo_threads[i], NULL,
 				&ft_routine, &data->philos[i]))
-			{
-				ft_pthread_join(&data);
-				return (1);
-			}
+		{
+			ft_pthread_join(data);
+			return (1);
+		}
 		if (is_someone_dead(data) == 1)
 		{
 			printf("Someone died. RIP\n");

@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:21:03 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 17:42:00 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 10:03:38 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,19 @@ int	ft_pthread_join(t_data *data)
 
 void	print_with_mutex(char *str, t_data *data)
 {
-	if (pthread_mutex_lock(&data->mut_print) == 0)
-		printf("\n%s\n", str);
+	pthread_mutex_lock(&data->mut_print);
+	printf("\n%s\n", str);
+	pthread_mutex_unlock(&data->mut_print);
+}
+
+void	print_mandatory_format(t_data *data, int id, char *str)
+{
+	long long	time;
+	long long	ph_start_t;
+
+	ph_start_t = data->start_time;
+	time = ft_get_time() - ph_start_t;
+	pthread_mutex_lock(&data->mut_print);
+	printf("%llu %i %s\n", time, id, str);
 	pthread_mutex_unlock(&data->mut_print);
 }
