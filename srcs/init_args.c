@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:57:09 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 17:41:30 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:05:37 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,20 +89,12 @@ int	ft_init_args(int argc, char *argv[], t_data *data)
 	arguments = ft_parsing_arguments(argv, argc);
 	if (arguments == NULL)
 		return (1);
-	printf("\nnumber_of_philosophers == %d philosophers\n", arguments[0]);
 	data->nb_philo = arguments[0];
-	printf("\ntime_to_die == %dms\n", arguments[1]);
 	data->time_to_die = arguments[1];
-	printf("\ntime_to_eat == %dms\n", arguments[2]);
 	data->time_to_eat = arguments[2];
-	printf("\ntime_to_sleep == %dms\n", arguments[3]);
 	data->time_to_sleep = arguments[3];
 	if (argc == 6)
-	{
-		printf("\nnumber_of_times_each_philosopher_must_eat == %d times\n",
-			arguments[4]);
 		data->nb_must_eat = arguments[4];
-	}
 	free(arguments);
 	return (0);
 }

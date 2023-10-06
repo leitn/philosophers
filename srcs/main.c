@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 16:00:14 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:07:07 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	ft_pthread_join(t_data *data)
 			return (1);
 		i++;
 	}
+	if (pthread_join(data->monitor, NULL))
+			return (1);
 	return (0);
 }
 
