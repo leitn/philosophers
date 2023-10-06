@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:04:55 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/05 18:05:41 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:05:35 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,6 @@ int	death_status(t_philo *philo)
 
 	death_time = (ft_get_time() - philo->data->start_time)
 		- ft_get_last_meal_time(philo);
-	printf("\n in death_status, DEATH TIME = %lli\n", death_time);
-	printf("\n in death_status,FT_GET_TIME = %lli\n", ft_get_time());
-	printf("\n in death_status,GET LAST MEAL TIME = %lli\n",
-		ft_get_last_meal_time(philo));
 	if (death_time >= philo->data->time_to_die)
 	{
 		if (pthread_mutex_lock(&philo->mut_status) == 0)

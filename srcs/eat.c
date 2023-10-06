@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 10:52:22 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:04:31 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,30 +55,26 @@ int	take_left_fork(t_philo *philo)
 
 int	ft_right_handed(t_philo *philo)
 {
-	if (take_right_fork(philo) == 0)
+	if (take_right_fork(philo) != 0)
+		return (1);
+	if (take_left_fork(philo) != 0)
 	{
-		if (take_left_fork(philo) != 0)
-		{
-			pthread_mutex_unlock(philo->right_fork);
-			return (1);
-		}
-		return (0);
+		pthread_mutex_unlock(philo->right_fork);
+		return (1);
 	}
-	return (1);
+	return (0);
 }
 
 int	ft_left_handed(t_philo *philo)
 {
 	if (take_left_fork(philo) == 0)
+		return (1);
+	if (take_right_fork(philo) != 0)
 	{
-		if (take_right_fork(philo) != 0)
-		{
-			pthread_mutex_unlock(philo->left_fork);
-			return (1);
-		}
-		return (0);
+		pthread_mutex_unlock(philo->left_fork);
+		return (1);
 	}
-	return (1);
+	return (0);
 }
 
 int	ready_steady_forks(t_philo *philo)
@@ -90,35 +86,19 @@ int	ready_steady_forks(t_philo *philo)
 	}
 	if (philo->philo_id % 2 == 0)
 	{
-		if (ft_right_handed(philo) == 0)
-		{
-			if (pthread_mutex_lock(&philo->mut_status) == 0)
-			{
-				philo->status = EATING;
-				pthread_mutex_unlock(&philo->mut_status);
-			}
-			philo->time_of_eating = ft_get_time();
-			usleep(philo->data->time_to_eat);
-			philo->nb_meals++;
-			print_with_mutex("Yummy", philo->data);
-			return (0);
-		}
+		if (ft_right_handed(philo) != 0)
+			return (1);
+		philo->nb_meals++;
+		print_with_mutex("Yummy", philo->data);
+		return (0);
 	}
 	else
 	{
-		if (ft_left_handed(philo) == 0)
-		{
-			if (pthread_mutex_lock(&philo->mut_status) == 0)
-			{
-				philo->status = EATING;
-				pthread_mutex_unlock(&philo->mut_status);
-			}
-			philo->time_of_eating = ft_get_time();
-			usleep(philo->data->time_to_eat);
-			philo->nb_meals++;
-			print_with_mutex("Yummy", philo->data);
-			return (0);
-		}
+		if (ft_left_handed(philo) != 0)
+			return (1);
+		philo->nb_meals++;
+		print_with_mutex("Yummy", philo->data);
+		return (0);
 	}
 	return (0);
 }

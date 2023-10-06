@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 10:47:53 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:08:00 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ typedef struct s_philo{
 typedef struct s_data{
 	int				nb_philo;
 	long long		start_time;
-	long			time_to_die;
-	long			time_to_eat;
-	long			time_to_sleep;
+	long long		time_to_die;
+	long long		time_to_eat;
+	long long		time_to_sleep;
 	int				nb_must_eat;
 	pthread_mutex_t	mut_nb_philos;
 	pthread_mutex_t	mut_die_time;
@@ -120,6 +120,9 @@ long long	ft_get_time(void);
 //get_info.c
 t_status	get_status(t_philo *philo);
 long long	ft_get_last_meal_time(t_philo *philo);
+long long	ft_get_time_to_eat(t_philo *philo);
+long long	ft_get_time_to_die(t_philo *philo);
+long long	ft_get_time_to_sleep(t_philo *philo);
 
 //set_info.c
 void		set_state(t_philo *philo, t_status status);
