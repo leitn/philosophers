@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 16:01:58 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:39:57 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,3 +106,11 @@ int	ft_eat(t_philo *philo)
 	unlock_forks(philo);
 	return (0);
 }
+
+/*
+
+	pthread_mutex_lock(&philo->data->mut_print);
+	printf("%i's status is %u\n", philo->philo_id + 1, get_status(philo));
+	pthread_mutex_unlock(&philo->data->mut_print);
+
+*/

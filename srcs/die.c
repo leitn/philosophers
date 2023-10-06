@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:04:55 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 15:03:20 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:48:59 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int	is_someone_dead(t_data *data)
 int	death_status(t_philo *philo)
 {
 	long long	death_time;
+	t_data		*data;
 
+	data = philo->data;
 	death_time = ft_get_time_to_die(philo);
 	if (ft_get_time() - ft_get_last_meal_time(philo) >= death_time)
 	{

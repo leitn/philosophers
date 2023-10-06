@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 16:17:09 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:59:46 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	*ft_routine(void *ph_philo)
 	t_philo		*philo;
 
 	philo = (t_philo *) ph_philo;
-	philo->time_of_eating = ft_get_time() - ft_get_start_time(philo->data);
 	ft_set_last_meal_time(philo);
 	while (get_status(philo) != DIED)
 	{
@@ -50,6 +49,8 @@ void	*ft_routine(void *ph_philo)
 		if (get_status(philo) == DIED)
 			break ;
 		if (ft_think(philo) != 0)
+			break ;
+		if (get_status(philo) == DIED)
 			break ;
 	}
 	return (NULL);
@@ -71,9 +72,12 @@ int	ft_start_routine(t_data	*data)
 			return (1);
 		i++;
 	}
-	if (pthread_create(&data->monitor, NULL,
+	/* if (ft_get_time() > ft_get_start_time(data))
+	{ */
+		if (pthread_create(&data->monitor, NULL,
 			&ft_monitor_routine, data))
 		return (1);
+	/* } */
 	return (0);
 }
 
@@ -107,6 +111,3 @@ int	main(int argc, char *argv[])
 	return (0);
 }
 
-// in the main : instead of init args,
-// have a ft_parsing and then init in init_data with
-// a simple atoi
