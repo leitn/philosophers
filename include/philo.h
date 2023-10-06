@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 14:30:31 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:01:36 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ long long	ft_get_start_time(t_data *data);
 //set_info.c
 void		set_status(t_philo *philo, t_status status);
 void		set_nb_meals(t_philo *philo);
+long long	ft_set_last_meal_time(t_philo *philo);
 
 
 #endif

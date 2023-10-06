@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 14:48:34 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:00:53 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	*ft_routine(void *ph_philo)
 
 	philo = (t_philo *) ph_philo;
 	philo->time_of_eating = ft_get_time() - ft_get_start_time(philo->data);
-	ft_get_last_meal_time(philo);
+	ft_set_last_meal_time(philo);
 	while (get_status(philo) != DIED)
 	{
 		if (ft_eat(philo) != 0)

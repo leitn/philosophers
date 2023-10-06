@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 14:36:01 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:01:05 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	ft_eat(t_philo *philo)
 		return (1);
 	set_status(philo, EATING);
 	print_mandatory_format(philo->data, philo->philo_id, " is eating.\n");
-	ft_get_last_meal_time(philo);
+	ft_set_last_meal_time(philo);
 	eat_usleep(ft_get_time_to_eat(philo));
 	set_nb_meals(philo);
 	unlock_forks(philo);
