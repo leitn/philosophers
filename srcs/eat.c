@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 11:04:31 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:43:19 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,29 @@
 
 int	take_right_fork(t_philo *philo)
 {
-	if (pthread_mutex_lock(&philo->data->mut_print) == 0)
+	if (pthread_mutex_lock(philo->right_fork) != 0)
 	{
-		if (pthread_mutex_lock(philo->right_fork) != 0)
-		{
-			printf("Slight issue with my right fork sorry");
-			pthread_mutex_unlock(philo->right_fork);
-			return (1);
-		}
-		printf("\nI am philosopher number %i\nI am taking my right fork !\n",
-			philo->philo_id);
+		print_with_mutex("Slight issue with my right fork sorry", philo->data);
 		pthread_mutex_unlock(philo->right_fork);
-		pthread_mutex_unlock(&philo->data->mut_print);
-		return (0);
-	}
-	else
 		return (1);
-
+	}
+	print_mandatory_format(philo->data, philo->philo_id,
+		"has taken their right fork");
+	pthread_mutex_unlock(philo->right_fork);
+	return (0);
 }
 
 int	take_left_fork(t_philo *philo)
 {
-	if (pthread_mutex_lock(&philo->data->mut_print) == 0)
+	if (pthread_mutex_lock(philo->left_fork) != 0)
 	{
-		if (pthread_mutex_lock(philo->left_fork) != 0)
-		{
-			printf("Slight issue with my left fork sorry");
-			pthread_mutex_unlock(philo->left_fork);
-			return (1);
-		}
-		printf("\nI am philosopher number %i\nI am taking my left fork !\n",
-			philo->philo_id);
-		pthread_mutex_unlock(philo->left_fork);
-		pthread_mutex_unlock(&philo->data->mut_print);
-		return (0);
-	}
-	else
+		print_with_mutex("Slight issue with my left fork sorry", philo->data);
 		return (1);
+	}
+	print_mandatory_format(philo->data, philo->philo_id,
+		"has taken their left fork");
+	pthread_mutex_unlock(philo->left_fork);
+	return (0);
 }
 
 int	ft_right_handed(t_philo *philo)
