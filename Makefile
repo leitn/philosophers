@@ -6,7 +6,7 @@
 #    By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 14:04:24 by letnitan          #+#    #+#              #
-#    Updated: 2023/10/05 17:49:29 by letnitan         ###   ########.fr        #
+#    Updated: 2023/10/06 10:47:41 by letnitan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC_FILES =	srcs/main.c \
 			srcs/think.c \
 			srcs/utils.c \
 			srcs/get_info.c \
+			srcs/set_info.c \
 
 SRCS = $(SRC_FILES)
 OBJS = ${SRCS:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 10:30:54 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 10:44:46 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,13 @@ int	ft_left_handed(t_philo *philo)
 	return (1);
 }
 
-//WIP (too long) !
-int	ft_eat(t_philo *philo)
+int	ready_steady_forks(t_philo *philo)
 {
+	if (philo->philo_id == 1)
+	{
+		print_with_mutex("Only one philo not handled yet", data);
+		return (1);
+	}
 	if (philo->philo_id % 2 == 0)
 	{
 		if (ft_right_handed(philo) == 0)
@@ -115,8 +119,17 @@ int	ft_eat(t_philo *philo)
 			print_with_mutex("Yummy", philo->data);
 			return (0);
 		}
+
+}
+
+//WIP (too long) !
+int	ft_eat(t_philo *philo)
+{
+	if (ready_steady_forks(philo != 0))
+		return (1);
+
 	}
-	return (1);
+	return (0);
 }
 
 /* Need a Drop Fork function ? */
