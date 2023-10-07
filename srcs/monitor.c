@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:40:50 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 13:18:39 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 13:48:32 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ int	valar_morghulis(t_data *data)
 		if (is_that_one_dead(&data->philos[i]) == 1)
 		{
 			set_status(&data->philos[i], DIED);
-			print_mandatory_format(data, data->philos[i].philo_id, "is dead.");
-			return (1); // dead and buried
+			yell_omg_someone_just_died(data);
+			print_mandatory_format(data, data->philos[i].philo_id, "is dead.\n");
+			return (1); // someone died and it has been recorded in data
 		}
 		i++;
 	}

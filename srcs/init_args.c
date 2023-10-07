@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:57:09 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 11:57:55 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 13:39:33 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	ft_init_args(int argc, char *argv[], t_data *data)
 	data->time_to_sleep = arguments[3];
 	data->nb_max_meals = arguments[4];
 	data->finished_dinner = 0;
+	data->dead_man_among_us = 0;
 	free(arguments);
 	return (0);
 }

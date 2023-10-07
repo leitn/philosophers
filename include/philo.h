@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 13:17:11 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 13:39:05 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_data{
 	long long		time_to_sleep;
 	int				nb_max_meals;
 	int				finished_dinner;
+	int				dead_man_among_us;
 	pthread_mutex_t	mut_nb_philos;
 	pthread_mutex_t	mut_start_t;
 	pthread_mutex_t	mut_die_time;
@@ -62,6 +63,7 @@ typedef struct s_data{
 	pthread_mutex_t	mut_sleep_t;
 	pthread_mutex_t	mut_max_meals;
 	pthread_mutex_t	mut_finished;
+	pthread_mutex_t	mut_dead_man;
 	pthread_mutex_t	mut_print;
 	pthread_mutex_t	*forks;
 	pthread_t		*philo_threads;
@@ -88,6 +90,7 @@ int			ft_eat(t_philo	*philo);
 int			ft_sleep(t_philo *philo);
 
 //die.c
+int			are_we_done(t_data *data);
 int			is_someone_dead(t_data *data);
 int			death_status(t_philo *philo);
 
@@ -125,7 +128,8 @@ void		ft_free_data(t_data *data);
 int			ft_atoi(char *str);
 void		ft_error(t_data	*data);
 void		print_with_mutex(char *str, t_data *data);
-void		print_mandatory_format(t_data *data, int id, char *str);
+int			print_mandatory_format(t_data *data, int id, int option);
+// void		print_mandatory_format(t_data *data, int id, char *str);
 
 //time.c
 void		eat_usleep(long long eat_time);
