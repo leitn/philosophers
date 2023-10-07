@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 14:34:12 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 19:22:35 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_philo{
 	pthread_mutex_t	mut_t_eating;
 	pthread_mutex_t	mut_nb_meals;
 	int				nb_meals;
+	int				prio;
 	struct s_data	*data;
 }	t_philo;
 
@@ -85,16 +86,10 @@ int			ft_right_handed(t_philo *philo);
 int			ft_left_handed(t_philo *philo);
 int			ft_eat(t_philo	*philo);
 
-//sleep.c
-int			ft_sleep(t_philo *philo);
-
 //die.c
 int			are_we_done(t_data *data);
 int			is_someone_dead(t_data *data);
 int			death_status(t_philo *philo);
-
-//think.c
-int			ft_think(t_philo *philo);
 
 //monitor.c
 int			finished_eating(t_data *data);
@@ -116,23 +111,25 @@ int			ft_init_philos(t_data *data);
 int			ft_init_forks(t_data *data);
 int			ft_init_data(t_data *data);
 
-
-//free_data.c
-void		ft_free_data(t_data *data);
-
-
 /*-------------------------------UTILS-------------------------------*/
 
 // utils.c
 int			ft_atoi(char *str);
-void		ft_error(t_data	*data);
+void		ft_error(t_data	*data); /* utile ? */
 void		print_with_mutex(char *str, t_data *data);
 int			print_mandatory_format(t_data *data, int id, int option);
-// void		print_mandatory_format(t_data *data, int id, char *str);
+
+// utils_2.c
+int			check_if_prio(t_philo *philo);
+int			ft_sleep(t_philo *philo);
+int			ft_think(t_philo *philo);
+void		ft_destroy_mutex(t_data *data);
+void		ft_free_data(t_data *data);
 
 //time.c
-void		eat_usleep(long long eat_time);
-void		sleep_usleep(long long sleep_time);
+int			invert_prio(t_philo *philo);
+int			eat_usleep(t_philo *philo, long long eat_time);
+int			sleep_usleep(t_philo *philo, long long sleep_time);
 void		ft_time_of_eating(t_philo *philo);
 long long	ft_get_time(void);
 

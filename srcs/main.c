@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 16:05:48 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 19:06:32 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ int	ft_pthread_join(t_data *data)
 void	*ft_routine(void *ph_philo)
 {
 	t_philo		*philo;
+	int			nb;
 
 	philo = (t_philo *) ph_philo;
-	if (ft_get_nb_philos(philo->data) == 1)
+	nb = ft_get_nb_philos(philo->data);
+	if (nb == 1)
 	{
 		pthread_mutex_lock(philo->left_fork);
 		print_mandatory_format(philo->data, philo->philo_id, 3);
@@ -44,10 +46,18 @@ void	*ft_routine(void *ph_philo)
 		pthread_mutex_unlock(philo->left_fork);
 		return (NULL);
 	}
+	if (philo->philo_id % 2 == 0)
+		philo->prio = 0;
+	else if (philo->philo_id != nb - 1)
+		philo->prio = 1;
+	else if (nb % 2 == 0)
+		philo->prio = 1;
+	else
+		philo->prio = 0;
 	while (are_we_done(philo->data) == 0)
 	{
 		if (philo->philo_id % 2 != 0)
-			usleep(500); // write a special usleep ?
+			usleep(500);
 		if (ft_eat(philo) != 0)
 			break ;
 		if (are_we_done(philo->data) == 1)

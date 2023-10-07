@@ -6,32 +6,47 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:53:06 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 14:21:42 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 19:22:23 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-// usleep for eat_time miliseconds
-void	eat_usleep(long long eat_time)
+int	invert_prio(t_philo *philo)
 {
-	long long	start;
+	if (philo->prio == 0)
+		return (1);
+	return (0);
+}
+// usleep for eat_time miliseconds
+int	eat_usleep(t_philo *philo, long long eat_time)
+{
+	long long	now;
 
-	start = ft_get_time();
-	while ((ft_get_time() - start) < eat_time)
-		usleep(100);
+	now = ft_get_time();
+	while ((ft_get_time() - now) < eat_time)
+	{
+		if (are_we_done(philo->data) == 1)
+			return (1);
+		usleep(200);
+	}
+	return (0);
 }
 
 // usleep for sleep_time miliseconds
-void	sleep_usleep(long long sleep_time)
+int	sleep_usleep(t_philo *philo, long long sleep_time)
 {
 	long long	start;
 
 	start = ft_get_time();
 	while ((ft_get_time() - start) < sleep_time)
+	{
+		if (are_we_done(philo->data) == 1)
+			return (1);
 		usleep(100);
+	}
+	return (0);
 }
-
 
 // MUTEX. updates time of last meal in structure
 void	ft_time_of_eating(t_philo *philo)

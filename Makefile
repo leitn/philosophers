@@ -6,7 +6,7 @@
 #    By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 14:04:24 by letnitan          #+#    #+#              #
-#    Updated: 2023/10/07 13:18:16 by letnitan         ###   ########.fr        #
+#    Updated: 2023/10/07 18:40:21 by letnitan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,15 +15,13 @@ SRC_FILES =	main \
 			init_args\
 			time \
 			init_data \
-			free_data\
 			eat \
-			sleep \
 			die \
-			think \
 			utils \
 			get_info \
 			set_info \
 			monitor \
+			utils_2 \
 
 SRC_DIR = srcs/
 OBJ_DIR = objects/

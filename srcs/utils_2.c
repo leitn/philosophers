@@ -1,17 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_data.c                                        :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:18:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 13:41:43 by letnitan         ###   ########.fr       */
+/*   Created: 2023/10/07 18:36:32 by letnitan          #+#    #+#             */
+/*   Updated: 2023/10/07 19:23:15 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
+int	check_if_prio(t_philo *philo)
+{
+	if ((philo->prio) == 0)
+	{
+		print_mandatory_format(philo->data, philo->philo_id, 2);
+		if (eat_usleep(philo, ft_get_time_to_eat(philo)) == 1)
+			return (1);
+		philo->prio = invert_prio(philo);
+	}
+	return (0);
+}
+
+//Sets status, checks for death, prints action and sleeps for sleep_time.
+int	ft_sleep(t_philo *philo)
+{
+	set_status(philo, SLEEPING);
+	if (are_we_done(philo->data) == 1)
+		return (1);
+	print_mandatory_format(philo->data, philo->philo_id, 1);
+	if ((sleep_usleep(philo, ft_get_time_to_sleep(philo))) == 1)
+		return (1);
+	return (0);
+}
+//Sets status, checks death, prints action monitoring. DOESNT SLEEP.
+int	ft_think(t_philo *philo)
+{
+	set_status(philo, THINKING);
+	if (are_we_done(philo->data) == 1)
+		return (1);
+	print_mandatory_format(philo->data, philo->philo_id, 2);
+	return (0);
+}
 // incomplet !
 void	ft_destroy_mutex(t_data *data)
 {

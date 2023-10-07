@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 14:49:29 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 18:35:11 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,15 @@ int	ready_steady_forks(t_philo *philo)
 //WIP !
 int	ft_eat(t_philo *philo)
 {
-	if (ready_steady_forks(philo) != 0)
+	if (check_if_prio(philo) == 1)
+		return (1);
+	if (ready_steady_forks(philo) == 1)
 		return (1);
 	set_status(philo, EATING);
 	print_mandatory_format(philo->data, philo->philo_id, 0);
 	ft_set_last_meal_time(philo);
-	eat_usleep(ft_get_time_to_eat(philo));
+	if ((eat_usleep(philo, ft_get_time_to_eat(philo))) == 1)
+		return (1);
 	set_nb_meals(philo);
 	if (philo->philo_id % 2 == 0)
 	{
