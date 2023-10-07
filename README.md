@@ -9,7 +9,7 @@ Le sujet :
 ### Current Issues
 
 - Mangent plus que nb_max_meals
-- Rien n'est prevu pour gerer la priorite et que les philos affames mangent avant les philosophes rassasies
+- Rien n'est prevu pour gerer la priorite et le fait que les philos affames mangent avant les philosophes rassasies
 - Je n'ai pas checke les limites
 - J'utilise un simple usleep, mais on me dit que c'est de la merde, donc je partirai en mission pour trouver quelqu'un pour m'expliquer sa fonction ft_usleep. Apres la pause.
 
