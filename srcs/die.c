@@ -6,24 +6,25 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:04:55 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 13:49:36 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 14:09:42 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	yell_omg_someone_just_died(t_data *data)
-{
-	pthread_mutex_lock(&data->mut_dead_man);
-	if (data->dead_man_among_us == 0)
-		data->dead_man_among_us = 1;
-	pthread_mutex_unlock(&data->mut_dead_man);
-}
 
 // used in print_mandatory
 int	are_we_done(t_data *data)
 {
+	int	i_see_dead_people;
+	int	are_we_all_full;
 
+	i_see_dead_people = ft_get_pulse(data);
+	are_we_all_full = ft_get_completion(data);
+	if (i_see_dead_people == 1)
+		return(1); // there is a corpse
+	if (are_we_all_full == 1)
+		return(1); // everybody is full
 	return (0); // All good
 }
 

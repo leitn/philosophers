@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:21:03 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 13:52:45 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 14:36:48 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,23 +69,24 @@ void	print_with_mutex(char *str, t_data *data)
 
 int	print_mandatory_format(t_data *data, int id, int option)
 {
-	static char	*lookup[5] = {
+	static char	*lookup[6] = {
 		"%lld %d is eating\n",
 		"%lld %d is sleeping\n",
 		"%lld %d is thinking\n",
-		"%lld %d has taken a fork\n",
+		"%lld %d has taken their left fork\n",
+		"%lld %d has taken their right fork\n",
 		"%lld %d died\n"};
 	long long	time;
 	long long	ph_start_time;
 
 	ph_start_time = ft_get_start_time(data);
-	time = ft_get_time() - ph_start_time; // someone suggest to add /1000. Print the values later to find out
+	time = ft_get_time() - ph_start_time; // someone suggested to add /1000. Print the values later to find out
 	pthread_mutex_lock(&data->mut_print);
-	if (option != 4 && are_we_done(data) == 1)// if we're done but option other than 4 : do not print in case of impending doom
+	if (option != 5 && are_we_done(data) == 1)// if we're done but option other than 4 : do not print in case of impending doom
 		return (pthread_mutex_unlock(&data->mut_print), 1);
 	printf(lookup[option], time, id + 1);
 	pthread_mutex_unlock(&data->mut_print);
-
+	return (0);
 }
 
 

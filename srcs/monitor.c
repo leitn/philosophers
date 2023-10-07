@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:40:50 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 13:48:32 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 14:37:25 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,17 @@ int	is_that_one_dead(t_philo *philo)
 int	valar_morghulis(t_data *data)
 {
 	int	i;
+	int	nb;
 
 	i = 0;
-	while (i < data->nb_philo)
+	nb = ft_get_nb_philos(data);
+	while (i < nb)
 	{
 		if (is_that_one_dead(&data->philos[i]) == 1)
 		{
 			set_status(&data->philos[i], DIED);
 			yell_omg_someone_just_died(data);
-			print_mandatory_format(data, data->philos[i].philo_id, "is dead.\n");
+			print_mandatory_format(data, data->philos[i].philo_id, 5);
 			return (1); // someone died and it has been recorded in data
 		}
 		i++;

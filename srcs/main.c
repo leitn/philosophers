@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 13:16:52 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 14:26:25 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,18 @@ void	*ft_routine(void *ph_philo)
 	t_philo		*philo;
 
 	philo = (t_philo *) ph_philo;
-	ft_set_last_meal_time(philo);
-	while (get_status(philo) != DIED)
+	while (are_we_done(philo->data) == 0)
 	{
+		if(philo->philo_id % 2 != 0)
+			usleep(500); // write a special usleep ?
 		if (ft_eat(philo) != 0)
 			break ;
-		if (get_status(philo) == DIED)
-			break ;
+		// if (get_status(philo) == DIED)
+		// 	break ;
 		if (ft_sleep(philo) != 0)
 			break ;
-		if (get_status(philo) == DIED)
-			break ;
+		// if (get_status(philo) == DIED)
+		// 	break ;
 		if (ft_think(philo) != 0)
 			break ;
 	}
@@ -59,10 +60,11 @@ int	ft_start_routine(t_data	*data)
 	int			ph_nb_philo;
 
 	i = 0;
-	ph_nb_philo = ft_get_nb_philos(data); // write a mutexed getter ?
+	ph_nb_philo = ft_get_nb_philos(data);
 	data->start_time = ft_get_time();
 	while (i < ph_nb_philo)
 	{
+		ft_set_last_meal_time(&data->philos[i]);
 		if (pthread_create(&data->philo_threads[i], NULL,
 				&ft_routine, &data->philos[i]))
 			{

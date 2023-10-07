@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:53:06 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 11:06:56 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 14:21:42 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,5 @@ long long	ft_get_time(void)
 
 /*
 
-Implementer le ft_usleep de Pablo c'est pas bete et ca fusionne mes usleep
-
+Implementer un ft_usleep plus precis ?
 */

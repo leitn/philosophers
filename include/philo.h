@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 13:39:05 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 14:34:12 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int			philosophers_problem(t_data *data);
 int			ft_start_routine(t_data	*data);
 
 //eat.c
-void		unlock_forks(t_philo *philo);
 int			take_left_fork(t_philo *philo);
 int			take_right_fork(t_philo *philo);
 int			ft_right_handed(t_philo *philo);
@@ -146,8 +145,11 @@ long long	ft_get_time_to_sleep(t_philo *philo);
 long		ft_get_nb_philos(t_data *data);
 long long	ft_get_start_time(t_data *data);
 int			ft_get_nb_max_meals(t_data *data);
+int			ft_get_pulse(t_data *data);
+int			ft_get_completion(t_data *data);
 
 //set_info.c
+void		yell_omg_someone_just_died(t_data *data);
 void		set_status(t_philo *philo, t_status status);
 void		set_nb_meals(t_philo *philo);
 void		set_finished(t_data *data);
