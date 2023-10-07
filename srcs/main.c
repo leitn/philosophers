@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 14:47:09 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 15:28:36 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	*ft_routine(void *ph_philo)
 	}
 	while (are_we_done(philo->data) == 0)
 	{
-		if(philo->philo_id % 2 != 0)
+		if (philo->philo_id % 2 != 0)
 			usleep(500); // write a special usleep ?
 		if (ft_eat(philo) != 0)
 			break ;
@@ -91,7 +91,7 @@ int	philosophers_problem(t_data *data)
 		return (1);
 	ft_start_routine(data);
 	ft_monitor(data);
-	ft_pthread_join(data);
+	// ft_pthread_join(data);
 	ft_free_data(data);
 	return (0);
 }

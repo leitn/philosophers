@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:57:09 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 13:39:33 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 15:55:45 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	ft_check_args(int argc, char *argv[])
 		{
 			while (argv[i][j] == '\r' || argv[i][j] == '\t' || argv[i][j] == ' '
 			|| argv[i][j] == '\f' || argv[i][j] == '\v' || argv[i][j] == '\n')
-				return (1);
-			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
+				j++;
+			if (argv[i][j] < '0' || argv[i][j] > '9')
 				return (1);
 			while (argv[i][j] >= '0' && argv[i][j] <= '9')
 				j++;

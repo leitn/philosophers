@@ -6,13 +6,13 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:21:03 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 14:36:48 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 15:57:30 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-//TO FIX ! Currently refuses all non numericals
+//atoi
 int	ft_atoi(char *str)
 {
 	int		count;
@@ -29,13 +29,15 @@ int	ft_atoi(char *str)
 			count++;
 		if (str[count] == '-')
 			return (-1);
-		if (!(str[count] >= '0' && str[count] <= '9'))
+		if (str[count] < '0' || str[count] > '9')
 			return (-1);
 		while (str[count] >= '0' && str[count] <= '9')
-			result = result * 10 + (str[count++] - '0');
+		{
+			result = result * 10 + (str[count] - '0');
+			count++;
+		}
 	}
 	return (result * sign);
-
 }
 
 // delete it ?
@@ -82,7 +84,7 @@ int	print_mandatory_format(t_data *data, int id, int option)
 	ph_start_time = ft_get_start_time(data);
 	time = ft_get_time() - ph_start_time; // someone suggested to add /1000. Print the values later to find out
 	pthread_mutex_lock(&data->mut_print);
-	if (option != 5 && are_we_done(data) == 1)// if we're done but option other than 4 : do not print in case of impending doom
+	if (option != 5 && are_we_done(data) == 1)// if we're done but option other than 5 : do not print in case of impending doom
 		return (pthread_mutex_unlock(&data->mut_print), 1);
 	printf(lookup[option], time, id + 1);
 	pthread_mutex_unlock(&data->mut_print);
