@@ -8,24 +8,21 @@ Le sujet :
 
 ### Current Issues
 
-- Parfois le programme ne s'interrompt pas quand un philo est mort (mais il ne print plus)
-- Parfois, un philosophe meurt immediatement.
-- Parfois, le programme laisse un philosophe prendre une fourchette apres la mort d'un autre. ( lock stdout ?)
-
-![Screenshot from 2023-10-06 16-18-48](https://github.com/leitn/philosophers/assets/104629160/d55728a5-2a44-4cf1-a0d4-6a44227c8aa0)
-
-- Aucune routine implementee dans le cas ou il n'y a qu'un philosophe
-- (cinquieme argument) Je n'ai pas encore de fonction pour interrompre le programme une fois nb_of_meals atteint par tous les philos
+- Mangent plus que nb_max_meals
 - Rien n'est prevu pour gerer la priorite et que les philos affames mangent avant les philosophes rassasies
 - Je n'ai pas checke les limites
+- J'utilise un simple usleep, mais on me dit que c'est de la merde, donc je partirai en mission pour trouver quelqu'un pour m'expliquer sa fonction ft_usleep. Apres la pause.
 
 
 ### Problemes nuls
 - Mon parsing est honteux, pourquoi j'ai mis un malloc ?
 - Norme (trop de fonctions par fichier) (commentaires qui trainent) (trop de lignes sur quelques fonctions)
 - Fonctions doublons et Fonctions non utilisees
-- Organisation : certains fichiers sont quasiment vides
+- Organisation : c'est le bazard. Elements inutiles dans mes structures, fichiers quasi vides (coucou free_data.c, think.c et sleep.c) vs fichiers qui ont beaucoup plus que 5 fonctions (coucou get_ingo.c).
+- fonction Get Status me creait des segfault, je ne me l'explique pas. Je ne suis pas sure d'avoir encore besoin de l'enum pour les status.
+- fonctions die en trop :  is_someone_dead(t_data *data); et death_status(t_philo *philo);sont inutiles maintenant.
 
 ### Les bons points
 - Mon Makefile range les objets dans un dossier qu'il cree a l'execution. Youpi.
+- J'ai des commentaires qui decrivent ce que fait la fonction quand on la survole sur vscode. Je vais devoir les supprimer par contre.
 
