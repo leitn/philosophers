@@ -8,8 +8,9 @@ Le sujet :
 
 ### Current Issues
 
-- Mangent plus que nb_max_meals
-- Rien n'est prevu pour gerer la priorite et le fait que les philos affames mangent avant les philosophes rassasies
+- Les impairs mangent un repas de plus que nb_max_meals
+- Ne passe pas ./philo 5 800 200 200
+- Rien n'est prevu pour gerer la priorite et le fait que les philos affames mangent avant les philosophes rassasies, mais ce n'est pas forcement necessaire
 - Je n'ai pas checke les limites
 - J'utilise un simple usleep, mais on me dit que c'est de la merde, donc je partirai en mission pour trouver quelqu'un pour m'expliquer sa fonction ft_usleep. Apres la pause.
 

@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:40:50 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 15:33:26 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 16:27:36 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_monitor(t_data *data)
 
 	usleep(125);
 	while (valar_morghulis(data) == 0 && finished_eating(data) == 0) //continue while all good
-		usleep(100);
+		usleep(500);
 	i = 0;
 	while (i < data->nb_philo)
 	{

@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 15:28:36 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 16:05:48 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,15 @@ void	*ft_routine(void *ph_philo)
 			usleep(500); // write a special usleep ?
 		if (ft_eat(philo) != 0)
 			break ;
+		if (are_we_done(philo->data) == 1)
+			break ;
 		if (ft_sleep(philo) != 0)
 			break ;
+		usleep((philo->data->time_to_eat > philo->data->time_to_sleep)
+			* (philo->data->time_to_eat - philo->data->time_to_sleep) + 125);
 		if (ft_think(philo) != 0)
+			break ;
+		if (are_we_done(philo->data) == 1)
 			break ;
 	}
 	return (NULL);
