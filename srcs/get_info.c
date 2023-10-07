@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:34:21 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 11:48:17 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 13:05:40 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,6 @@ int	ft_get_nb_max_meals(t_data *data)
 
 	pthread_mutex_lock(&data->mut_max_meals);
 	max_meals = data->nb_max_meals;
-	pthread_mutex_unlock(&data->mut_max_meals)
+	pthread_mutex_unlock(&data->mut_max_meals);
 	return (max_meals);
 }

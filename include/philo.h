@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 11:56:34 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 13:12:59 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,10 @@ int			death_status(t_philo *philo);
 int			ft_think(t_philo *philo);
 
 //monitor.c
-void		attention_everyone(t_data *data);
-void		*ft_monitor_routine(void *t_data);
+int			finished_eating(t_data *data);
+int			is_that_one_dead(t_philo *philo);
+int			valar_morghulis(t_data *data);
+void		ft_monitor_routine(void *t_data);
 
 /*-----------------------STRUCTURES-MANAGEMENT-----------------------*/
 
@@ -144,6 +146,7 @@ int			ft_get_nb_max_meals(t_data *data);
 //set_info.c
 void		set_status(t_philo *philo, t_status status);
 void		set_nb_meals(t_philo *philo);
+void		set_finished(t_data *data);
 long long	ft_set_last_meal_time(t_philo *philo);
 
 
