@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:04:42 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 15:50:49 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 14:45:54 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 int	ft_sleep(t_philo *philo)
 {
 	set_status(philo, SLEEPING);
-	if (get_status(philo) == DIED)
+	if (are_we_done(philo->data) == 1)
 		return (1);
-	print_mandatory_format(philo->data, philo->philo_id, "is sleeping\n");
+	print_mandatory_format(philo->data, philo->philo_id, 1);
 	sleep_usleep(ft_get_time_to_sleep(philo));
 	return (0);
 }

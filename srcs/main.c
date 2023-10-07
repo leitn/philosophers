@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 14:26:25 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 14:47:09 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,23 @@ void	*ft_routine(void *ph_philo)
 	t_philo		*philo;
 
 	philo = (t_philo *) ph_philo;
+	if (ft_get_nb_philos(philo->data) == 1)
+	{
+		pthread_mutex_lock(philo->left_fork);
+		print_mandatory_format(philo->data, philo->philo_id, 3);
+		while (are_we_done(philo->data) == 0)
+			usleep(125);
+		pthread_mutex_unlock(philo->left_fork);
+		return (NULL);
+	}
 	while (are_we_done(philo->data) == 0)
 	{
 		if(philo->philo_id % 2 != 0)
 			usleep(500); // write a special usleep ?
 		if (ft_eat(philo) != 0)
 			break ;
-		// if (get_status(philo) == DIED)
-		// 	break ;
 		if (ft_sleep(philo) != 0)
 			break ;
-		// if (get_status(philo) == DIED)
-		// 	break ;
 		if (ft_think(philo) != 0)
 			break ;
 	}

@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 14:36:25 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 14:41:00 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int	take_left_fork(t_philo *philo)
 
 int	ft_right_handed(t_philo *philo)
 {
-	if (take_right_fork(philo) != 0 || get_status(philo) == DIED || are_we_done(philo->data) == 1)
+	if (take_right_fork(philo) != 0 || /* get_status(philo) == DIED || */ are_we_done(philo->data) == 1)
 		return (1);
-	if (take_left_fork(philo) != 0 || get_status(philo) == DIED || are_we_done(philo->data) == 1)
+	if (take_left_fork(philo) != 0 ||/*  get_status(philo) == DIED || */ are_we_done(philo->data) == 1)
 	{
 		pthread_mutex_unlock(philo->right_fork);
 		pthread_mutex_unlock(philo->left_fork);
@@ -61,9 +61,9 @@ int	ft_right_handed(t_philo *philo)
 
 int	ft_left_handed(t_philo *philo)
 {
-	if (take_left_fork(philo) != 0 || get_status(philo) == DIED || are_we_done(philo->data) == 1)
+	if (take_left_fork(philo) != 0 || /* get_status(philo) == DIED || */ are_we_done(philo->data) == 1)
 		return (1);
-	if (take_right_fork(philo) != 0 || get_status(philo) == DIED || are_we_done(philo->data) == 1)
+	if (take_right_fork(philo) != 0 || /* get_status(philo) == DIED ||  */are_we_done(philo->data) == 1)
 	{
 		pthread_mutex_unlock(philo->left_fork);
 		pthread_mutex_unlock(philo->right_fork);
@@ -78,14 +78,14 @@ int	ready_steady_forks(t_philo *philo)
 	if (philo->philo_id % 2 == 0)
 	{
 		if (ft_right_handed(philo) != 0
-			|| get_status(philo) == DIED)
+			|| /* get_status(philo) == DIED */are_we_done(philo->data) == 1)
 			return (1);
 		return (0);
 	}
 	else
 	{
 		if (ft_left_handed(philo) != 0
-			|| get_status(philo) == DIED)
+			|| /* get_status(philo) == DIED */are_we_done(philo->data) == 1)
 			return (1);
 		return (0);
 	}

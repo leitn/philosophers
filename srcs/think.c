@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:05:28 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 15:50:55 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 14:46:44 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 int	ft_think(t_philo *philo)
 {
 	set_status(philo, THINKING);
-	if (get_status(philo) == DIED)
+	if (are_we_done(philo->data) == 1)
 		return (1);
-	print_mandatory_format(philo->data, philo->philo_id, "is thinking\n");
+	print_mandatory_format(philo->data, philo->philo_id, 2);
 	return (0);
 }
 
