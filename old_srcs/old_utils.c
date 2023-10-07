@@ -6,13 +6,13 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:21:03 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 11:27:41 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:22:54 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-//TO FIX ! Currently refuses all non numericals
+//TO REVISE ! Currently refuses all non numericals
 int	ft_atoi(char *str)
 {
 	int		count;
@@ -65,8 +65,3 @@ void	print_mandatory_format(t_data *data, int id, char *str)
 	printf("%llu %i %s", time, id + 1, str);
 	pthread_mutex_unlock(&data->mut_print);
 }
-
-/*  Print mandatory format :
-
-Envoyer le status et faire un test de vie ou de mort, ou de are they full ? */
-

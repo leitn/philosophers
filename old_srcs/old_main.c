@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 11:10:36 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 11:01:07 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	ft_pthread_join(t_data *data)
 			return (1);
 		i++;
 	}
+	if (pthread_join(data->monitor, NULL))
+			return (1);
 	return (0);
 }
 
@@ -65,14 +67,7 @@ int	ft_start_routine(t_data	*data)
 	{
 		if (pthread_create(&data->philo_threads[i], NULL,
 				&ft_routine, &data->philos[i]))
-			{
-				while (i >= 0)
-					{
-						pthread_join(data->philo_threads[i], NULL);
-						i--;
-					}
-				return (1);
-			}
+			return (1);
 		i++;
 	}
 	return (0);
@@ -83,7 +78,6 @@ int	philosophers_problem(t_data *data)
 	if (ft_init_data(data) != 0)
 		return (1);
 	ft_start_routine(data);
-	// ft_monitor(data);
 	ft_pthread_join(data);
 	ft_free_data(data);
 	return (0);

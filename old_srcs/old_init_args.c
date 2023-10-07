@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:57:09 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 11:57:55 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:05:37 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,22 @@ int	ft_check_args(int argc, char *argv[])
 	return (0);
 }
 
-int	*ft_argc_malloc(void)
+int	*ft_argc_malloc(int argc)
 {
 	int	*intarg;
 
-	intarg = malloc(5 * sizeof(int));
-	if (intarg == NULL)
-		exit(EXIT_FAILURE);
+	if (argc == 5)
+	{
+		intarg = malloc(4 * sizeof(int));
+		if (intarg == NULL)
+			exit(EXIT_FAILURE);
+	}
+	if (argc == 6)
+	{
+		intarg = malloc(5 * sizeof(int));
+		if (intarg == NULL)
+			exit(EXIT_FAILURE);
+	}
 
 	return (intarg);
 }
@@ -53,7 +62,7 @@ int	*ft_parsing_arguments(char **argv, int argc)
 	int	i;
 	int	*intarg;
 
-	intarg = ft_argc_malloc();
+	intarg = ft_argc_malloc(argc);
 	if (ft_check_args(argc, argv) == 1)
 	{
 		free(intarg);
@@ -69,8 +78,6 @@ int	*ft_parsing_arguments(char **argv, int argc)
 	}
 	if (argc == 6)
 		intarg[4] = ft_atoi(argv[5]);
-	else
-		intarg[4] = -1;
 	return (intarg);
 }
 
@@ -86,11 +93,8 @@ int	ft_init_args(int argc, char *argv[], t_data *data)
 	data->time_to_die = arguments[1];
 	data->time_to_eat = arguments[2];
 	data->time_to_sleep = arguments[3];
-	data->nb_max_meals = arguments[4];
-	data->finished_dinner = 0;
+	if (argc == 6)
+		data->nb_must_eat = arguments[4];
 	free(arguments);
 	return (0);
 }
-
-
-/*  Enlever le malloc pourri dans parsing args, utiliser atoi et atol, mais optimier pour prendre en compte le cas "    400" par exemple (whitespaces) */

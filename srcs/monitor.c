@@ -6,50 +6,81 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:40:50 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 16:15:57 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 11:55:29 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	attention_everyone(t_data *data)
+int	finished_eating(t_data *data)
 {
 	int	i;
-	int	ph_nb;
+	int	max_meals;
+	int	nb_philo
 
 	i = 0;
-	ph_nb = ft_get_nb_philos(data);
-	while (i < ph_nb)
+	max_meals = ft_get_nb_max_meals(data);
+	nb_philos = ft_get_nb_philos(data);
+	if (max_meals >= 0)
 	{
-		set_status(&data->philos[i], DIED);
-		i++;
+		while (i < nb_philos)
+		{
+			if (data->philos[i].nb_meals < max_meals)
+				break ;
+			set_status(data->philo[i], FULL);
+			i++;
+		}
+		if (i == nb_philos)
+		{
+			set_status()
+		}
 	}
+	return (0); //they all finished eating
 }
 
-void	*ft_monitor_routine(void *data)
+int	is_that_one_alive(t_philo *philo)
 {
-	t_data	*ph_data;
-	t_philo	*ph_philo;
-	int		i;
-	int		ph_nb;
+	long long	now;
+	long long	last_meal_time;
+	long long	fatal_starvation_time;
 
-	ph_data = (t_data *)data;
-	ph_philo = ph_data->philos;
-	ph_nb = ft_get_nb_philos(ph_data);
+	last_meal_time = ft_get_last_meal_time(philo);
+	now = ft_get_time();
+	fatal_starvation_time = ft_get_time_to_die(philo);
+	if (now - last_meal_time >= fatal_stavation_time)
+		return (1); // aka No, that one is not alive
+	return (0); // Yes, all good
+}
+
+int	valar_morghulis(t_data *data)
+{
+	int	i;
+
 	i = 0;
-	while (i < ph_nb)
+	while (i < data->nb_philo)
 	{
-		if (death_status(&ph_philo[i]) == DIED)
+		if (is_that_one_alive(data->philos[i]) != 0)
 		{
-			print_mandatory_format(ph_data, ph_philo->philo_id,
-				" is dead. \n");
-			attention_everyone(data);
-			break ;
+			set_status(philos[i], DIED);
+			print_mandatory_format(data, philo[i]->id, "is dead.");
+			return (1); // dead and buried
 		}
-		if (i == ph_nb - 1)
-			i = 0;
 		i++;
-		usleep(500);
 	}
-	return (NULL);
+	return (0); // no one died
+}
+
+void	ft_monitor(t_data *data)
+{
+	int	i;
+
+	usleep(125);
+	while (valar_morghulis(data) && !finished_eating(data)) //continue while all good
+		usleep(500);
+	i = 0;
+	while (i < data->nb_philo)
+	{
+		pthread_join(data->philo_threads[i], NULL)
+		i++;
+	}
 }

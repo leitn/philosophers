@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:53:06 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 11:06:56 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:49:29 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	sleep_usleep(long long sleep_time)
 		usleep(100);
 }
 
-
 // MUTEX. updates time of last meal in structure
 void	ft_time_of_eating(t_philo *philo)
 {
@@ -50,10 +49,3 @@ long long	ft_get_time(void)
 		return (0);
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
-
-
-/*
-
-Implementer le ft_usleep de Pablo c'est pas bete et ca fusionne mes usleep
-
-*/

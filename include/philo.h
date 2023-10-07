@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/06 15:54:02 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 11:56:34 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef enum e_status{
 	EATING = 1,
 	SLEEPING = 2,
 	DIED = 3,
-	NOT_HUNGRY = 4,
+	FULL = 4,
 	NOTHING = 5,
 }	t_status;
 
@@ -53,13 +53,16 @@ typedef struct s_data{
 	long long		time_to_die;
 	long long		time_to_eat;
 	long long		time_to_sleep;
-	int				nb_must_eat;
+	int				nb_max_meals;
+	int				finished_dinner;
 	pthread_mutex_t	mut_nb_philos;
+	pthread_mutex_t	mut_start_t;
 	pthread_mutex_t	mut_die_time;
 	pthread_mutex_t	mut_eat_time;
 	pthread_mutex_t	mut_sleep_t;
+	pthread_mutex_t	mut_max_meals;
+	pthread_mutex_t	mut_finished;
 	pthread_mutex_t	mut_print;
-	pthread_mutex_t	mut_start_t;
 	pthread_mutex_t	*forks;
 	pthread_t		*philo_threads;
 	pthread_t		monitor;
@@ -99,7 +102,7 @@ void		*ft_monitor_routine(void *t_data);
 
 //init_args.c
 int			ft_check_args(int argc, char *argv[]);
-int			*ft_argc_malloc(int argc);
+int			*ft_argc_malloc(void);
 int			*ft_parsing_arguments(char **argv, int argc);
 int			ft_init_args(int argc, char *argv[], t_data *data);
 
@@ -136,6 +139,7 @@ long long	ft_get_time_to_die(t_philo *philo);
 long long	ft_get_time_to_sleep(t_philo *philo);
 long		ft_get_nb_philos(t_data *data);
 long long	ft_get_start_time(t_data *data);
+int			ft_get_nb_max_meals(t_data *data);
 
 //set_info.c
 void		set_status(t_philo *philo, t_status status);
