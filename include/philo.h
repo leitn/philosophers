@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 20:23:57 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/08 20:38:57 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int			print_mandatory_format(t_data *data, int id, int option);
 //actions.c
 int			check_if_prio(t_philo *philo);
 int			invert_prio(t_philo *philo);
+int			think_different(long long start, t_philo *philo);
 int			ft_think(t_philo *philo);
 int			ft_sleep(t_philo *philo);
 

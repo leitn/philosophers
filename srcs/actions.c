@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:06:02 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 20:09:48 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/08 20:39:03 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,17 @@ int	ft_sleep(t_philo *philo)
 		return (1);
 	return (0);
 }
+
+int	think_different(long long start, t_philo *philo)
+{
+	while (ft_get_time() - start < 3)
+	{
+		if (are_we_done(philo->data) == 1)
+			return (1) ;
+		usleep(500);
+	}
+	return (0);
+}
 //Sets status, checks death, prints action monitoring. DOESNT SLEEP.
 int	ft_think(t_philo *philo)
 {
@@ -61,17 +72,8 @@ int	ft_think(t_philo *philo)
 		return (1);
 	if (print_mandatory_format(philo->data, philo->philo_id, 2))
 		return (1);
-
 	if (nb_philo % 2 == 0 || t_to_sleep > t_to_eat)
-	{
-		while (ft_get_time() - start < 3)
-		{
-			if (are_we_done(philo->data) == 1)
-				return (0);
-			usleep(500);
-		}
-		return (0);
-	}
+		return (think_different(start, philo));
 	while (ft_get_time() - start < t_to_eat * 2- t_to_sleep)
 		usleep(25);
 	return (0);

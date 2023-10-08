@@ -8,7 +8,6 @@ Le sujet :
 
 ### Current Issues
 - J'utilise un simple usleep, mais on me dit que c'est de la merde, mais chez moi ca marche.
-- Je dois encore faire des batteries de test.
 
 ### Problemes nuls
 - Norme (trop de fonctions par fichier) (commentaires qui trainent) (trop de lignes sur quelques fonctions)
@@ -26,6 +25,9 @@ Le sujet :
 - ./philo 5 800 200 200 (doit boucler a l'infini)
 - ./philo 1 800 200 200 (doit crever de faim minablement avec une fourchette en main et un bol de spaghettis sur la table )
 - ./philo 5 599 200 200 (doit mourir en 600 millisecondes)
+
+### Test qui passent pas
+- ./philo 200 800 200 200 1 doit afficher "is eating" en dernier. La il affiche is thinking.
 
 ### Parsing
 - ./philo 0 800 200 200. Attendu: (invalid arguments) : OK
