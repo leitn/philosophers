@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 20:12:47 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/08 20:23:57 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_data{
 /*-------------------------------MAIN-------------------------------*/
 //main.c
 int			ft_pthread_join(t_data *data);
+void		*routine(t_philo *philo);
 void		*ft_routine(void *ph_philo);
 int			philosophers_problem(t_data *data);
 int			ft_start_routine(t_data	*data);

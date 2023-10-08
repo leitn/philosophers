@@ -6,12 +6,11 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:36:32 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 20:17:36 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/08 20:18:30 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-
 
 //prints error and FREES data
 void	ft_error(t_data	*data)
@@ -21,6 +20,7 @@ void	ft_error(t_data	*data)
 	pthread_mutex_unlock(&data->mut_print);
 	ft_free_data(data);
 }
+
 int	print_mandatory_format(t_data *data, int id, int option)
 {
 	static char	*lookup[6] = {
@@ -34,9 +34,9 @@ int	print_mandatory_format(t_data *data, int id, int option)
 	long long	ph_start_time;
 
 	ph_start_time = ft_get_start_time(data);
-	time = ft_get_time() - ph_start_time; // someone suggested to add /1000. Print the values later to find out
+	time = ft_get_time() - ph_start_time;
 	pthread_mutex_lock(&data->mut_print);
-	if (option != 5 && are_we_done(data) == 1)// if we're done but option other than 5 : do not print in case of impending doom
+	if (option != 5 && are_we_done(data) == 1)
 		return (pthread_mutex_unlock(&data->mut_print), 1);
 	printf(lookup[option], time, id + 1);
 	pthread_mutex_unlock(&data->mut_print);
@@ -67,7 +67,6 @@ void	ft_destroy_mutex(t_data *data)
 	pthread_mutex_destroy(&data->mut_print);
 }
 
-// WIP !
 void	ft_free_data(t_data *data)
 {
 	ft_destroy_mutex(data);

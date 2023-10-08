@@ -6,13 +6,11 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 20:16:06 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/08 20:24:15 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-
-
 
 //join threads, returns 1 if error
 int	ft_pthread_join(t_data *data)
@@ -30,6 +28,32 @@ int	ft_pthread_join(t_data *data)
 	}
 	return (0);
 }
+
+void	*routine(t_philo *philo)
+{
+	int			nb;
+
+	nb = ft_get_nb_philos(philo->data);
+	while (are_we_done(philo->data) == 0)
+	{
+		if (philo->philo_id % 2 != 0)
+			usleep(400);
+		if (ft_eat(philo) == 1)
+			break ;
+		if (are_we_done(philo->data) == 1)
+			break ;
+		if (ft_sleep(philo) != 0)
+			break ;
+		usleep((philo->data->time_to_eat > philo->data->time_to_sleep)
+			* (philo->data->time_to_eat - philo->data->time_to_sleep) + 125);
+		if (ft_think(philo) != 0)
+			break ;
+		if (are_we_done(philo->data) == 1)
+			break ;
+	}
+	return (NULL);
+}
+
 
 //routine
 void	*ft_routine(void *ph_philo)
@@ -56,23 +80,7 @@ void	*ft_routine(void *ph_philo)
 		philo->prio = 1;
 	else
 		philo->prio = 0;
-	while (are_we_done(philo->data) == 0)
-	{
-		if (philo->philo_id % 2 != 0)
-			usleep(400);
-		if (ft_eat(philo) == 1)
-			break ;
-		if (are_we_done(philo->data) == 1)
-			break ;
-		if (ft_sleep(philo) != 0)
-			break ;
-		usleep((philo->data->time_to_eat > philo->data->time_to_sleep)
-			* (philo->data->time_to_eat - philo->data->time_to_sleep) + 125);
-		if (ft_think(philo) != 0)
-			break ;
-		if (are_we_done(philo->data) == 1)
-			break ;
-	}
+	routine(philo);
 	return (NULL);
 }
 
