@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:53:06 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 19:22:23 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/07 19:24:29 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	eat_usleep(t_philo *philo, long long eat_time)
 	{
 		if (are_we_done(philo->data) == 1)
 			return (1);
-		usleep(200);
+		usleep(100);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 14:04:24 by letnitan          #+#    #+#              #
-#    Updated: 2023/10/07 18:40:21 by letnitan         ###   ########.fr        #
+#    Updated: 2023/10/08 11:27:17 by letnitan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ OBJS = $(addprefix $(OBJ_DIR),  $(addsuffix .o, $(SRC_FILES)))
 # ${SRCS:.c=.o}
 
 CC			= cc
-CFLAGS		= -Wall -Werror -Wextra -pthread -g3
+CFLAGS		= -Wall -Werror -Wextra -pthread -g3 -fsanitize=thread
 
 RM = rm -rf
 
