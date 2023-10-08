@@ -29,8 +29,16 @@ Le sujet :
 ### Test qui passent pas
 - ./philo 200 800 200 200 1 doit afficher "is eating" en dernier. La il affiche is thinking.
 
+### En correction, attention :
+- Ce test
+./philo 5 800 200 200 7 | grep -c "is eating"
+37
+
+-> c'est normal. C'est AU MOINS 7 fois, pas "7 fois et pas une fois de plus".
+
 ### Parsing
 - ./philo 0 800 200 200. Attendu: (invalid arguments) : OK
 - ./philo 5 "   200    " 200 200. Attendu : ???? . Chez moi : Invalid Argument.
 - Toutes variations d'espaces : Invalid Argumnment.
 - ./philo 5. Attendu : ?. Chez moi : Invalid Argument.
+
