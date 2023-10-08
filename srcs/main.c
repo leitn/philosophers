@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 16:31:41 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/08 19:58:02 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ int	main(int argc, char *argv[])
 			return (1);
 		}
 	}
+	printf("invalid arguments\n");
 	return (0);
 }
 

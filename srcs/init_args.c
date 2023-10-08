@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:57:09 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 17:05:29 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/08 19:53:48 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,9 @@ int	ft_check_args(int argc, char *argv[])
 	{
 		while (argv[i][j] != '\0')
 		{
-			while (argv[i][j] == '\r' || argv[i][j] == '\t' || argv[i][j] == ' '
-			|| argv[i][j] == '\f' || argv[i][j] == '\v' || argv[i][j] == '\n')
-				j++;
 			if (argv[i][j] < '0' || argv[i][j] > '9')
 				return (1);
-			while (argv[i][j] >= '0' && argv[i][j] <= '9')
+			if(argv[i][j] >= '0' && argv[i][j] <= '9')
 				j++;
 		}
 		i++;
@@ -37,59 +34,24 @@ int	ft_check_args(int argc, char *argv[])
 	return (0);
 }
 
-int	*ft_argc_malloc(void)
-{
-	int	*intarg;
-
-	intarg = malloc(5 * sizeof(int));
-	if (intarg == NULL)
-		exit(EXIT_FAILURE);
-
-	return (intarg);
-}
-
-int	*ft_parsing_arguments(char **argv, int argc)
-{
-	int	i;
-	int	*intarg;
-
-	intarg = ft_argc_malloc();
-	if (ft_check_args(argc, argv) == 1)
-	{
-		free(intarg);
-		return (NULL);
-	}
-	i = 0;
-	while (i < 4)
-	{
-		intarg[i] = ft_atoi(argv[i + 1]);
-		if (intarg[i] == 0)
-			return (NULL);
-		i++;
-	}
-	if (argc == 6)
-		intarg[4] = ft_atoi(argv[5]);
-	else
-		intarg[4] = -1;
-	return (intarg);
-}
-
-
 int	ft_init_args(int argc, char *argv[], t_data *data)
 {
-	int		*arguments;
-
-	arguments = ft_parsing_arguments(argv, argc);
-	if (arguments == NULL)
+	if (ft_check_args(argc, argv) == 1)
 		return (1);
-	data->nb_philo = arguments[0];
-	data->time_to_die = arguments[1];
-	data->time_to_eat = arguments[2];
-	data->time_to_sleep = arguments[3];
-	data->nb_max_meals = arguments[4];
+	data->nb_philo = ft_atol(argv[1]);
+	data->time_to_die = ft_atoll(argv[2]);
+	data->time_to_eat = ft_atoll(argv[3]);
+	data->time_to_sleep = ft_atoll(argv[4]);
+	if (argc == 6)
+			data->nb_max_meals = ft_atoi(argv[5]);
+	else
+		data->nb_max_meals = -2;
 	data->finished_dinner = 0;
 	data->dead_man_among_us = 0;
-	free(arguments);
+	if (data->nb_philo == -1 || data->time_to_die == -1
+		|| data->time_to_eat == -1 || data->time_to_sleep == -1
+		|| data->nb_max_meals == -1 || data->nb_philo == 0)
+		return (1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 19:22:35 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/08 19:30:27 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,6 @@ void		ft_monitor(t_data *data);
 
 //init_args.c
 int			ft_check_args(int argc, char *argv[]);
-int			*ft_argc_malloc(void);
-int			*ft_parsing_arguments(char **argv, int argc);
 int			ft_init_args(int argc, char *argv[], t_data *data);
 
 //init_data.c
@@ -115,6 +113,8 @@ int			ft_init_data(t_data *data);
 
 // utils.c
 int			ft_atoi(char *str);
+long		ft_atol(char *str);
+long long	ft_atoll(char *str);
 void		ft_error(t_data	*data); /* utile ? */
 void		print_with_mutex(char *str, t_data *data);
 int			print_mandatory_format(t_data *data, int id, int option);
