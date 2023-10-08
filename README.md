@@ -32,4 +32,3 @@ Le sujet :
 - ./philo 5 "   200    " 200 200. Attendu : ???? . Chez moi : Invalid Argument.
 - Toutes variations d'espaces : Invalid Argumnment.
 - ./philo 5. Attendu : ?. Chez moi : Invalid Argument.
-
