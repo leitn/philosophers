@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 15:19:04 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/08 16:31:49 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 //Lock right fork mutex
 int	take_right_fork(t_philo *philo)
 {
-	if (pthread_mutex_lock(philo->right_fork) != 0)
+	if (pthread_mutex_lock(philo->right_fork) != 0 || get_status(philo) == DIED)
 	{
 		pthread_mutex_unlock(philo->right_fork);
 		return (1);
 	}
 	if (print_mandatory_format(philo->data, philo->philo_id,
-		4) == 1) //means print found a dead man
+		4) == 1 || get_status(philo) == DIED) //means print found a dead man
 	{
 		pthread_mutex_unlock(philo->right_fork);
 		return (1);
@@ -32,13 +32,13 @@ int	take_right_fork(t_philo *philo)
 //locks left fork mutex
 int	take_left_fork(t_philo *philo)
 {
-	if (pthread_mutex_lock(philo->left_fork) != 0)
+	if (pthread_mutex_lock(philo->left_fork) != 0 || get_status(philo) == DIED)
 	{
 		pthread_mutex_unlock(philo->left_fork);
 		return (1);
 	}
 	if (print_mandatory_format(philo->data, philo->philo_id,
-		3) == 1)  //means print found a dead man
+		3) == 1 || get_status(philo) == DIED)  //means print found a dead man
 	{
 		pthread_mutex_unlock(philo->left_fork);
 		return (1);
@@ -53,9 +53,10 @@ int	ft_right_handed(t_philo *philo)
 	if (take_left_fork(philo) != 0 || are_we_done(philo->data) == 1)
 	{
 		// pthread_mutex_unlock(philo->right_fork);
-		pthread_mutex_unlock(philo->left_fork);
+		pthread_mutex_unlock(philo->right_fork);
 		return (1);
 	}
+
 	return (0);
 }
 
@@ -66,7 +67,7 @@ int	ft_left_handed(t_philo *philo)
 	if (take_right_fork(philo) != 0 || are_we_done(philo->data) == 1)
 	{
 		// pthread_mutex_unlock(philo->left_fork);
-		pthread_mutex_unlock(philo->right_fork);
+		pthread_mutex_unlock(philo->left_fork);
 		return (1);
 	}
 	return (0);
@@ -109,8 +110,7 @@ void	unlock_forks(t_philo *philo)
 //WIP !
 int	ft_eat(t_philo *philo)
 {
-	if (check_if_prio(philo) == 1)
-		return (1);
+	check_if_prio(philo);
 	if (ready_steady_forks(philo) == 1)
 		return (1);
 	set_status(philo, EATING);
