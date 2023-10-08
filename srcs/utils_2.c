@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:36:32 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 20:12:04 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/08 20:17:36 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void	ft_destroy_mutex(t_data *data)
 		pthread_mutex_destroy(&data->philos[i].mut_status);
 		pthread_mutex_destroy(&data->philos[i].mut_t_eating);
 		pthread_mutex_destroy(&data->philos[i].mut_nb_meals);
-		pthread_mutex_destroy(data->philos[i].right_fork);
-		pthread_mutex_destroy(data->philos[i].left_fork);
 		pthread_mutex_destroy(&data->forks[i]);
 		i++;
 	}
