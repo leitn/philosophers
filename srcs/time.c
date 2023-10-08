@@ -6,18 +6,13 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:53:06 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 16:15:01 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/08 20:06:28 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	invert_prio(t_philo *philo)
-{
-	if (philo->prio == 0)
-		return (1);
-	return (0);
-}
+
 // usleep for eat_time miliseconds
 int	eat_usleep(t_philo *philo, long long eat_time)
 {

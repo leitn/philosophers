@@ -6,70 +6,43 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:36:32 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 16:46:44 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/08 20:12:04 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	check_if_prio(t_philo *philo)
+
+//prints error and FREES data
+void	ft_error(t_data	*data)
 {
-	if ((philo->prio) == 0)
-	{
-		print_mandatory_format(philo->data, philo->philo_id, 2);
-		if (eat_usleep(philo, ft_get_time_to_eat(philo)) == 1)
-			return (1);
-		philo->prio = invert_prio(philo);
-		return (1);
-	}
+	pthread_mutex_lock(&data->mut_print);
+	printf("\nERROR\n");
+	pthread_mutex_unlock(&data->mut_print);
+	ft_free_data(data);
+}
+int	print_mandatory_format(t_data *data, int id, int option)
+{
+	static char	*lookup[6] = {
+		"%lld %d is eating\n",
+		"%lld %d is sleeping\n",
+		"%lld %d is thinking\n",
+		"%lld %d has taken their left fork\n",
+		"%lld %d has taken their right fork\n",
+		"%lld %d died\n"};
+	long long	time;
+	long long	ph_start_time;
+
+	ph_start_time = ft_get_start_time(data);
+	time = ft_get_time() - ph_start_time; // someone suggested to add /1000. Print the values later to find out
+	pthread_mutex_lock(&data->mut_print);
+	if (option != 5 && are_we_done(data) == 1)// if we're done but option other than 5 : do not print in case of impending doom
+		return (pthread_mutex_unlock(&data->mut_print), 1);
+	printf(lookup[option], time, id + 1);
+	pthread_mutex_unlock(&data->mut_print);
 	return (0);
 }
 
-//Sets status, checks for death, prints action and sleeps for sleep_time.
-int	ft_sleep(t_philo *philo)
-{
-	set_status(philo, SLEEPING);
-	if (are_we_done(philo->data) == 1)
-		return (1);
-	if (print_mandatory_format(philo->data, philo->philo_id, 1) == 1)
-		return(1);
-	if ((sleep_usleep(philo, ft_get_time_to_sleep(philo))) == 1)
-		return (1);
-	return (0);
-}
-//Sets status, checks death, prints action monitoring. DOESNT SLEEP.
-int	ft_think(t_philo *philo)
-{
-	int			nb_philo;
-	int			t_to_eat;
-	int			t_to_sleep;
-	long long	start;
-
-	nb_philo = ft_get_nb_philos(philo->data);
-	t_to_eat = ft_get_time_to_eat(philo);
-	t_to_sleep = ft_get_time_to_sleep(philo);
-	start = ft_get_time();
-	set_status(philo, THINKING);
-	if (are_we_done(philo->data) == 1)
-		return (1);
-	if (print_mandatory_format(philo->data, philo->philo_id, 2))
-		return (1);
-
-	if (nb_philo % 2 == 0 || t_to_sleep > t_to_eat)
-	{
-		while (ft_get_time() - start < 3)
-		{
-			if (are_we_done(philo->data) == 1)
-				return (0);
-			usleep(500);
-		}
-		return (0);
-	}
-	while (ft_get_time() - start < t_to_eat * 2- t_to_sleep)
-		usleep(25);
-	return (0);
-}
-// incomplet !
 void	ft_destroy_mutex(t_data *data)
 {
 	int	i;

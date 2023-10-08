@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 19:30:27 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/08 20:12:47 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,8 @@ int			ft_right_handed(t_philo *philo);
 int			ft_left_handed(t_philo *philo);
 int			ft_eat(t_philo	*philo);
 
-//die.c
-int			are_we_done(t_data *data);
-int			is_someone_dead(t_data *data);
-int			death_status(t_philo *philo);
-
 //monitor.c
+int			are_we_done(t_data *data);
 int			finished_eating(t_data *data);
 int			is_that_one_dead(t_philo *philo);
 int			valar_morghulis(t_data *data);
@@ -115,19 +111,20 @@ int			ft_init_data(t_data *data);
 int			ft_atoi(char *str);
 long		ft_atol(char *str);
 long long	ft_atoll(char *str);
-void		ft_error(t_data	*data); /* utile ? */
-void		print_with_mutex(char *str, t_data *data);
-int			print_mandatory_format(t_data *data, int id, int option);
 
 // utils_2.c
-int			check_if_prio(t_philo *philo);
-int			ft_sleep(t_philo *philo);
-int			ft_think(t_philo *philo);
 void		ft_destroy_mutex(t_data *data);
 void		ft_free_data(t_data *data);
+void		ft_error(t_data	*data);
+int			print_mandatory_format(t_data *data, int id, int option);
+
+//actions.c
+int			check_if_prio(t_philo *philo);
+int			invert_prio(t_philo *philo);
+int			ft_think(t_philo *philo);
+int			ft_sleep(t_philo *philo);
 
 //time.c
-int			invert_prio(t_philo *philo);
 int			eat_usleep(t_philo *philo, long long eat_time);
 int			sleep_usleep(t_philo *philo, long long sleep_time);
 void		ft_time_of_eating(t_philo *philo);
@@ -139,6 +136,8 @@ long long	ft_get_last_meal_time(t_philo *philo);
 long long	ft_get_time_to_eat(t_philo *philo);
 long long	ft_get_time_to_die(t_philo *philo);
 long long	ft_get_time_to_sleep(t_philo *philo);
+
+//get_info_2.c
 long		ft_get_nb_philos(t_data *data);
 long long	ft_get_start_time(t_data *data);
 int			ft_get_nb_max_meals(t_data *data);

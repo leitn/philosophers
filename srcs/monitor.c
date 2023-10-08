@@ -6,11 +6,26 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:40:50 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/07 17:08:29 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/08 20:03:34 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
+
+// used in main thread
+int	are_we_done(t_data *data)
+{
+	int	i_see_dead_people;
+	int	are_we_all_full;
+
+	i_see_dead_people = ft_get_pulse(data);
+	are_we_all_full = ft_get_completion(data);
+	if (i_see_dead_people == 1)
+		return(1); // there is a corpse
+	if (are_we_all_full == 1)
+		return(1); // everybody is full
+	return (0); // All good
+}
 
 int	finished_eating(t_data *data)
 {

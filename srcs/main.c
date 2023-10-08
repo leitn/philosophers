@@ -6,11 +6,13 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 19:58:02 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/08 20:16:06 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
+
+
 
 //join threads, returns 1 if error
 int	ft_pthread_join(t_data *data)
@@ -129,7 +131,8 @@ int	main(int argc, char *argv[])
 			return (1);
 		}
 	}
-	printf("invalid arguments\n");
+	if (argc != 5 && argc != 6)
+		printf("invalid arguments\n");
 	return (0);
 }
 
