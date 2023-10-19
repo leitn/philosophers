@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 20:38:57 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:21:16 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ long		ft_atol(char *str);
 long long	ft_atoll(char *str);
 
 // utils_2.c
+int			ft_get_nb_meals(t_philo *philo);
 void		ft_destroy_mutex(t_data *data);
 void		ft_free_data(t_data *data);
 void		ft_error(t_data	*data);

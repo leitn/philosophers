@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:40:50 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/19 19:04:32 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:22:43 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	finished_eating(t_data *data)
 	{
 		while (i < nb_philo)
 		{
-			if (data->philos[i].nb_meals < max_meals)
+			if (ft_get_nb_meals(&data->philos[i]) < max_meals)
 				break ;
 			set_status(&data->philos[i], FULL);
 			i++;

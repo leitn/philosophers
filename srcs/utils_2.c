@@ -6,11 +6,22 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:36:32 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 20:18:30 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:22:34 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
+
+int	ft_get_nb_meals(t_philo *philo)
+{
+	int	ph_nb_meals;
+
+	pthread_mutex_lock(&philo->mut_nb_meals);
+	ph_nb_meals = philo->nb_meals;
+	pthread_mutex_unlock(&philo->mut_nb_meals);
+	return (ph_nb_meals);
+}
+
 
 //prints error and FREES data
 void	ft_error(t_data	*data)
