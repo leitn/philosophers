@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:40:50 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 20:03:34 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/19 19:04:32 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ int	are_we_done(t_data *data)
 	i_see_dead_people = ft_get_pulse(data);
 	are_we_all_full = ft_get_completion(data);
 	if (i_see_dead_people == 1)
-		return(1); // there is a corpse
+		return(1);
 	if (are_we_all_full == 1)
-		return(1); // everybody is full
-	return (0); // All good
+		return(1);
+	return (0);
 }
 
 int	finished_eating(t_data *data)
@@ -48,10 +48,10 @@ int	finished_eating(t_data *data)
 		if (i == nb_philo)
 		{
 			set_finished(data);
-			return (1); //Yes, they all finished eating
+			return (1);
 		}
 	}
-	return (0); //No, they did not finish eating
+	return (0);
 }
 
 int	is_that_one_dead(t_philo *philo)
@@ -64,8 +64,8 @@ int	is_that_one_dead(t_philo *philo)
 	now = ft_get_time();
 	fatal_starvation_time = ft_get_time_to_die(philo);
 	if (now - last_meal_time >= fatal_starvation_time)
-		return (1); // aka Yes, that one is dead
-	return (0); // No, all good
+		return (1);
+	return (0);
 }
 
 int	valar_morghulis(t_data *data)
@@ -82,11 +82,11 @@ int	valar_morghulis(t_data *data)
 			set_status(&data->philos[i], DIED);
 			yell_omg_someone_just_died(data);
 			print_mandatory_format(data, data->philos[i].philo_id, 5);
-			return (1); // someone died and it has been recorded in data
+			return (1);
 		}
 		i++;
 	}
-	return (0); // no one died
+	return (0);
 }
 
 void	ft_monitor(t_data *data)
@@ -94,7 +94,7 @@ void	ft_monitor(t_data *data)
 	int	i;
 
 	usleep(125);
-	while (valar_morghulis(data) == 0 && finished_eating(data) == 0) //continue while all good
+	while (valar_morghulis(data) == 0 && finished_eating(data) == 0)
 		usleep(500);
 	i = 0;
 	while (i < data->nb_philo)

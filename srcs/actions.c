@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:06:02 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 20:39:03 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:38:16 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int	check_if_prio(t_philo *philo)
 int	ft_sleep(t_philo *philo)
 {
 	set_status(philo, SLEEPING);
-	if (are_we_done(philo->data) == 1)
-		return (1);
 	if (print_mandatory_format(philo->data, philo->philo_id, 1) == 1)
 		return(1);
+	if (are_we_done(philo->data) == 1)
+		return (1);
 	if ((sleep_usleep(philo, ft_get_time_to_sleep(philo))) == 1)
 		return (1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 20:25:43 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/19 19:14:51 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	*routine(t_philo *philo)
 	while (are_we_done(philo->data) == 0)
 	{
 		if (philo->philo_id % 2 != 0)
-			usleep(400);
+			usleep(100);
 		if (ft_eat(philo) == 1)
 			break ;
 		if (are_we_done(philo->data) == 1)
