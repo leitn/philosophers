@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 15:35:05 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 19:05:01 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int			ft_sleep(t_philo *philo);
 
 //time.c
 int			eat_usleep(t_philo *philo, long long eat_time, long long s_time);
-int			sleep_usleep(t_philo *philo, long long sleep_time);
+int			sleep_usleep(t_philo *philo, long long sleep_time, long long start);
 void		ft_time_of_eating(t_philo *philo);
 long long	ft_get_time(void);
 

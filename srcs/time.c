@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:53:06 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 15:35:43 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 19:05:12 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,8 @@ int	eat_usleep(t_philo *philo, long long eat_time, long long s_time)
 }
 
 // usleep for sleep_time miliseconds
-int	sleep_usleep(t_philo *philo, long long sleep_time)
+int	sleep_usleep(t_philo *philo, long long sleep_time, long long start)
 {
-	long long	start;
-
-	start = ft_get_time();
 	while ((ft_get_time() - start) < sleep_time)
 	{
 		if (are_we_done(philo->data) == 1)
