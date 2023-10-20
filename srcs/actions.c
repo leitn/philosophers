@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:06:02 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 19:04:44 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 21:19:12 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	check_if_prio(t_philo *philo, long long eat_time)
 {
 	if ((philo->prio) == 0)
 	{
+		if (print_mandatory_format(philo->data, philo->philo_id, 2, eat_time))
+			return (1);
 		while ((ft_get_time() - eat_time) < philo->data->time_to_eat)
 		{
 			if (are_we_done(philo->data) == 1)
