@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:06:02 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 21:19:12 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 21:46:20 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,16 @@ int	think_different(long long start, t_philo *philo)
 //checks death, prints action monitoring.
 int	ft_think(t_philo *philo)
 {
-	int			nb_philo;
-	int			t_to_eat;
-	int			t_to_sleep;
 	long long	start;
 
-	nb_philo = philo->data->nb_philo;
-	t_to_eat = philo->data->time_to_eat;
-	t_to_sleep = philo->data->time_to_sleep;
-	start = ft_get_time();
 	if (are_we_done(philo->data) == 1)
 		return (1);
+	start = ft_get_time();
 	if (print_mandatory_format(philo->data, philo->philo_id, 2, ft_get_time()))
 		return (1);
-	if (nb_philo % 2 == 0 || t_to_sleep > t_to_eat)
+	if (philo->data->nb_philo % 2 == 0 || philo->data->time_to_sleep > philo->data->time_to_eat)
 		return (think_different(start, philo));
-	while (ft_get_time() - start < t_to_eat * 2- t_to_sleep)
+	while (ft_get_time() - start < philo->data->time_to_eat * 2- philo->data->time_to_sleep)
 		usleep(25);
 	return (0);
 }
