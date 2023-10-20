@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:17:35 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:37:45 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,7 @@ int	ft_start_routine(t_data	*data)
 	int			i;
 
 	i = 0;
-	// pthread_mutex_lock(&data->mut_start_t);
 	data->start_time = ft_get_time();
-	// pthread_mutex_unlock(&data->mut_start_t);
 	while (i < data->nb_philo)
 	{
 		ft_set_last_meal_time(&data->philos[i]);

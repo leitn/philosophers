@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:36:32 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:26:40 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:42:51 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ void	ft_destroy_mutex(t_data *data)
 		i++;
 	}
 	pthread_mutex_destroy(&data->mut_start_t);
-	// pthread_mutex_destroy(&data->mut_eat_time);
-	pthread_mutex_destroy(&data->mut_sleep_t);
 	pthread_mutex_destroy(&data->mut_max_meals);
 	pthread_mutex_destroy(&data->mut_finished);
 	pthread_mutex_destroy(&data->mut_dead_man);
