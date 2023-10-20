@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:40:50 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 20:58:02 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 21:44:13 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,13 @@ int	are_we_done(t_data *data)
 int	finished_eating(t_data *data)
 {
 	int	i;
-	int	max_meals;
 
 	i = 0;
-	max_meals = ft_get_nb_max_meals(data);
-	if (max_meals >= 0)
+	if (data->nb_max_meals >= 0)
 	{
 		while (i < data->nb_philo)
 		{
-			if (ft_get_nb_meals(&data->philos[i]) < max_meals)
+			if (ft_get_nb_meals(&data->philos[i]) < data->nb_max_meals)
 				break ;
 			i++;
 		}

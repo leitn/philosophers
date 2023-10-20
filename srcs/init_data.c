@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:15:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 17:49:52 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 21:43:10 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	ft_init_data(t_data *data)
 	if (ft_init_philos_threads(data) != 0)
 		return (1);
 	pthread_mutex_init(&data->mut_print, NULL);
-	pthread_mutex_init(&data->mut_max_meals, NULL);
 	pthread_mutex_init(&data->mut_finished, NULL);
 	pthread_mutex_init(&data->mut_start_t, NULL);
 	pthread_mutex_init(&data->mut_dead_man, NULL);

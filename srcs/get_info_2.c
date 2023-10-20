@@ -6,22 +6,12 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:13:18 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 17:49:04 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 21:43:01 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-
-int	ft_get_nb_max_meals(t_data *data)
-{
-	int	max_meals;
-
-	pthread_mutex_lock(&data->mut_max_meals);
-	max_meals = data->nb_max_meals;
-	pthread_mutex_unlock(&data->mut_max_meals);
-	return (max_meals);
-}
 
 int	ft_get_pulse(t_data *data)
 {
