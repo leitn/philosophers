@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 15:57:43 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:49:33 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	ft_left_handed(t_philo *philo)
 		return (1);
 	if ( are_we_done(philo->data) == 1 || take_right_fork(philo) != 0)
 	{
-		// pthread_mutex_unlock(philo->left_fork);
 		pthread_mutex_unlock(philo->left_fork);
 		return (1);
 	}

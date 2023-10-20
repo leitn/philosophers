@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:57:09 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 19:53:48 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:49:46 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,3 @@ int	ft_init_args(int argc, char *argv[], t_data *data)
 	return (0);
 }
 
-
-/*  Enlever le malloc pourri dans parsing args, utiliser atoi et atol, mais optimier pour prendre en compte le cas "    400" par exemple (whitespaces) */

@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:06:02 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 16:08:39 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:14:15 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	check_if_prio(t_philo *philo, long long eat_time)
 {
 	if ((philo->prio) == 0)
 	{
-		print_mandatory_format(philo->data, philo->philo_id, 2, ft_get_time());
 		while ((ft_get_time() - eat_time) < philo->data->time_to_eat)
 		{
 			if (are_we_done(philo->data) == 1)
@@ -58,6 +57,7 @@ int	think_different(long long start, t_philo *philo)
 	}
 	return (0);
 }
+
 //checks death, prints action monitoring.
 int	ft_think(t_philo *philo)
 {
@@ -80,6 +80,3 @@ int	ft_think(t_philo *philo)
 		usleep(25);
 	return (0);
 }
-
-/* 	while (ft_get_time() - start < t_to_eat * 2- t_to_sleep)
-		usleep(25); */

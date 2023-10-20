@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:15:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:43:08 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:49:52 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,3 @@ int	ft_init_data(t_data *data)
 	return (0);
 }
 
-
-/* TO FIX :
-
-comment font les autrs pur le philosophe 0 ? Chez moi c'est trop long et trop chiant */
