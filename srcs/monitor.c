@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:40:50 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 15:18:26 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 20:58:02 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,9 @@
 // used in main thread
 int	are_we_done(t_data *data)
 {
-	int	i_see_dead_people;
-	int	are_we_all_full;
-
-	i_see_dead_people = ft_get_pulse(data);
-	are_we_all_full = ft_get_completion(data);
-	if (i_see_dead_people == 1)
+	if (ft_get_pulse(data) == 1)
 		return(1);
-	if (are_we_all_full == 1)
+	if (ft_get_completion(data) == 1)
 		return(1);
 	return (0);
 }
