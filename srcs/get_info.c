@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:34:21 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 12:42:06 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:23:02 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,6 @@ long long	ft_get_time_to_eat(t_philo *philo)
 	ph_time_to_eat = philo->data->time_to_eat;
 	pthread_mutex_unlock(&philo->data->mut_eat_time);
 	return (ph_time_to_eat);
-}
-
-//MUTEX. checks and return time_to_die parameter.
-long long	ft_get_time_to_die(t_philo *philo)
-{
-	long long	ph_time_to_die;
-
-	pthread_mutex_lock(&philo->data->mut_die_time);
-	ph_time_to_die = philo->data->time_to_die;
-	pthread_mutex_unlock(&philo->data->mut_die_time);
-	return (ph_time_to_die);
 }
 
 //MUTEX. checks and return time_to_sleep parameter.

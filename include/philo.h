@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:13:18 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:25:54 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ typedef struct s_data{
 	int				finished_dinner;
 	int				dead_man_among_us;
 	pthread_mutex_t	mut_start_t;
-	pthread_mutex_t	mut_die_time;
-	pthread_mutex_t	mut_eat_time;
+	// pthread_mutex_t	mut_eat_time;
 	pthread_mutex_t	mut_sleep_t;
 	pthread_mutex_t	mut_max_meals;
 	pthread_mutex_t	mut_finished;
@@ -124,7 +123,6 @@ long long	ft_get_time(void);
 //get_info.c
 long long	ft_get_last_meal_time(t_philo *philo);
 long long	ft_get_time_to_eat(t_philo *philo);
-long long	ft_get_time_to_die(t_philo *philo);
 long long	ft_get_time_to_sleep(t_philo *philo);
 
 //get_info_2.c

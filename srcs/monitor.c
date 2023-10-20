@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:40:50 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:17:23 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:25:35 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	is_that_one_dead(t_philo *philo)
 
 	last_meal_time = ft_get_last_meal_time(philo);
 	now = ft_get_time();
-	fatal_starvation_time = ft_get_time_to_die(philo);
+	fatal_starvation_time = philo->data->time_to_die;
 	if (now - last_meal_time >= fatal_starvation_time)
 		return (1);
 	return (0);
