@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:25:54 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:34:49 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ long long	ft_get_time(void);
 
 //get_info.c
 long long	ft_get_last_meal_time(t_philo *philo);
-long long	ft_get_time_to_eat(t_philo *philo);
 long long	ft_get_time_to_sleep(t_philo *philo);
 
 //get_info_2.c
