@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:40:50 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/19 20:22:43 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:10:00 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,17 +89,10 @@ int	valar_morghulis(t_data *data)
 	return (0);
 }
 
-void	ft_monitor(t_data *data)
+int	ft_monitor(t_data *data)
 {
-	int	i;
-
 	usleep(125);
 	while (valar_morghulis(data) == 0 && finished_eating(data) == 0)
 		usleep(500);
-	i = 0;
-	while (i < data->nb_philo)
-	{
-		pthread_join(data->philo_threads[i], NULL);
-		i++;
-	}
+	return(1);
 }

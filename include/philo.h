@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/19 20:21:16 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:08:57 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int			are_we_done(t_data *data);
 int			finished_eating(t_data *data);
 int			is_that_one_dead(t_philo *philo);
 int			valar_morghulis(t_data *data);
-void		ft_monitor(t_data *data);
+int			ft_monitor(t_data *data);
 
 /*-----------------------STRUCTURES-MANAGEMENT-----------------------*/
 

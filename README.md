@@ -25,19 +25,19 @@ Le sujet :
 - ./philo 5 800 200 200 (doit boucler a l'infini)
 - ./philo 1 800 200 200 (doit crever de faim minablement avec une fourchette en main et un bol de spaghettis sur la table )
 - ./philo 5 599 200 200 (doit mourir en 600 millisecondes)
-- ./philo 200 800 200 200 1 doit afficher "is eating" en dernier. La il affiche is thinking.
+- ./philo 200 800 200 200 1 doit afficher "is eating" en dernier.
 
 ### Test qui passent pas
 - valgrind --tool=helgrind ./philo 4 410 200 200 10
 - Helgrind Tests :
--4 310 200 100
-- 5 599 200 200
-- 5 300 60 600
 - 200 60 60 60
 - 199 800 300 100
+- 4 410 200 200 10
+- 199 610 200 200 10
+- 199 610 200 200 10
+
 - 5 800 200 200 7
 - 3 800 200 200 7
-- 4 410 200 200 1
 - 7 800 200 500 7
 
 ### En correction, attention :

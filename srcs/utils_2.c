@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:36:32 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/19 20:22:34 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:31:16 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	print_mandatory_format(t_data *data, int id, int option)
 		"%lld %d is eating\n",
 		"%lld %d is sleeping\n",
 		"%lld %d is thinking\n",
-		"%lld %d has taken their left fork\n",
-		"%lld %d has taken their right fork\n",
+		"%lld %d has taken a fork\n",
+		"%lld %d has taken a fork\n",
 		"%lld %d died\n"};
 	long long	time;
 	long long	ph_start_time;
