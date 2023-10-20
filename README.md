@@ -11,7 +11,6 @@ Le sujet :
 
 ### Problemes nuls
 - Norme (trop de fonctions par fichier) (commentaires qui trainent) (trop de lignes sur quelques fonctions)
-- Fonctions doublons et Fonctions non utilisees
 - Organisation : c'est le bazard.
 - fonctions die.c en trop :  is_someone_dead(t_data *data);  inutile maintenant.
 
@@ -21,26 +20,18 @@ Le sujet :
 - check les overflows OK
 - Mon parsing a une meilleure gueule OK
 
-### Tests OK
-- ./philo 5 800 200 200 (doit boucler a l'infini)
-- ./philo 1 800 200 200 (doit crever de faim minablement avec une fourchette en main et un bol de spaghettis sur la table )
-- ./philo 5 599 200 200 (doit mourir en 600 millisecondes)
-- ./philo 200 800 200 200 1 doit afficher "is eating" en dernier.
-- valgrind --tool=helgrind ./philo 200 60 60 60
-- valgrind --tool=helgrind ./philo 199 800 300 100
-- valgrind --tool=helgrind ./philo 4 410 200 200 10
-- valgrind --tool=helgrind ./philo 199 610 200 200 10
-- valgrind --tool=helgrind ./philo 5 800 200 200 7
-- valgrind --tool=helgrind ./philo 3 800 200 200 7
-- valgrind --tool=helgrind ./philo 7 800 200 500 7
-- 200 300 60 600 helgrind data race conditions (edit : OK)
-- 199 610 200 80 10 helgrind race conditions detected (edit : OK)
-
 ### Test qui passent pas
 - ./philo 200 410 200 200 - doit tourner 40 secondes au moins
 - ./philo 200 410 200 80 - idem
-- did not eat enough + helgrind 200 410 200 80 10
 
+### Tests a faire apres chaque changement
+- 5 800 200 150 : doivent vivre au moins 40 secondes
+- 5 800 200 200  : doivent vivre au moins40 secondes
+- 3 610 200 80 : doivent vivre au moins 40 secondes
+- 3 610 200 200 : doivent vivre au moins 40 secondes
+- 199 610 200 80 : idem
+- 200 410 200 80 : idem
+- 200 410 200 200 : idem
 
 ### En correction, attention :
 - Ce test

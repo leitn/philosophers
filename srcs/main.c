@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 12:39:50 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:17:35 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@
 int	ft_pthread_join(t_data *data)
 {
 	int	i;
-	int	nb;
 
 	i = 0;
-	nb = ft_get_nb_philos(data);
-	while (i < nb)
+	while (i < data->nb_philo)
 	{
 		if (pthread_join(data->philo_threads[i], NULL))
 			return (1);
@@ -31,9 +29,6 @@ int	ft_pthread_join(t_data *data)
 
 void	*routine(t_philo *philo)
 {
-	int			nb;
-
-	nb = ft_get_nb_philos(philo->data);
 	while (are_we_done(philo->data) == 0)
 	{
 		if (philo->philo_id % 2 != 0)
@@ -58,11 +53,9 @@ void	*routine(t_philo *philo)
 void	*ft_routine(void *ph_philo)
 {
 	t_philo		*philo;
-	int			nb;
 
 	philo = (t_philo *) ph_philo;
-	nb = ft_get_nb_philos(philo->data);
-	if (nb == 1)
+	if (philo->data->nb_philo == 1)
 	{
 		pthread_mutex_lock(philo->left_fork);
 		print_mandatory_format(philo->data, philo->philo_id, 3);
@@ -73,9 +66,9 @@ void	*ft_routine(void *ph_philo)
 	}
 	if (philo->philo_id % 2 == 0)
 		philo->prio = 0;
-	else if (philo->philo_id != nb - 1)
+	else if (philo->philo_id != philo->data->nb_philo - 1)
 		philo->prio = 1;
-	else if (nb % 2 == 0)
+	else if (philo->data->nb_philo % 2 == 0)
 		philo->prio = 1;
 	else
 		philo->prio = 0;
@@ -87,12 +80,12 @@ void	*ft_routine(void *ph_philo)
 int	ft_start_routine(t_data	*data)
 {
 	int			i;
-	int			ph_nb_philo;
 
 	i = 0;
-	ph_nb_philo = ft_get_nb_philos(data);
+	// pthread_mutex_lock(&data->mut_start_t);
 	data->start_time = ft_get_time();
-	while (i < ph_nb_philo)
+	// pthread_mutex_unlock(&data->mut_start_t);
+	while (i < data->nb_philo)
 	{
 		ft_set_last_meal_time(&data->philos[i]);
 		if (pthread_create(&data->philo_threads[i], NULL,

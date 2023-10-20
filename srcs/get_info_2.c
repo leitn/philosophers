@@ -6,21 +6,11 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:13:18 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 20:14:04 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:13:39 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-
-long	ft_get_nb_philos(t_data *data)
-{
-	long	ph_nb;
-
-	pthread_mutex_lock(&data->mut_nb_philos);
-	ph_nb = data->nb_philo;
-	pthread_mutex_unlock(&data->mut_nb_philos);
-	return (ph_nb);
-}
 
 long long	ft_get_start_time(t_data *data)
 {

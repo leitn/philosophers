@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:40:50 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 12:42:42 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:17:23 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,18 @@ int	finished_eating(t_data *data)
 {
 	int	i;
 	int	max_meals;
-	int	nb_philo;
 
 	i = 0;
 	max_meals = ft_get_nb_max_meals(data);
-	nb_philo = ft_get_nb_philos(data);
 	if (max_meals >= 0)
 	{
-		while (i < nb_philo)
+		while (i < data->nb_philo)
 		{
 			if (ft_get_nb_meals(&data->philos[i]) < max_meals)
 				break ;
 			i++;
 		}
-		if (i == nb_philo)
+		if (i == data->nb_philo)
 		{
 			set_finished(data);
 			return (1);
@@ -70,11 +68,9 @@ int	is_that_one_dead(t_philo *philo)
 int	valar_morghulis(t_data *data)
 {
 	int	i;
-	int	nb;
 
 	i = 0;
-	nb = ft_get_nb_philos(data);
-	while (i < nb)
+	while (i < data->nb_philo)
 	{
 		if (is_that_one_dead(&data->philos[i]) == 1)
 		{
