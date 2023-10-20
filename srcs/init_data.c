@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:15:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/19 20:18:40 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:43:17 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ int	ft_init_philos(t_data *data)
 		philo[i].right_fork = &data->forks[i + 1];
 		philo[i].time_of_eating = philo->data->start_time;
 		philo[i].nb_meals = 0;
-		philo[i].status = NOTHING;
 		philo[i].prio = 0;
-		pthread_mutex_init(&philo[i].mut_status, NULL);
 		pthread_mutex_init(&philo[i].mut_t_eating, NULL);
 		pthread_mutex_init(&philo[i].mut_nb_meals, NULL);
 		i++;
@@ -56,10 +54,8 @@ int	ft_init_philos(t_data *data)
 		philo[i].time_of_eating = philo->data->start_time;
 		philo[i].nb_meals = 0;
 		philo[i].prio = 0;
-		pthread_mutex_init(&philo[i].mut_status, NULL);
 		pthread_mutex_init(&philo[i].mut_t_eating, NULL);
 		pthread_mutex_init(&philo[i].mut_nb_meals, NULL);
-		philo[i].status = NOTHING;
 	}
 	philo = data->philos;
 	return (0);

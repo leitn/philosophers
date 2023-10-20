@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 12:08:57 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:42:23 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,6 @@
 
 /*----------------------------STRUCTURES----------------------------*/
 
-typedef enum e_status{
-	THINKING = 0,
-	EATING = 1,
-	SLEEPING = 2,
-	DIED = 3,
-	FULL = 4,
-	NOTHING = 5,
-}	t_status;
-
 struct	s_data;
 
 typedef struct s_philo{
@@ -39,8 +30,6 @@ typedef struct s_philo{
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*left_fork;
 	long long		time_of_eating;
-	t_status		status;
-	pthread_mutex_t	mut_status;
 	pthread_mutex_t	mut_t_eating;
 	pthread_mutex_t	mut_nb_meals;
 	int				nb_meals;
@@ -134,7 +123,6 @@ void		ft_time_of_eating(t_philo *philo);
 long long	ft_get_time(void);
 
 //get_info.c
-t_status	get_status(t_philo *philo);
 long long	ft_get_last_meal_time(t_philo *philo);
 long long	ft_get_time_to_eat(t_philo *philo);
 long long	ft_get_time_to_die(t_philo *philo);
@@ -149,7 +137,6 @@ int			ft_get_completion(t_data *data);
 
 //set_info.c
 void		yell_omg_someone_just_died(t_data *data);
-void		set_status(t_philo *philo, t_status status);
 void		set_nb_meals(t_philo *philo);
 void		set_finished(t_data *data);
 long long	ft_set_last_meal_time(t_philo *philo);

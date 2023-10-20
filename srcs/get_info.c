@@ -6,22 +6,11 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:34:21 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/08 20:14:07 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:42:06 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-
-//checks status in structure, doesnt set it, uses mutex
-t_status	get_status(t_philo *philo)
-{
-	t_status	ph_status;
-
-	pthread_mutex_lock(&philo->mut_status);
-	ph_status = philo->status;
-	pthread_mutex_unlock(&philo->mut_status);
-	return (ph_status);
-}
 
 //checks time of last meal in struct and returns it
 long long	ft_get_last_meal_time(t_philo *philo)

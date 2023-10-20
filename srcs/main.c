@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 12:09:44 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:39:50 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,15 +102,6 @@ int	ft_start_routine(t_data	*data)
 	}
 	return (0);
 }
-
-/* {
-				while (i >= 0)
-					{
-						pthread_join(data->philo_threads[i], NULL);
-						i--;
-					}
-				return (1);
-			} */
 
 int	philosophers_problem(t_data *data)
 {

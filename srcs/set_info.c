@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 10:45:33 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/19 20:18:47 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:42:58 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,6 @@ void	yell_omg_someone_just_died(t_data *data)
 	if (data->dead_man_among_us == 0)
 		data->dead_man_among_us = 1;
 	pthread_mutex_unlock(&data->mut_dead_man);
-}
-
-//MUTEX. Changes philo status in t_philo.
-void	set_status(t_philo *philo, t_status status)
-{
-	pthread_mutex_lock(&philo->mut_status);
-	philo->status = status;
-	pthread_mutex_unlock(&philo->mut_status);
 }
 
 //MUTEX. nb_meals++ in t_philo

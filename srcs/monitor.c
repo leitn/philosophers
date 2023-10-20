@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:40:50 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 12:10:00 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:42:42 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	finished_eating(t_data *data)
 		{
 			if (ft_get_nb_meals(&data->philos[i]) < max_meals)
 				break ;
-			set_status(&data->philos[i], FULL);
 			i++;
 		}
 		if (i == nb_philo)
@@ -79,7 +78,6 @@ int	valar_morghulis(t_data *data)
 	{
 		if (is_that_one_dead(&data->philos[i]) == 1)
 		{
-			set_status(&data->philos[i], DIED);
 			yell_omg_someone_just_died(data);
 			print_mandatory_format(data, data->philos[i].philo_id, 5);
 			return (1);
