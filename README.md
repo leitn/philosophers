@@ -23,6 +23,13 @@ Le sujet :
 ### Test qui passent pas
 - ./philo 200 410 200 200 - doit tourner 40 secondes au moins
 - ./philo 200 410 200 80 - idem
+- HELGRIND 1 800 200 200
+- [+] Testing philo with 200 60 60 60
+[+] Test #7 Succeeded ! Only one death occured.
+[+] Test #7 Succeeded ! Simulation ends after death
+[-] Test #7 Error: Timestamp is incorrect with an error of -2 ms (58)
+
+200 410 200 80 10
 
 ### Tests a faire apres chaque changement
 - 5 800 200 150 : doivent vivre au moins 40 secondes

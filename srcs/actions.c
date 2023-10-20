@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:06:02 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:44:05 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 16:08:39 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,17 @@ int	invert_prio(t_philo *philo)
 	return (0);
 }
 
-int	check_if_prio(t_philo *philo)
+int	check_if_prio(t_philo *philo, long long eat_time)
 {
 	if ((philo->prio) == 0)
 	{
-		print_mandatory_format(philo->data, philo->philo_id, 2);
-		if (eat_usleep(philo, philo->data->time_to_eat) == 1)
-			return (1);
+		print_mandatory_format(philo->data, philo->philo_id, 2, ft_get_time());
+		while ((ft_get_time() - eat_time) < philo->data->time_to_eat)
+		{
+			if (are_we_done(philo->data) == 1)
+				return (1);
+			usleep(200);
+		}
 		philo->prio = invert_prio(philo);
 		return (1);
 	}
@@ -35,7 +39,7 @@ int	check_if_prio(t_philo *philo)
 //checks for death, prints action and sleeps for sleep_time.
 int	ft_sleep(t_philo *philo)
 {
-	if (print_mandatory_format(philo->data, philo->philo_id, 1) == 1)
+	if (print_mandatory_format(philo->data, philo->philo_id, 1, ft_get_time()) == 1)
 		return(1);
 	if (are_we_done(philo->data) == 1)
 		return (1);
@@ -68,7 +72,7 @@ int	ft_think(t_philo *philo)
 	start = ft_get_time();
 	if (are_we_done(philo->data) == 1)
 		return (1);
-	if (print_mandatory_format(philo->data, philo->philo_id, 2))
+	if (print_mandatory_format(philo->data, philo->philo_id, 2, ft_get_time()))
 		return (1);
 	if (nb_philo % 2 == 0 || t_to_sleep > t_to_eat)
 		return (think_different(start, philo));

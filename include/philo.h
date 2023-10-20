@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:44:15 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:35:05 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,17 +103,17 @@ int			ft_get_nb_meals(t_philo *philo);
 void		ft_destroy_mutex(t_data *data);
 void		ft_free_data(t_data *data);
 void		ft_error(t_data	*data);
-int			print_mandatory_format(t_data *data, int id, int option);
+int			print_mandatory_format(t_data *data, int id, int option, long long time_now);
 
 //actions.c
-int			check_if_prio(t_philo *philo);
+int			check_if_prio(t_philo *philo, long long eat_time);
 int			invert_prio(t_philo *philo);
 int			think_different(long long start, t_philo *philo);
 int			ft_think(t_philo *philo);
 int			ft_sleep(t_philo *philo);
 
 //time.c
-int			eat_usleep(t_philo *philo, long long eat_time);
+int			eat_usleep(t_philo *philo, long long eat_time, long long s_time);
 int			sleep_usleep(t_philo *philo, long long sleep_time);
 void		ft_time_of_eating(t_philo *philo);
 long long	ft_get_time(void);

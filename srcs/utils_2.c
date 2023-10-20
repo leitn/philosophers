@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:36:32 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:42:51 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:18:56 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_error(t_data	*data)
 	ft_free_data(data);
 }
 
-int	print_mandatory_format(t_data *data, int id, int option)
+int	print_mandatory_format(t_data *data, int id, int option, long long time_now)
 {
 	static char	*lookup[6] = {
 		"%lld %d is eating\n",
@@ -42,10 +42,8 @@ int	print_mandatory_format(t_data *data, int id, int option)
 		"%lld %d has taken a fork\n",
 		"%lld %d died\n"};
 	long long	time;
-	long long	ph_start_time;
 
-	ph_start_time = ft_get_start_time(data);
-	time = ft_get_time() - ph_start_time;
+	time = time_now - (data->start_time);
 	pthread_mutex_lock(&data->mut_print);
 	if (option != 5 && are_we_done(data) == 1)
 		return (pthread_mutex_unlock(&data->mut_print), 1);

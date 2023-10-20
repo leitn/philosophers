@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:47:32 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 16:00:28 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int	ft_pthread_join(t_data *data)
 
 void	*routine(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->data->mut_start_t);
+	pthread_mutex_unlock(&philo->data->mut_start_t);
 	while (are_we_done(philo->data) == 0)
 	{
-		// if (philo->philo_id % 2 != 0)
-		// 	usleep(100);
 		if (ft_eat(philo) == 1)
 			break ;
 		if (are_we_done(philo->data) == 1)
@@ -58,7 +58,7 @@ void	*ft_routine(void *ph_philo)
 	if (philo->data->nb_philo == 1)
 	{
 		pthread_mutex_lock(philo->left_fork);
-		print_mandatory_format(philo->data, philo->philo_id, 3);
+		print_mandatory_format(philo->data, philo->philo_id, 3, ft_get_time());
 		while (are_we_done(philo->data) == 0)
 			usleep(125);
 		pthread_mutex_unlock(philo->left_fork);
@@ -82,7 +82,7 @@ int	ft_start_routine(t_data	*data)
 	int			i;
 
 	i = 0;
-	data->start_time = ft_get_time();
+	pthread_mutex_lock(&data->mut_start_t);
 	while (i < data->nb_philo)
 	{
 		ft_set_last_meal_time(&data->philos[i]);
@@ -91,6 +91,8 @@ int	ft_start_routine(t_data	*data)
 				return (1);
 		i++;
 	}
+	data->start_time = ft_get_time();
+	pthread_mutex_unlock(&data->mut_start_t);
 	return (0);
 }
 

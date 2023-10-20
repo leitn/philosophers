@@ -6,21 +6,21 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:13:18 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:13:39 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:14:20 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-long long	ft_get_start_time(t_data *data)
-{
-	long long	ph_start_time;
+// long long	ft_get_start_time(t_data *data)
+// {
+// 	long long	ph_start_time;
 
-	pthread_mutex_lock(&data->mut_start_t);
-	ph_start_time = data->start_time;
-	pthread_mutex_unlock(&data->mut_start_t);
-	return (ph_start_time);
-}
+// 	pthread_mutex_lock(&data->mut_start_t);
+// 	ph_start_time = data->start_time;
+// 	pthread_mutex_unlock(&data->mut_start_t);
+// 	return (ph_start_time);
+// }
 
 int	ft_get_nb_max_meals(t_data *data)
 {

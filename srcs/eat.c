@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:02:12 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:34:58 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:57:43 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	take_right_fork(t_philo *philo)
 		return (1);
 	}
 	if (are_we_done(philo->data) == 1 || print_mandatory_format(philo->data, philo->philo_id,
-		4) == 1) //means print found a dead man
+		4, ft_get_time()) == 1)
 	{
 		pthread_mutex_unlock(philo->right_fork);
 		return (1);
@@ -38,7 +38,7 @@ int	take_left_fork(t_philo *philo)
 		return (1);
 	}
 	if (are_we_done(philo->data) == 1 || print_mandatory_format(philo->data, philo->philo_id,
-		3) == 1)  //means print found a dead man
+		3, ft_get_time()) == 1)
 	{
 		pthread_mutex_unlock(philo->left_fork);
 		return (1);
@@ -104,16 +104,15 @@ void	unlock_forks(t_philo *philo)
 	}
 }
 
-//WIP !
 int	ft_eat(t_philo *philo)
 {
-	check_if_prio(philo);
+	check_if_prio(philo, ft_get_time());
 	if (ready_steady_forks(philo) == 1)
 		return (1);
-	print_mandatory_format(philo->data, philo->philo_id, 0);
+	print_mandatory_format(philo->data, philo->philo_id, 0, ft_get_time());
 	ft_set_last_meal_time(philo);
 	set_nb_meals(philo);
-	if ((eat_usleep(philo, philo->data->time_to_eat)) == 1)
+	if ((eat_usleep(philo, philo->data->time_to_eat, ft_get_time())) == 1)
 	{
 		unlock_forks(philo);
 		return (1);
