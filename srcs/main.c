@@ -6,31 +6,14 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:57:04 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 18:05:34 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/21 12:40:15 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-//join threads, returns 1 if error
-int	ft_pthread_join(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < data->nb_philo)
-	{
-		if (pthread_join(data->philo_threads[i], NULL))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 void	*routine(t_philo *philo)
 {
-	// pthread_mutex_lock(&philo->data->mut_start_t);
-	// pthread_mutex_unlock(&philo->data->mut_start_t);
 	while (are_we_done(philo->data) == 0)
 	{
 		if (ft_eat(philo) == 1)
@@ -49,7 +32,6 @@ void	*routine(t_philo *philo)
 	return (NULL);
 }
 
-//routine
 void	*ft_routine(void *ph_philo)
 {
 	t_philo		*philo;
@@ -76,23 +58,20 @@ void	*ft_routine(void *ph_philo)
 	return (NULL);
 }
 
-//pthread create and send to routine
 int	ft_start_routine(t_data	*data)
 {
 	int			i;
 
 	i = 0;
-	// pthread_mutex_lock(&data->mut_start_t);
 	data->start_time = ft_get_time();
 	while (i < data->nb_philo)
 	{
 		ft_set_last_meal_time(&data->philos[i]);
 		if (pthread_create(&data->philo_threads[i], NULL,
 				&ft_routine, &data->philos[i]))
-				return (1);
+			return (1);
 		i++;
 	}
-	// pthread_mutex_unlock(&data->mut_start_t);
 	return (0);
 }
 
@@ -101,7 +80,7 @@ int	philosophers_problem(t_data *data)
 	if (ft_init_data(data) != 0)
 		return (1);
 	if (ft_start_routine(data) == 1 || ft_monitor(data) == 1)
-			ft_pthread_join(data);
+		ft_pthread_join(data);
 	ft_free_data(data);
 	return (0);
 }
@@ -127,4 +106,3 @@ int	main(int argc, char *argv[])
 		printf("invalid arguments\n");
 	return (0);
 }
-

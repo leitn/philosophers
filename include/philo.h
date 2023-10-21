@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:17:26 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 21:43:22 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/21 12:36:12 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ typedef struct s_data{
 
 /*-------------------------------MAIN-------------------------------*/
 //main.c
-int			ft_pthread_join(t_data *data);
 void		*routine(t_philo *philo);
 void		*ft_routine(void *ph_philo);
+int			ft_start_routine(t_data	*data);
 int			philosophers_problem(t_data *data);
 int			ft_start_routine(t_data	*data);
 
@@ -86,6 +86,7 @@ int			ft_init_args(int argc, char *argv[], t_data *data);
 
 //init_data.c
 int			ft_init_philos_threads(t_data *data);
+void		init_last_philo(t_philo *philo, int i, t_data *data);
 int			ft_init_philos(t_data *data);
 int			ft_init_forks(t_data *data);
 int			ft_init_data(t_data *data);
@@ -93,6 +94,7 @@ int			ft_init_data(t_data *data);
 /*-------------------------------UTILS-------------------------------*/
 
 // utils.c
+int			ft_pthread_join(t_data *data);
 int			ft_atoi(char *str);
 long		ft_atol(char *str);
 long long	ft_atoll(char *str);
@@ -119,9 +121,6 @@ long long	ft_get_time(void);
 
 //get_info.c
 long long	ft_get_last_meal_time(t_philo *philo);
-
-//get_info_2.c
-long long	ft_get_start_time(t_data *data);
 int			ft_get_pulse(t_data *data);
 int			ft_get_completion(t_data *data);
 

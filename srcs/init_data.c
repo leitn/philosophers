@@ -6,13 +6,12 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:15:01 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 21:43:10 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/21 12:45:40 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-//malloc data.philo_threads.
 int	ft_init_philos_threads(t_data *data)
 {
 	data->philo_threads = malloc(data->nb_philo * sizeof(pthread_t));
@@ -21,7 +20,19 @@ int	ft_init_philos_threads(t_data *data)
 	return (0);
 }
 
-//malloc data.philos && fills it. Too long.
+void	init_last_philo(t_philo *philo, int i, t_data *data)
+{
+	philo[i].data = data;
+	philo[i].philo_id = i;
+	philo[i].left_fork = &data->forks[i];
+	philo[i].right_fork = &data->forks[0];
+	philo[i].time_of_eating = philo->data->start_time;
+	philo[i].nb_meals = 0;
+	philo[i].prio = 0;
+	pthread_mutex_init(&philo[i].mut_t_eating, NULL);
+	pthread_mutex_init(&philo[i].mut_nb_meals, NULL);
+}
+
 int	ft_init_philos(t_data *data)
 {
 	int		i;
@@ -46,22 +57,11 @@ int	ft_init_philos(t_data *data)
 		i++;
 	}
 	if (i == (data->nb_philo - 1))
-	{
-		philo[i].data = data;
-		philo[i].philo_id = i;
-		philo[i].left_fork = &data->forks[i];
-		philo[i].right_fork = &data->forks[0];
-		philo[i].time_of_eating = philo->data->start_time;
-		philo[i].nb_meals = 0;
-		philo[i].prio = 0;
-		pthread_mutex_init(&philo[i].mut_t_eating, NULL);
-		pthread_mutex_init(&philo[i].mut_nb_meals, NULL);
-	}
+		init_last_philo(philo, i, data);
 	philo = data->philos;
 	return (0);
 }
 
-//malloc data.forks && init its mutexes
 int	ft_init_forks(t_data *data)
 {
 	int	i;
@@ -78,8 +78,6 @@ int	ft_init_forks(t_data *data)
 	return (0);
 }
 
-
-//init structures
 int	ft_init_data(t_data *data)
 {
 	if (ft_init_forks(data) != 0)
@@ -94,4 +92,3 @@ int	ft_init_data(t_data *data)
 	pthread_mutex_init(&data->mut_dead_man, NULL);
 	return (0);
 }
-

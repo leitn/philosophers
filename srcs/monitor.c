@@ -6,19 +6,18 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:40:50 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 21:44:13 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/21 12:41:03 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-// used in main thread
 int	are_we_done(t_data *data)
 {
 	if (ft_get_pulse(data) == 1)
-		return(1);
+		return (1);
 	if (ft_get_completion(data) == 1)
-		return(1);
+		return (1);
 	return (0);
 }
 
@@ -68,7 +67,8 @@ int	valar_morghulis(t_data *data)
 		if (is_that_one_dead(&data->philos[i]) == 1)
 		{
 			yell_omg_someone_just_died(data);
-			print_mandatory_format(data, data->philos[i].philo_id, 5, ft_get_time());
+			print_mandatory_format(data, data->philos[i].philo_id,
+				5, ft_get_time());
 			return (1);
 		}
 		i++;
@@ -81,5 +81,5 @@ int	ft_monitor(t_data *data)
 	usleep(125);
 	while (valar_morghulis(data) == 0 && finished_eating(data) == 0)
 		usleep(500);
-	return(1);
+	return (1);
 }

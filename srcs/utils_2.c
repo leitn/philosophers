@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:36:32 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 21:43:05 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/21 12:33:46 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	ft_get_nb_meals(t_philo *philo)
 	return (ph_nb_meals);
 }
 
-
-//prints error and FREES data
 void	ft_error(t_data	*data)
 {
 	pthread_mutex_lock(&data->mut_print);

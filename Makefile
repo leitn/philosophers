@@ -6,7 +6,7 @@
 #    By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 14:04:24 by letnitan          #+#    #+#              #
-#    Updated: 2023/10/08 20:13:52 by letnitan         ###   ########.fr        #
+#    Updated: 2023/10/21 12:44:01 by letnitan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ SRC_FILES =	main \
 			time \
 			init_data \
 			eat \
+			eat_2 \
 			utils \
 			get_info \
-			get_info_2 \
 			set_info \
 			monitor \
 			utils_2 \

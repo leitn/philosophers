@@ -6,7 +6,7 @@
 /*   By: letnitan <letnitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:57:09 by letnitan          #+#    #+#             */
-/*   Updated: 2023/10/20 17:49:46 by letnitan         ###   ########.fr       */
+/*   Updated: 2023/10/21 12:41:37 by letnitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_check_args(int argc, char *argv[])
 		{
 			if (argv[i][j] < '0' || argv[i][j] > '9')
 				return (1);
-			if(argv[i][j] >= '0' && argv[i][j] <= '9')
+			if (argv[i][j] >= '0' && argv[i][j] <= '9')
 				j++;
 		}
 		i++;
@@ -54,4 +54,3 @@ int	ft_init_args(int argc, char *argv[], t_data *data)
 		return (1);
 	return (0);
 }
-
